@@ -38,6 +38,8 @@ class App extends Component {
       <BrowserRouter >
       <div className = "App">
         <Header/>
+   
+    
           <Switch>        
               <Route exact path = "/" component = {index}/>
              
