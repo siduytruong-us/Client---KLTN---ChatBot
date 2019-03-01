@@ -6,6 +6,7 @@ import socketIOClient  from "socket.io-client"
 
 import Department from "./Components/Department"
 import Contact from "./Components/Contact"
+import WebEditor from "./Components/WebEditor"
 import Header from "./Components/Navigation/Header"
 import Footer from "./Components/Navigation/Footer"
 
@@ -47,6 +48,7 @@ class App extends Component {
               <Route exact path = "/" component = {index}/>
               <Route exact path = "/department" component = {Department}/>
               <Route exact path = "/contact" component = {Contact}/>
+              <Route exact path = "/editor" component = {WebEditor}/>
           </Switch>
           <Widget 
             handleNewUserMessage={this.handleNewUserMessage}

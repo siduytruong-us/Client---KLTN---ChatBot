@@ -40,6 +40,7 @@ class Header extends Component {
                     <li className = {this.state.page === "department" ? "active dropdown" : null}>
                       <a href="#" className="dropdown-toggle" data-toggle="dropdown">Giới thiệu <span className="fa fa-angle-down"></span></a>
                       <ul className="dropdown-menu" role="menu">
+                        <li><a href="/about-us">Về trường</a></li> 
                         <li><a href="/department">Các Khoa</a></li>                
                         <li><a href="course-detail.html">Đoàn thanh niên</a></li>                
                         <li><a href="course-detail.html">Hội sinh viên</a></li>                
