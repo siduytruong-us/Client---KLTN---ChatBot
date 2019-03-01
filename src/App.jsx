@@ -3,6 +3,9 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import index from './Components/index'
 import { Widget, addResponseMessage  } from 'react-chat-widget';
 import socketIOClient  from "socket.io-client"
+
+import Department from "./Components/Department"
+import Contact from "./Components/Contact"
 import Header from "./Components/Navigation/Header"
 import Footer from "./Components/Navigation/Footer"
 
@@ -42,7 +45,8 @@ class App extends Component {
     
           <Switch>        
               <Route exact path = "/" component = {index}/>
-             
+              <Route exact path = "/department" component = {Department}/>
+              <Route exact path = "/contact" component = {Contact}/>
           </Switch>
           <Widget 
             handleNewUserMessage={this.handleNewUserMessage}
