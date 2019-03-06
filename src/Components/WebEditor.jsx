@@ -1,65 +1,28 @@
-import React, { Component } from 'react';
+/* eslint-disable react/style-prop-object */
+import React from 'react';
+import { Editor } from '@tinymce/tinymce-react';
 
-import CKEditor from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { Button } from 'antd';
+class WebEditor extends React.Component {
+  handleEditorChange = (e) => {
+    console.log('Content was updated:', e.target.getContent());
+  }
 
-class WebEditor extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            dataEditor:null,
-        }
-    }
-    
+  render() {
+    return (
 
-    componentDidMount() { 
-        ClassicEditor
-            .create( document.querySelector( '#editor' ) )
-            .then( editor => {
-                window.editor = editor;
-                
-                this.handleSaveButton(editor)
-            } )
-            .catch( err => {
-                console.error( err.stack );
-            } );
+        <div>
+            <Editor
+                initialValue="<p>This is the initial content of the editor</p>"
+                init={{
+                plugins: 'link image code',
+                toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+                }}
+                onChange={this.handleEditorChange}
+            />
 
-  
-    }
-
-    handleSaveButton() { 
-        console.log(this.state.dataEditor);
-    }
-
-    render() {
-        
-        return (
-            <div className="container" style={{ paddingTop: `100px`, paddingBottom: '100px' }}>
-                <h2> Post Editor</h2>
-                <CKEditor
-                    editor={ ClassicEditor }
-                    onInit={ editor => {
-                        // You can store the "editor" and use when it is needed.
-                        console.log( 'Editor is ready to use!', editor );
-                    } }
-                    onChange={ ( event, editor ) => {
-                        this.setState ({
-                            dataEditor: editor.getData()
-                        })
-                    } }
-                    onBlur={ editor => {
-                        console.log( 'Blur.', editor );
-                    } }
-                    onFocus={ editor => {
-                        console.log( 'Focus.', editor );
-                    } }
-                />
-                <br/>
-                <Button onClick= {this.handleSaveButton.bind(this) } className ="float-right">Done!</Button>
-            </div>
-        );
-    }
+        </div>
+    );
+  }
 }
 
 export default WebEditor;
