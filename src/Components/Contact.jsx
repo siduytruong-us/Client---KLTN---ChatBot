@@ -55,9 +55,9 @@ class Contact extends Component {
                         </div>
                         <div class="col-md-6">
                             <div class="mu-contact-right">
-                            <iframe title="This is a unique title" 
-                                    src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d6249.345033302234!2d-80.02791918555701!3d40.45935344513505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x8834f411a7b748bd%3A0xaec8197db3de9a9e!2sCalifornia-Kirkbride%2C+Pittsburgh%2C+PA%2C+USA!3m2!1d40.4600435!2d-80.0213538!5e0!3m2!1sen!2sbd!4v1464270878470" 
-                                    width="100%" height="450" frameborder="0" allowfullscreen/>
+                                <iframe title="This is a unique title" 
+                                        width="100%" height="450" frameborder="10" allowfullscreen 
+                                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3919.62386129061!2d106.67987065824396!3d10.763444503994991!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1c06f4e1dd%3A0x43900f1d4539a3d!2sHo+Chi+Minh+City+University+of+Science!5e0!3m2!1sen!2s!4v1551851631507"/>
                             </div>
                         </div>
                         </div>

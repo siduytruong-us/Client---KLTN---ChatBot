@@ -1,89 +1,111 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
-import {withRouter} from "react-router-dom"
+import LeftMenu from './HeaderComponent/LeftMenu'
+import RightMenu from './HeaderComponent/RightMenu'
+import { Drawer, Button, Menu, Col } from 'antd';
+
+const SubMenu = Menu.SubMenu;
+const MenuItemGroup = Menu.ItemGroup;
 
 class Header extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = { 
-      page: null,
-    }
+  state = {
+    current: 'mail',
+    visible: false
   }
-  
-  componentDidMount(){ 
-      this.setState({ 
-        page: this.props.location.pathname.split("/")[1],
-      })
+  showDrawer = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+onClose = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+render() {
+    return (
+//       <nav class="navbar navbar-expand-lg navbar-light bg-light">
+//   <a class="navbar-brand" href="#">Navbar</a>
+//   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+//     <span class="navbar-toggler-icon"></span>
+//   </button>
+
+//   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+//     <ul class="navbar-nav mr-auto">
+//       <li class="nav-item active">
+//         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+//       </li>
+//       <li class="nav-item">
+//         <a class="nav-link" href="#">Link</a>
+//       </li>
+//       <li class="nav-item dropdown">
+//         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+//           Dropdown
+//         </a>
+//         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+//           <a class="dropdown-item" href="#">Action</a>
+//           <a class="dropdown-item" href="#">Another action</a>
+//           <div class="dropdown-divider"></div>
+//           <a class="dropdown-item" href="#">Something else here</a>
+//         </div>
+//       </li>
+//       <li class="nav-item">
+//         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+//       </li>
+//     </ul>
+//     <form class="form-inline my-2 my-lg-0">
+//       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+//       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+//     </form>
+//   </div>
+// </nav>
+
+
+
+      //   <nav className = "">
+          
+
+      //   <Menu mode="horizontal" theme="light" style = {{textAlign:"right"}}>
+      //   <img src = "/assets/img/logo.png" className = "float-left ml-3"/>
+      //   <Menu.Item key="mail">
+      //      <a href="">Home</a>
+      //    </Menu.Item>
+      //    <SubMenu title={<span>Blogs</span>}>
+      //      <MenuItemGroup title="Item 1">
+      //        <Menu.Item key="setting:1">Option 1</Menu.Item>
+      //        <Menu.Item key="setting:2">Option 2</Menu.Item>
+      //      </MenuItemGroup>
+      //      <MenuItemGroup title="Item 2">
+      //        <Menu.Item key="setting:3">Option 3</Menu.Item>
+      //        <Menu.Item key="setting:4">Option 4</Menu.Item>
+      //      </MenuItemGroup>
+      //    </SubMenu>
+      //    <Menu.Item key="alipay">
+      //      <a href="">Contact Us</a>
+      //    </Menu.Item>
+      //  <Menu.Item key="asd">
+      //     <a href="">Signin</a>
+      //   </Menu.Item>
+      //   <Menu.Item key="app">
+      //     <a href="">Signup</a>
+      //   </Menu.Item>
+      //    <SubMenu title={<span>Blogs</span>}>
+      //      <MenuItemGroup title="Item 1">
+      //        <Menu.Item key="setting:1">Option 1</Menu.Item>
+      //        <Menu.Item key="setting:2">Option 2</Menu.Item>
+      //      </MenuItemGroup>
+      //      <MenuItemGroup title="Item 2">
+      //        <Menu.Item key="setting:3">Option 3</Menu.Item>
+      //        <Menu.Item key="setting:4">Option 4</Menu.Item>
+      //      </MenuItemGroup>
+      //    </SubMenu>
+      //    <Menu.Item key="alipay">
+      //      <a href="">Contact Us</a>
+      //    </Menu.Item>
+      //    </Menu>
+      //  </nav>
+      <div></div>
+      
+    );
   }
-
-    render() {
-        return (
-          <div>
-            <section id="mu-menu">
-            <nav className="navbar navbar-default" role="navigation">  
-              <div className="container">
-                <div className="navbar-header">
-                  <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span className="sr-only">Toggle navigation</span>
-                    <span className="icon-bar"></span>
-                    <span className="icon-bar"></span>
-                    <span className="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="/"><img src="/assets/img/logo.png" alt="logo"/></a>
-                </div>
-                <div id="navbar" className="navbar-collapse collapse">
-                  <ul id="top-menu" className="nav navbar-nav navbar-right main-nav">
-
-                    <li className = {this.state.page === "" ? "active" : null}><a href="/">Trang chủ</a></li>    
-
-                    <li className = {this.state.page === "department" ? "active dropdown" : null}>
-                      <a href="#" className="dropdown-toggle" data-toggle="dropdown">Giới thiệu <span className="fa fa-angle-down"></span></a>
-                      <ul className="dropdown-menu" role="menu">
-                        <li><a href="/about-us">Về trường</a></li> 
-                        <li><a href="/department">Các Khoa</a></li>                
-                        <li><a href="course-detail.html">Đoàn thanh niên</a></li>                
-                        <li><a href="course-detail.html">Hội sinh viên</a></li>                
-                      </ul>
-                    </li>
-
-                    <li><a href="gallery.html">Gallery</a></li>
-
-                    <li className="dropdown">
-                      <a href="#" className="dropdown-toggle" data-toggle="dropdown">Blog <span className="fa fa-angle-down"></span></a>
-                      <ul className="dropdown-menu" role="menu">
-                        <li><a href="blog-archive.html">Blog Archive</a></li>                
-                        <li><a href="blog-single.html">Blog Single</a></li>                
-                      </ul>
-                    </li>  
-
-                    <li className = {this.state.page === "contact" ? "active" : null}><a href="contact">Liên hệ</a></li>
-
-                    <li><a href="#" id="mu-search-icon"><i className="fa fa-search"></i></a></li>
-                    
-                  </ul>                     
-                </div>
-              </div>     
-            </nav>
-          </section>
-
-          <div id="mu-search">
-          <div class="mu-search-area">      
-            <button class="mu-search-close"><span class="fa fa-close"></span></button>
-            <div class="container">
-              <div class="row">
-                <div class="col-md-12">            
-                  <form class="mu-search-form">
-                    <input type="search" placeholder="Type Your Keyword(s) & Hit Enter"/>              
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-        </div>
-        );
-    }
 }
-
-export default withRouter(Header)
+export default Header;
