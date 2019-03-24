@@ -1,7 +1,39 @@
 import React, { Component } from 'react';
+import { Timeline, Icon, Calendar } from 'antd';
+import { Select } from 'antd';
+
+const Option = Select.Option;
 
 class Contact extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { 
+            address:"nvc",
+        }
+    }
+    
+    handleChange(value) {
+        this.setState({address:value})
+    }
+    
     render() {
+        const address_nvc = (
+            <div className = "animated fadeIn slow">
+            <iframe title="This is a unique title" 
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6307047611535!2d106.67998301411642!3d10.76291826238761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1c06f4e1dd%3A0x43900f1d4539a3d!2sHo+Chi+Minh+City+University+of+Science!5e0!3m2!1sen!2s!4v1553328434254"
+                                        width="100%" height="450" frameborder="0" allowfullscreen>
+                                </iframe>
+            </div>
+        )
+
+        const address_thu_duc = (
+            <div className = "animated fadeIn slow">
+            <iframe title="This is a unique title" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.1551640163016!2d106.79692491385535!3d10.87580059225415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d8a1768e1d03%3A0x38d3ea53e0581ae0!2sUniversity+of+Science%2C+Linh+Trung+Campus!5e0!3m2!1sen!2s!4v1553336212934"
+                                        width="100%" height="450" frameborder="0" allowfullscreen>
+                                </iframe>
+            </div>
+        )
         return (
         <div>
             <section id="mu-page-breadcrumb">
@@ -14,11 +46,11 @@ class Contact extends Component {
                     </div>
                 </div>
                 </div>
-            </section>
-
-
-            <section id="mu-contact">
-            <div class="container">
+                </section>
+                <section id="mu-contact">
+       
+           
+            <div class="container animated fadeIn fast">
                 <div class="row">
                 <div class="col-md-12">
                     <div class="mu-contact-area">
@@ -55,10 +87,18 @@ class Contact extends Component {
                         </div>
                         <div class="col-md-6">
                             <div class="mu-contact-right">
-                            <iframe title="This is a unique title" 
-                                    src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d6249.345033302234!2d-80.02791918555701!3d40.45935344513505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x8834f411a7b748bd%3A0xaec8197db3de9a9e!2sCalifornia-Kirkbride%2C+Pittsburgh%2C+PA%2C+USA!3m2!1d40.4600435!2d-80.0213538!5e0!3m2!1sen!2sbd!4v1464270878470" 
-                                    width="100%" height="450" frameborder="0" allowfullscreen/>
-                            </div>
+                                {this.state.address==="nvc"?address_nvc:address_thu_duc}
+                                Địa chỉ: <Select
+                                    style={{ width: 200 }}
+                                    defaultValue="nvc"
+                                    optionFilterProp="children"
+                                    onChange={this.handleChange.bind(this)}
+                                    filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                                >
+                                    <Option value="nvc">Nguyễn Văn Cừ</Option>
+                                    <Option value="thu_duc">Linh Trung, Thủ Đức</Option>
+                                </Select>,
+                        </div>
                         </div>
                         </div>
                     </div>

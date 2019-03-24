@@ -215,11 +215,11 @@ class index extends Component {
                                 </blockquote>
                                 </div>
                                 <div className="mu-testimonial-img">
-                                <img src="assets/img/testimonial-1.png" alt="img"/>
+                                <img src="assets/img/member/duy.jpg" alt="img"/>
                                 </div>
                                 <div className="mu-testimonial-info">
-                                <h4>John Doe</h4>
-                                <span>Happy Student</span>
+                                <h4>Duy Trương</h4>
+                                <span>Kỹ thuật phần mềm</span>
                                 </div>
                             </div>
                             <div className="mu-testimonial-item">
@@ -229,25 +229,11 @@ class index extends Component {
                                 </blockquote>
                                 </div>
                                 <div className="mu-testimonial-img">
-                                <img src="assets/img/testimonial-3.png" alt="img"/>
+                                <img src="assets/img/member/binh.jpg" alt="img"/>
                                 </div>
                                 <div className="mu-testimonial-info">
-                                <h4>Rebaca Michel</h4>
-                                <span>Happy Parent</span>
-                                </div>
-                            </div>
-                            <div className="mu-testimonial-item">
-                                <div className="mu-testimonial-quote">
-                                <blockquote>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem rerum soluta aperiam blanditiis obcaecati eveniet aliquam consequatur nobis eaque id.</p>
-                                </blockquote>
-                                </div>
-                                <div className="mu-testimonial-img">
-                                <img src="assets/img/testimonial-2.png" alt="img"/>
-                                </div>
-                                <div className="mu-testimonial-info">
-                                <h4>Stev Smith</h4>
-                                <span>Happy Student</span>
+                                <h4>Bình Lê</h4>
+                                <span>Khoa học máy tính</span>
                                 </div>
                             </div>
                             </div>
