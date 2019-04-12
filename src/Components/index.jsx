@@ -19,7 +19,7 @@ class index extends Component {
                         </figure>
                     </div>
                     <div className="mu-slider-content" color = "white">
-                        <p style={titleImageSliderStyle}>Chào mừng bạn tới Trường Khoa học tự nhiên</p>
+                        <p style={titleImageSliderStyle}>Chào mừng bạn tới Trường đại học Khoa học tự nhiên</p>
                         <span></span>
                         <p>We Will Help You To Learn</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor amet error eius reiciendis eum sint unde eveniet deserunt est debitis corporis temporibus recusandae accusamus.</p>
@@ -80,24 +80,20 @@ class index extends Component {
                                 </div> */}
                                 <Collapse accordion>
                                 <Panel header={<div style={{fontSize:"20px", fontFamily: "sans-serif"}}>Giới thiệu</div>} key="1">
-                                    <p style ={{fontSize:"18px"}}>Năm 1996, Trường Đại học Khoa học Tự nhiên được chính thức thành lập theo quyết định 1236/GDĐT của Bộ GD&ĐT ngày 30/3/1996 trên cơ sở tách ra từ Trường Đại học Tổng hợp TP. HCM để tham gia vào Đại học Quốc gia TP.HCM.
-                                        Kế hoạch chiến lược giai đoạn 2106 -2020 <a href = "https://www.hcmus.edu.vn/attachments/article/123/quyet%20dinh%20phe%20duyet%20KHCL%2016-20.pdf" >tại đây  </a></p>
+                                        <p style ={{fontSize:"18px"}}>
+                                            Năm 1996, Trường Đại học Khoa học Tự nhiên được chính thức thành lập theo quyết định 1236/GDĐT của Bộ GD&ĐT ngày 30/3/1996 trên cơ sở tách ra từ Trường Đại học Tổng hợp TP. HCM để tham gia vào Đại học Quốc gia TP.HCM.
+                                            Kế hoạch chiến lược giai đoạn 2106 -2020 <a href = "https://www.hcmus.edu.vn/attachments/article/123/quyet%20dinh%20phe%20duyet%20KHCL%2016-20.pdf" target="_blank" rel="noopener noreferrer">tại đây  </a>
+                                        </p>
                                     </Panel>
-                                    <Panel header={<div style={{fontSize:"20px", fontFamily: "sans-serif"}}>This is panel header 3</div>} key="2">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.</p>
+                                    <Panel header={<div style={{fontSize:"20px", fontFamily: "sans-serif"}}>Sứ mạng</div>} key="2">
+                                        <p style ={{fontSize:"18px"}}>
+                                        Trường ĐH KHTN là trung tâm đào tạo đại học, sau đại học, cung cấp nguồn nhân lực, đội ngũ chuyên gia trình độ cao trong các lĩnh vực khoa học cơ bản, khoa học liên ngành, khoa học công nghệ mũi nhọn, có năng lực sáng tạo, làm việc trong môi trường cạnh tranh quốc tế; là nơi thực hiện những nghiên cứu khoa học đỉnh cao tạo ra các sản phẩm tinh hoa đáp ứng nhu cầu phát triển KHCN và yêu cầu phát triển kinh tế - xã hội ngày càng cao của đất nước, phù hợp với xu thế phát triển thế giới.
+                                        </p>
                                     </Panel>
-                                    <Panel header={<div style={{fontSize:"20px", fontFamily: "sans-serif"}}>This is panel header 3</div>} key="3">
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
-                                    </p>
+                                    <Panel header={<div style={{fontSize:"20px", fontFamily: "sans-serif"}}>Mục tiêu giáo dục</div>} key="3">
+                                        <p style ={{fontSize:"18px"}}>
+                                        Trường ĐH KHTN góp phần đào tạo nguồn nhân lực ở trình độ đại học, đội ngũ chuyên gia ở các trình độ thạc sĩ, tiến sĩ trong các lĩnh vực khoa học cơ bản, khoa học liên ngành, khoa học công nghệ mũi nhọn; thông qua đào tạo, thực hiện những nghiên cứu khoa học đỉnh cao trong các lĩnh vực liên quan để tạo ra tri thức, sản phẩm mới đáp ứng nhu cầu phát triển khoa học công nghệ và yêu cầu phát triển kinh tế - xã hội ngày càng cao của đất nước, phù hợp với xu thế phát triển thế giới; đào tạo người học có phẩm chất chính trị, đạo đức; có kiến thức, kỹ năng thực hành, năng lực nghiên cứu và phát triển ứng dụng khoa học và công nghệ tương xứng với trình độ đào tạo; có sức khỏe; có khả năng sáng tạo và trách nhiệm nghề nghiệp, thích nghi với môi trường làm việc; có ý thức phục vụ cộng đồng
+                                        </p>
                                     </Panel>
                                 </Collapse>,
                             </div>
@@ -106,6 +102,17 @@ class index extends Component {
                                 <a id="mu-abtus-video" href="https://www.youtube.com/embed/9Z49DscgnJY" target="mutube-video">
                                 <img src="https://edu2review.com/upload/article-images/2018/07/7933/1920x1080_dai-hoc-khoa-hoc-tu-nhien.jpg" alt="img"/>
                                 </a>                
+                                </div>
+                                <div style = {{marginTop:"20px", fontSize:"18px"}}>
+                                    <b>
+                                    <center>
+                                        Trường đại học Khoa học Tự nhiên 
+                                    <center>
+                                    </center>
+                                        Đại học quốc gia thành phố Hồ Chí Minh
+                                    </center>
+                                    </b>
+                                    
                                 </div>
                             </div>
                             </div>

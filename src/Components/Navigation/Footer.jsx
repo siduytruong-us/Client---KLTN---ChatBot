@@ -45,12 +45,14 @@ class Footer extends Component {
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3">
               <div class="mu-footer-widget">
-                <h4>Contact</h4>
+                <h4>Liên lạc</h4>
                 <address>
-                  <p>P.O. Box 320, Ross, California 9495, USA</p>
-                  <p>Phone: (415) 453-1568 </p>
-                  <p>Website: www.markups.io</p>
-                  <p>Email: info@markups.io</p>
+                  <p>Cở sở 1: 227 Đường Nguyễn Văn Cừ, Phường 4, Quận 5, Hồ Chí Minh</p>
+                  <p>Cở sở 2: Làng Đại học quốc gia, Linh Trung, Thủ Đức, TP Hồ Chí Minh</p>
+                  <p>ĐT: (84) 283-8350-096</p>
+                  
+                  <p>Email: <a href = "mailto: duytruong0702@gmail.com">duytruong0702@gmail.com</a></p>
+                  <a href = "https://www.facebook.com/dhkhtndhqgtphcm/" target="_blank" rel="noopener noreferrer">Fanpage Trường</a>
                 </address>
               </div>
             </div>

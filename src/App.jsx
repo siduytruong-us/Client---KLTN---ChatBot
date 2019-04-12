@@ -110,7 +110,7 @@ class App extends Component {
       <BrowserRouter >
       <div className = "App">
         <Header/>
-        <div style = {{paddingTop:"80px"}}>
+        <div style = {{paddingTop:"70px"}}>
           <Switch >        
               <Route exact path = "/" component = {index}/>
               <Route exact path = "/department" component = {Department}/>
