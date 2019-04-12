@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import {withRouter} from "react-router-dom"
-
+import {NavLink} from "react-router-dom"
 class Header extends Component {
 
   constructor(props) {
@@ -12,15 +12,20 @@ class Header extends Component {
   }
   
   componentDidMount(){ 
-      this.setState({ 
-        page: this.props.location.pathname.split("/")[1],
-      })
+      this.setState({ page: this.props.location.pathname.split("/")[1]})
+  }
+
+  componentDidUpdate (prevProps) {
+    const currentPage =  this.props.location.pathname.split("/")[1]
+    if (prevProps.location.pathname.split("/")[1] !== currentPage) 
+      this.setState({ page: currentPage})
+    
   }
 
     render() {
         return (
           <div>
-            <section id="mu-menu">
+            <section id="mu-menu" style ={{position:"fixed", zIndex:3, fontSize:"18px"}}>
             <nav className="navbar navbar-default" role="navigation">  
               <div className="container">
                 <div className="navbar-header">
@@ -30,7 +35,7 @@ class Header extends Component {
                     <span className="icon-bar"></span>
                     <span className="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="/"><img src="/assets/img/logo.png" alt="logo"/></a>
+                  <a className="navbar-brand" href="/"><img src="/assets/img/logo81.png" alt="logo"  style = {{marginTop: "-15px"}} /></a>
                 </div>
                 <div id="navbar" className="navbar-collapse collapse">
                   <ul id="top-menu" className="nav navbar-nav navbar-right main-nav">
@@ -40,10 +45,11 @@ class Header extends Component {
                     <li className = {this.state.page === "department" ? "active dropdown" : null}>
                       <a href="#" className="dropdown-toggle" data-toggle="dropdown">Giới thiệu <span className="fa fa-angle-down"></span></a>
                       <ul className="dropdown-menu" role="menu">
-                        <li><a href="/about-us">Về trường</a></li> 
-                        <li><a href="/department">Các Khoa</a></li>                
-                        <li><a href="course-detail.html">Đoàn thanh niên</a></li>                
-                        <li><a href="course-detail.html">Hội sinh viên</a></li>                
+                        <li><NavLink to="/about-us">Về trường</NavLink></li> 
+                        <li><NavLink to="/department">Các Khoa</NavLink></li>                
+                        <li><NavLink to="course-detail.html">Đoàn thanh niên</NavLink></li>                
+                        <li><NavLink to="course-detail.html">Hội sinh viên</NavLink></li>
+                        <li><NavLink to="course-detail.html">Các phòng chức năng</NavLink></li>
                       </ul>
                     </li>
 
@@ -57,7 +63,7 @@ class Header extends Component {
                       </ul>
                     </li>  
 
-                    <li className = {this.state.page === "contact" ? "active" : null}><a href="contact">Liên hệ</a></li>
+                    <li className = {this.state.page === "contact" ? "active" : null}><NavLink to = "/contact">Liên hệ</NavLink></li>
 
                     <li><a href="#" id="mu-search-icon"><i className="fa fa-search"></i></a></li>
                     
