@@ -11,6 +11,10 @@ class Contact extends Component {
         }
     }
     
+    componentDidMount() {
+        window.scrollTo(0,0)
+    }
+    
     handleChange(value) {
         this.setState({address:value})
     }

@@ -20,6 +20,11 @@ class DetailDepartment extends Component {
         const temp = department.find(each => each.alias === alias)
         this.setState({ department: temp})
     }
+
+    componentDidMount() {
+        window.scrollTo(0,0)
+    }
+
     render() {
         var {name} = this.state.department
         return (
