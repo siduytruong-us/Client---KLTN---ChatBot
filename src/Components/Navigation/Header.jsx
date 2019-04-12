@@ -25,7 +25,7 @@ class Header extends Component {
     render() {
         return (
           <div>
-            <section id="mu-menu">
+            <section id="mu-menu" style ={{position:"fixed", zIndex:3, fontSize:"18px"}}>
             <nav className="navbar navbar-default" role="navigation">  
               <div className="container">
                 <div className="navbar-header">
@@ -35,7 +35,7 @@ class Header extends Component {
                     <span className="icon-bar"></span>
                     <span className="icon-bar"></span>
                   </button>
-                  <a className="navbar-brand" href="/"><img src="/assets/img/logo.png" alt="logo"/></a>
+                  <a className="navbar-brand" href="/"><img src="/assets/img/logo81.png" alt="logo"  style = {{marginTop: "-15px"}} /></a>
                 </div>
                 <div id="navbar" className="navbar-collapse collapse">
                   <ul id="top-menu" className="nav navbar-nav navbar-right main-nav">
@@ -48,7 +48,8 @@ class Header extends Component {
                         <li><NavLink to="/about-us">Về trường</NavLink></li> 
                         <li><NavLink to="/department">Các Khoa</NavLink></li>                
                         <li><NavLink to="course-detail.html">Đoàn thanh niên</NavLink></li>                
-                        <li><NavLink to="course-detail.html">Hội sinh viên</NavLink></li>                
+                        <li><NavLink to="course-detail.html">Hội sinh viên</NavLink></li>
+                        <li><NavLink to="course-detail.html">Các phòng chức năng</NavLink></li>
                       </ul>
                     </li>
 

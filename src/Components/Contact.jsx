@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Timeline, Icon, Calendar } from 'antd';
 import { Select } from 'antd';
 
 const Option = Select.Option;

@@ -20,7 +20,7 @@ constructor(props) {
                 <div className="row">
                   <div className="col-md-12">
                     <div className="mu-page-breadcrumb-area">
-                      <h2>Giới thiệu các Khoa</h2>
+                      <h2>Giới thiệu các Khoa - Ngành đào tạo</h2>
                     </div>
                   </div>
                 </div>
@@ -47,7 +47,7 @@ constructor(props) {
                                     <NavLink to={detailDepartmentBaseUrl+each.alias}><img src={"/assets/img/department/"+each.alias+".png"} alt="img"/></NavLink>
                                   </figure>
                                   <div className="mu-latest-course-single-content">
-                                    <h4><NavLink to={detailDepartmentBaseUrl+each.url}>{each.name}</NavLink></h4>
+                                    <h4><NavLink to={detailDepartmentBaseUrl+each.alias}>{each.name}</NavLink></h4>
                                     <p> {each.text}</p>
                                     <div className="mu-latest-course-single-contbottom">
                                       <NavLink className="mu-course-details" to={detailDepartmentBaseUrl+each.alias}>Xem chi tiết</NavLink>

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {Collapse, Divider} from "antd"
+const Panel = Collapse.Panel;
 
 const titleImageSliderStyle = { 
     fontSize: "35px",
@@ -8,7 +10,7 @@ class index extends Component {
     render() {
         return (
             <div>
-                <div className = "container">
+                
                 <section id="mu-slider">
                     <div className="mu-slider-single">
                     <div className="mu-slider-img">
@@ -53,7 +55,6 @@ class index extends Component {
                     </div>
                     </div>
                 </section>          
-                </div>
 
                 <div className = "container">
                 <section id="mu-about-us">
@@ -63,9 +64,9 @@ class index extends Component {
                         <div className="mu-about-us-area">           
                             <div className="row">
                             <div className="col-lg-6 col-md-6">
-                                <div className="mu-about-us-left">
+                                {/* <div className="mu-about-us-left">
                                 <div className="mu-title">
-                                    <h2>Về chúng tôi</h2>              
+                                    <h2>Về chúng tôi</h2>   
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.</p>
                                 <ul>
@@ -74,9 +75,31 @@ class index extends Component {
                                     <li>Voluptas obcaecati, iste porro fugit soluta consequuntur. Veritatis?</li>
                                     <li>Ipsam deserunt numquam ad error rem unde, omnis.</li>
                                     <li>Repellat assumenda adipisci pariatur ipsam eos similique, explicabo.</li>
-                                </ul>
+                                </ul>   
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quaerat harum facilis excepturi et? Mollitia!</p>
-                                </div>
+                                </div> */}
+                                <Collapse accordion>
+                                <Panel header={<div style={{fontSize:"20px", fontFamily: "sans-serif"}}>Giới thiệu</div>} key="1">
+                                    <p style ={{fontSize:"18px"}}>Năm 1996, Trường Đại học Khoa học Tự nhiên được chính thức thành lập theo quyết định 1236/GDĐT của Bộ GD&ĐT ngày 30/3/1996 trên cơ sở tách ra từ Trường Đại học Tổng hợp TP. HCM để tham gia vào Đại học Quốc gia TP.HCM.
+                                        Kế hoạch chiến lược giai đoạn 2106 -2020 <a href = "https://www.hcmus.edu.vn/attachments/article/123/quyet%20dinh%20phe%20duyet%20KHCL%2016-20.pdf" >tại đây  </a></p>
+                                    </Panel>
+                                    <Panel header={<div style={{fontSize:"20px", fontFamily: "sans-serif"}}>This is panel header 3</div>} key="2">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.</p>
+                                    </Panel>
+                                    <Panel header={<div style={{fontSize:"20px", fontFamily: "sans-serif"}}>This is panel header 3</div>} key="3">
+                                    <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.
+                                    </p>
+                                    </Panel>
+                                </Collapse>,
                             </div>
                             <div className="col-lg-6 col-md-6">
                                 <div className="mu-about-us-right">                            
@@ -242,6 +265,7 @@ class index extends Component {
                     </div>
                     </div>
                 </section>
+            
             
             
             

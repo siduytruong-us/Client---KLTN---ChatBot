@@ -39,6 +39,8 @@ class DetailDepartment extends Component {
                         </div>
                     </div>
                 </section>
+        
+
             
             </div>
         );
