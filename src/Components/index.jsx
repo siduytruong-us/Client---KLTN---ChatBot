@@ -7,6 +7,10 @@ const titleImageSliderStyle = {
 }
 
 class index extends Component {
+
+    componentDidMount() { 
+        window.scrollTo(0,0)
+    }
     render() {
         return (
             <div>
@@ -78,7 +82,7 @@ class index extends Component {
                                 </ul>   
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quaerat harum facilis excepturi et? Mollitia!</p>
                                 </div> */}
-                                <Collapse accordion>
+                                <Collapse accordion defaultActiveKey={['1']}>
                                 <Panel header={<div style={{fontSize:"20px", fontFamily: "sans-serif"}}>Giới thiệu</div>} key="1">
                                         <p style ={{fontSize:"18px"}}>
                                             Năm 1996, Trường Đại học Khoa học Tự nhiên được chính thức thành lập theo quyết định 1236/GDĐT của Bộ GD&ĐT ngày 30/3/1996 trên cơ sở tách ra từ Trường Đại học Tổng hợp TP. HCM để tham gia vào Đại học Quốc gia TP.HCM.

@@ -53,7 +53,7 @@ class Department extends Component {
                                 </figure>
                                 <div className="mu-latest-course-single-content" >
                                   <h4><NavLink to={detailDepartmentBaseUrl+each.alias}>{each.name}</NavLink></h4>
-                                  <p  style = {{ display: "-webkit-box",WebkitLineClamp:5,WebkitBoxOrient:'vertical',overflow: "hidden"}}>
+                                  <p  style = {{ display: "-webkit-box",WebkitLineClamp:4, WebkitBoxOrient:'vertical',overflow: "hidden"}}>
                                     <Tooltip placement="left" title={each.text} mouseEnterDelay = {0.5}>
                                       <span>{each.text}</span>
                                     </Tooltip>

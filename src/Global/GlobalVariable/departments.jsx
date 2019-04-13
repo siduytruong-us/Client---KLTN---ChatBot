@@ -24,28 +24,28 @@ export const department = [
       name:"Môi trường",
       alias:"moi-truong",
       image: "",
-      text:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.",
+      text:"Ngành Khoa học môi trường với 6 chuyên ngành Khoa học môi trường, Quản lý môi trường, Tài nguyên thiên nhiên và môi trường, Môi trường và tài nguyên biển, Tin học môi trường, Viễn thám và GIS ứng dụng trong quản lý tài nguyên và môi trường. Ngành Công nghệ kỹ thuật môi trường với 2 chuyên ngành Công nghệ môi trường không khí và chất thải rắn, Công nghệ môi trường nước và đất.",
       url:"/department/cntt"
     },
     { 
       name:"Sinh học - Công nghệ sinh học",
       alias:"sinh-hoc",
       image: "",
-      text:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.",
+      text:"Ngành Sinh học - Công nghệ sinh học có 8 Bộ môn: Di truyền, Vi sinh, Sinh hóa, Sinh thái - Sinh học tiến hóa, Sinh lý học - CNSH Động vật, CNSH Phân tử và Môi trường, Sinh lý thực vật, CNSH Thực vật và chuyển hóa sinh học",
       url:"/department/cntt"
     },
     { 
-      name:"Hóa học",
-      alias:"hoa-hoc",
+      name:"Khoa học và công nghệ vật liệu",
+      alias:"khoa-hoc-cong-nghe-vat-lieu",
       image: "",
-      text:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.",
+      text:" Khoa có 3 bộ môn với 4 chuyên ngành đào tạo và 2 phòng thí nghiệm trực thuộc, gồm: bộ môn Vật liệu Nano & Màng mỏng, Vật liệu Polymer & Composite, Vật liệu Từ & Y sinh; PTN Cơ sở khoa học vật liệu và PTN Vật liệu đa chức năng.",
       url:"/department/cntt"
     },
     { 
       name:"Điện tử viễn thông",
       alias:"dien-tu-vien-thong",
       image: "",
-      text:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.",
+      text:"khoa Điện tử viễn thông gồm có 3 bộ môn: Điện tử, Máy tính – Hệ thống nhúng, Viễn thông và Mạng cùng 1 phòng thí nghiệm cấp Khoa phụ trách đào tạo và nghiên cứu về lĩnh vực Điện tử, Viễn thông.",
       url:"/department/cntt"
     },
     { 
@@ -53,6 +53,13 @@ export const department = [
       alias:"vat-ly",
       image: "",
       text:"Khoa có 8 Bộ môn: Vật lý Chất rắn, Vật lý Điện tử, Vật lý Hạt nhân, Vật lý Lý thuyết, Vật lý Tin học, Vật lý Địa cầu, Vật lý Ứng dụng, và bộ môn Hải dương, khí tượng và Thủy văn.",
+      url:"/department/cntt"
+    },
+    { 
+      name:"Toán - tin học",
+      alias:"toan-tin-hoc",
+      image: "",
+      text:"Khoa có các bộ môn: Cơ học, Đại số, Giải tích, Tối ưu và Hệ thống, Ứng dụng tin học, Xác suất - Thống kê, Tài chính Định lượng và Giáo dục Toán học.",
       url:"/department/cntt"
     },
 ]

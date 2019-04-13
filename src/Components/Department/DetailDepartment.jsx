@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import {NavLink} from "react-router-dom"
 import {department} from "../../Global/GlobalVariable/departments"
-
+import { Anchor } from 'antd';
+const { Link } = Anchor;
 
 class DetailDepartment extends Component {
     constructor(props) {
@@ -44,9 +45,15 @@ class DetailDepartment extends Component {
                         </div>
                     </div>
                 </section>
-        
-
-            
+                <section id="mu-course-content">
+                
+                
+                    <div className="container animated bounceIn fast">
+                        <div className="row">
+                            askdlasdklsadkasldkwqodkqwod
+                        </div>
+                    </div>
+                </section>
             </div>
         );
     }
