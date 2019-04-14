@@ -252,7 +252,6 @@ class App extends Component {
             titleAvatar = "https://cdn.shopifycloud.com/hatchful-web/assets/2adcef6c1f7ab8a256ebdeba7fceb19f.png"
           />
         </div>
-        
         <Footer/>
       </div>
       </BrowserRouter>

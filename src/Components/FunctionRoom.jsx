@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {NavLink} from "react-router-dom"
-import { Row, Col, Divider, Anchor } from 'antd';
+import { Row, Col, Divider, Anchor, Affix } from 'antd';
 import AOS from "aos"
 import 'aos/dist/aos.css'
 
@@ -54,18 +54,19 @@ class FunctionRoom extends Component {
                 
                 <Row>
                     
-                    <Col span={5}  >
-                        <Anchor style = {{marginLeft:"10px",zIndex:0.1}} offsetTop = {100} offsetBottom= {20} >
-                            <Link href="#cong-tac-sinh-vien" title="Phòng công tác sinh viên" />
-                            <Link href="#dao-tao" title="Phòng đào tạo" />
-                            <Link href="#khao-thi-va-dam-bao-chat-luong" title="Phòng Khảo thí và Đảm bảo chất lượng" />
-                            <Link href="#thanh-tra-phap-che" title="Phòng Thanh tra pháp chế và sở hữu trí tuệ" />
-                            <Link href="#khoa-hoc-cong-nghe" title="Phòng Khoa học công nghệ" />
-                            <Link href="#thong-tin-truyen-thong" title="Phòng Thông tin truyền thông" />
-                            <Link href="#quan-he-quoc-te" title="Phòng Quan hệ Quốc tế - Quản lý Dự án" />
-                            <Link href="#ke-hoach-tai-chinh" title="Phòng Kế hoạch - Tài chính" />
-                            <Link href="#tram-y-te" title="Phòng Trạm Y tế" />
-                            
+                    <Col span={5}  > 
+                        <Anchor style = {{paddingLeft:"10px",}} offsetTop = {100}>
+                            <div style = {{ width :"100%", overflowX:"hidden"} } >
+                                <Link href="#cong-tac-sinh-vien" title="Phòng công tác sinh viên" />
+                                <Link href="#dao-tao" title="Phòng đào tạo" />
+                                <Link href="#khao-thi-va-dam-bao-chat-luong" title="Phòng Khảo thí và Đảm bảo chất lượng" />
+                                <Link href="#thanh-tra-phap-che" title="Phòng Thanh tra pháp chế và sở hữu trí tuệ" />
+                                <Link href="#khoa-hoc-cong-nghe" title="Phòng Khoa học công nghệ" />
+                                <Link href="#thong-tin-truyen-thong" title="Phòng Thông tin truyền thông" />
+                                <Link href="#quan-he-quoc-te" title="Phòng Quan hệ Quốc tế - Quản lý Dự án" />
+                                <Link href="#ke-hoach-tai-chinh" title="Phòng Kế hoạch - Tài chính" />
+                                <Link href="#tram-y-te" title="Phòng Trạm Y tế" />
+                            </div>
                         </Anchor>
                     </Col>
 
