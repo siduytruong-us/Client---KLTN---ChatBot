@@ -49,7 +49,7 @@ class Header extends Component {
                         <li><NavLink to="/department">Các Khoa</NavLink></li>                
                         <li><NavLink to="course-detail.html">Đoàn thanh niên</NavLink></li>                
                         <li><NavLink to="course-detail.html">Hội sinh viên</NavLink></li>
-                        <li><NavLink to="course-detail.html">Các phòng chức năng</NavLink></li>
+                        <li><NavLink to="/phong-chuc-nang">Các phòng chức năng</NavLink></li>
                       </ul>
                     </li>
 

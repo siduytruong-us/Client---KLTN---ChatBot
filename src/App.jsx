@@ -6,6 +6,8 @@ import { Widget, addResponseMessage, addUserMessage,renderCustomComponent,dropMe
 import Department from "./Components/Department/Department"
 import DetailDepartment from "./Components/Department/DetailDepartment"
 import Contact from "./Components/Contact"
+import FunctionRoom from "./Components/FunctionRoom"
+
 import Header from "./Components/Navigation/Header"
 import Footer from "./Components/Navigation/Footer"
 
@@ -15,6 +17,8 @@ import { Input, Icon, Tooltip, Button } from 'antd';
 
 
 const conversationFirestore = firebase.firestore().collection("Conversation")
+
+
           
 
 class App extends Component {
@@ -32,6 +36,8 @@ class App extends Component {
         unSeenMessage: 0,
         
     }
+
+    
     this.socket = null
     this.showModal = this.showModal.bind(this)
   
@@ -43,6 +49,7 @@ class App extends Component {
   //#region component method
   componentDidMount() {
     this.renderGreetingToWidget()
+    
   }
 
   //#endregion
@@ -71,6 +78,9 @@ class App extends Component {
       try {
         var source = doc.metadata.hasPendingWrites ? "Local" : "Server";
         const conversation = doc.data()  
+        if (!conversation) {
+           reject("invalid")
+        }
         
                         
         var history = conversation.history
@@ -82,14 +92,11 @@ class App extends Component {
           resolve("done")
         }
         else {
-          if ( history[length - 1].respondent )
+          if ( history[length - 1].respondent ) {
             var count = this.state.unSeenMessage + 1
-            console.log(count);
-            
             this.setState({unSeenMessage: count})
-            console.log(this.state.unSeenMessage);
-            
             addResponseMessage(history[length - 1].text);
+          }
         }
       }
       catch (ex) { 
@@ -115,6 +122,10 @@ class App extends Component {
 
   handleNewUserMessage = (message) => {
       // this.socket.emit("chat message", newMessage)
+      var {unSeenMessage} = this.state
+      if ( unSeenMessage > 0) {
+        this.setState({unSeenMessage:0})
+      }
       var temp = { 
         sendAt : new Date(),
         text: message,
@@ -152,19 +163,7 @@ class App extends Component {
   renderGreetingToWidget() {
       addResponseMessage("Chào mừng bạn tới Sổ tay sinh viên online")
       addResponseMessage("Để hỗ trợ bạn tốt nhất trong việc tìm kiếm thông tin, bạn hãy điền MSSV vào ô nếu bạn đã là thành viên của HCMUS")
-      const FormD = ({data, action}) => {
-        return  <div style = {{paddingTop:"10px"}}>
-          <Input
-          onKeyPress={action}
-          placeholder="Hãy nhập mã số sinh viên của bạn"
-          prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}/>
-
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a onClick = { () => {dropMessages(); this.renderOptionsBotOrAdminToWidget()}}>Không phải là sinh viên của trường!</a>
-      </div>
-      }
-
-      renderCustomComponent(FormD, {data: this.state.test, action: this.handleInputStudentInWidget});
+      renderCustomComponent(this.FormD, {data: this.state.test, action: this.handleInputStudentInWidget});
   }
 
   renderOptionsBotOrAdminToWidget(student){ 
@@ -175,26 +174,28 @@ class App extends Component {
         })
         
         promise.then( res => {
-          addResponseMessage("Chào bạn " + HandleDateTime.greeting() +" "+ student)
+          addResponseMessage("Chào " + HandleDateTime.greeting() +", bạn "+ student)
           addResponseMessage("Bạn muốn trò chuyện với bot hay admin?")
-          const OptionButton = ({data, action}) => {
-            return <div style = {{width: "100%"}}>
-                        <Button style = {{width:"40%", float:"left"}}>Admin</Button> 
-                        <Button style = {{width:"40%", float:"right"}}> Bot </Button>
-                    </div>
-          }
-          renderCustomComponent(OptionButton, {data: this.state.test, action: this.handleModalDataChange });
-        }).catch( err => {
+          renderCustomComponent(this.OptionButton, {data: this.state.test, action: this.handleModalDataChange });
+        })
+        .catch( err => {
             addResponseMessage("Đã xảy ra lỗi ")
-            addResponseMessage(err)
-            addResponseMessage("Tải lại trang để khắc phục sự cố!")
+            if (err === "invalid") {
+              addResponseMessage("MSSV của bạn sai vui lòng nhập lại")
+              renderCustomComponent(this.FormD, {data: this.state.test, action: this.handleInputStudentInWidget});
+            }
+            else {
+              addResponseMessage(err)
+              addResponseMessage("Tải lại trang để khắc phục sự cố!")
+            }
+            
         })
         
       }
         
       else  {
         addResponseMessage("Cám ơn bạn đã sử dụng Sổ tay sinh viên của HCMUS")
-        addResponseMessage("Bạn hãy đăng ký thành viên để nhận nhiều thông báo về trường hơn nhé!")
+        addResponseMessage("Bạn hãy đăng ký thành viên để được hỗ trợ tốt nhất và nhận nhiều thông báo về trường hơn nhé!")
         addResponseMessage("Chức năng chat có hỗ trợ chatbot trả lời tự động. Bạn có thể tìm kiếm thông tin nhanh hơn nhờ bot.")
         addResponseMessage("Bạn muốn trò chuyện với bot hay admin?")
         const OptionButton = ({data, action}) => {
@@ -207,6 +208,27 @@ class App extends Component {
       }
       
   }
+
+  FormD = ({data, action}) => {
+    return  <div style = {{paddingTop:"10px"}}>
+      <Input
+      onKeyPress={action}
+      placeholder="Hãy nhập mã số sinh viên của bạn"
+      prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}/>
+  
+    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+    <a onClick = { () => {dropMessages(); this.renderOptionsBotOrAdminToWidget()}}>Không phải là sinh viên của trường!</a>
+  </div>
+  }
+  
+  OptionButton = ({data, action}) => {
+    return <div style = {{width: "100%"}}>
+                <Button style = {{width:"40%", float:"left"}}>Admin</Button> 
+                <Button style = {{width:"40%", float:"right"}}> Bot </Button>
+            </div>
+  }
+
+
   render() {
     var {unSeenMessage} = this.state
     return (
@@ -219,6 +241,7 @@ class App extends Component {
               <Route exact path = "/department" component = {Department}/>
               <Route exact path = "/department/:alias" component = {DetailDepartment}/>
               <Route exact path = "/contact" component = {Contact}/>
+              <Route exact path = "/phong-chuc-nang" component = {FunctionRoom}/>
           </Switch>
 
           <Widget 

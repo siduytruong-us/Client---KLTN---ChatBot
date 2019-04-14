@@ -45,6 +45,7 @@ class DetailDepartment extends Component {
                         </div>
                     </div>
                 </section>
+                
                 <section id="mu-course-content">
                 
                 
