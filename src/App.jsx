@@ -7,6 +7,7 @@ import Department from "./Components/Department/Department"
 import DetailDepartment from "./Components/Department/DetailDepartment"
 import Contact from "./Components/Contact"
 import FunctionRoom from "./Components/FunctionRoom"
+import ErrorPage from "./Components/ErrorPage"
 
 import Header from "./Components/Navigation/Header"
 import Footer from "./Components/Navigation/Footer"
@@ -239,8 +240,9 @@ class App extends Component {
               <Route exact path = "/" component = {index}/>
               <Route exact path = "/khoa-nganh" component = {Department}/>
               <Route exact path = "/khoa-nganh/:alias" component = {DetailDepartment}/>
-              <Route exact path = "/contact" component = {Contact}/>
+              <Route exact path = "/lien-he" component = {Contact}/>
               <Route exact path = "/phong-chuc-nang" component = {FunctionRoom}/>
+              <Route exact path = "*" component = {ErrorPage}/>
           </Switch>
 
           <Widget 

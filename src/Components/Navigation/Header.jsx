@@ -63,7 +63,7 @@ class Header extends Component {
                       </ul>
                     </li>  
 
-                    <li className = {this.state.page === "contact" ? "active" : null}><NavLink to = "/contact">Liên hệ</NavLink></li>
+                    <li className = {this.state.page === "lien-he" ? "active" : null}><NavLink to = "/lien-he">Liên hệ</NavLink></li>
 
                     <li><a href="#" id="mu-search-icon"><i className="fa fa-search"></i></a></li>
                     

@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import 'antd/dist/antd.css';
+import 'aos/dist/aos.css'
 import 'react-chat-widget/lib/styles.css';
 ReactDOM.render(<App />, document.getElementById('root'));
 

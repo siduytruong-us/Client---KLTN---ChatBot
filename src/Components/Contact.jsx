@@ -21,21 +21,17 @@ class Contact extends Component {
     
     render() {
         const address_nvc = (
-            <div className = "animated fadeIn slow">
             <iframe title="This is a unique title" 
                                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6307047611535!2d106.67998301411642!3d10.76291826238761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1c06f4e1dd%3A0x43900f1d4539a3d!2sHo+Chi+Minh+City+University+of+Science!5e0!3m2!1sen!2s!4v1553328434254"
                                         width="100%" height="450" frameborder="0" allowfullscreen>
                                 </iframe>
-            </div>
         )
 
         const address_thu_duc = (
-            <div className = "animated fadeIn slow">
             <iframe title="This is a unique title" 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.1551640163016!2d106.79692491385535!3d10.87580059225415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d8a1768e1d03%3A0x38d3ea53e0581ae0!2sUniversity+of+Science%2C+Linh+Trung+Campus!5e0!3m2!1sen!2s!4v1553336212934"
                                         width="100%" height="450" frameborder="0" allowfullscreen>
                                 </iframe>
-            </div>
         )
         return (
         <div>
@@ -53,20 +49,20 @@ class Contact extends Component {
                 <section id="mu-contact">
        
            
-            <div class="container animated fadeIn fast">
+            <div class="container ">
                 <div class="row">
                 <div class="col-md-12">
                     <div class="mu-contact-area">
-                    <div class="mu-title">
+                    <div class="mu-title animated fadeIn fast">
                         <h2><b>Get in Touch</b></h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores ut laboriosam corporis doloribus, officia, accusamus illo nam tempore totam alias!</p>
                     </div>
                     <div class="mu-contact-content">           
                         <div class="row">
-                        <div class="col-md-6">
-                            <div class="mu-contact-left">
+                        <div class="col-md-6 animated fadeInLeft fast">
+                            <div class="mu-contact-left ">
                             <form class="contactform">                  
-                                <p class="comment-form-author">
+                                <p class="comment-form-author ">
                                 <label for="author">Name <span class="required">*</span></label>
                                 <input type="text" required="required" size="30" value="" name="author"/>
                                 </p>
@@ -88,7 +84,7 @@ class Contact extends Component {
                             </form>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 animated fadeInRight fast">
                             <div class="mu-contact-right">
                                 {this.state.address==="nvc"?address_nvc:address_thu_duc}
                                 Địa chỉ: <Select

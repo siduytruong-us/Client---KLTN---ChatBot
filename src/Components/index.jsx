@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Collapse, Divider} from "antd"
+import AOS from "aos"
 const Panel = Collapse.Panel;
 
 const titleImageSliderStyle = { 
@@ -7,6 +8,27 @@ const titleImageSliderStyle = {
 }
 
 class index extends Component {
+
+    constructor(props) {
+        super(props);
+        AOS.init({
+            once:true
+        })
+    }
+    
+    // componentDidMount(){
+    //     AOS.init()
+    // }
+
+    componentWillMount () { 
+        console.log("will mount");
+        window.scrollTo(0,0)
+        AOS.refresh()
+    }
+
+    componentWillReceiveProps() { 
+        AOS.refresh()
+    }
 
     componentDidMount() { 
         window.scrollTo(0,0)
@@ -61,9 +83,10 @@ class index extends Component {
                 </section>          
 
                 <div className = "container">
-                <section id="mu-about-us">
-                    <div className="container">
-                    <div className="row">
+                    <div data-aos = "fade-in" >
+                        <section id="mu-about-us">
+                            <div className="container">
+                    <div className=" row">
                         <div className="col-md-12">
                         <div className="mu-about-us-area">           
                             <div className="row">
@@ -124,7 +147,8 @@ class index extends Component {
                         </div>
                     </div>
                     </div>
-                </section>
+                        </section>
+                    </div>
                 </div>
 
                 <section id="mu-abtus-counter">

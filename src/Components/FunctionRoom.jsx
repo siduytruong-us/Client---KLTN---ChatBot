@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Divider, Anchor } from 'antd';
 import AOS from "aos"
-import 'aos/dist/aos.css'
+
 
 const { Link } = Anchor;
 
