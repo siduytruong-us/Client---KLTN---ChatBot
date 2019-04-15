@@ -44,7 +44,7 @@ class Department extends Component {
                           
                                           
                           {department.map(each => { 
-                            var detailDepartmentBaseUrl = "/department/"
+                            var detailDepartmentBaseUrl = "/khoa-nganh/"
                             return (
                             <div className="col-md-4 col-sm-4 animated fadeIn slow " style = {{height:"450px"}}>
                               <div className="mu-latest-course-single ">

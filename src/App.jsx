@@ -13,7 +13,7 @@ import Footer from "./Components/Navigation/Footer"
 
 import HandleDateTime from "./Global/Function/HandleDateTime"
 import firebase from "./Config/firebaseConfig"
-import { Input, Icon, Tooltip, Button } from 'antd';
+import { Input, Icon, Button } from 'antd';
 
 
 const conversationFirestore = firebase.firestore().collection("Conversation")
@@ -115,7 +115,6 @@ class App extends Component {
         }
         else {
           addResponseMessage(each.text)
-        
         }
       })
   }
@@ -238,8 +237,8 @@ class App extends Component {
         <div style = {{paddingTop:"70px"}}>
           <Switch >        
               <Route exact path = "/" component = {index}/>
-              <Route exact path = "/department" component = {Department}/>
-              <Route exact path = "/department/:alias" component = {DetailDepartment}/>
+              <Route exact path = "/khoa-nganh" component = {Department}/>
+              <Route exact path = "/khoa-nganh/:alias" component = {DetailDepartment}/>
               <Route exact path = "/contact" component = {Contact}/>
               <Route exact path = "/phong-chuc-nang" component = {FunctionRoom}/>
           </Switch>

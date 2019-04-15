@@ -42,11 +42,11 @@ class Header extends Component {
 
                     <li className = {this.state.page === "" ? "active" : null}><a href="/">Trang chủ</a></li>    
 
-                    <li className = {this.state.page === "department" ? "active dropdown" : null}>
+                    <li className = {this.state.page === "khoa-nganh" ? "active dropdown" : null}>
                       <a href="#" className="dropdown-toggle" data-toggle="dropdown">Giới thiệu <span className="fa fa-angle-down"></span></a>
                       <ul className="dropdown-menu" role="menu">
                         <li><NavLink to="/about-us">Về trường</NavLink></li> 
-                        <li><NavLink to="/department">Các Khoa</NavLink></li>                
+                        <li><NavLink to="/khoa-nganh">Các Khoa</NavLink></li>                
                         <li><NavLink to="course-detail.html">Đoàn thanh niên</NavLink></li>                
                         <li><NavLink to="course-detail.html">Hội sinh viên</NavLink></li>
                         <li><NavLink to="/phong-chuc-nang">Các phòng chức năng</NavLink></li>

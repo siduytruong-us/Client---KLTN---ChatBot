@@ -4,7 +4,7 @@ class Footer extends Component {
     render() {
         return (
             <footer id="mu-footer">
-    <div class="mu-footer-top" >
+     <div class="mu-footer-top"   style = {{position:"relative", zIndex:0.5}}>
       <div class="container">
         <div class="mu-footer-top-area">
           <div class="row">

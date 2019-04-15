@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {NavLink} from "react-router-dom"
-import { Row, Col, Divider, Anchor, Affix } from 'antd';
+import { Row, Col, Divider, Anchor } from 'antd';
 import AOS from "aos"
 import 'aos/dist/aos.css'
 
@@ -54,9 +53,9 @@ class FunctionRoom extends Component {
                 
                 <Row>
                     
-                    <Col span={5}  > 
-                        <Anchor style = {{paddingLeft:"10px",}} offsetTop = {100}>
-                            <div style = {{ width :"100%", overflowX:"hidden"} } >
+                    <Col span={5} style ={{ zIndex:0, position:"relative"}}  > 
+                        <Anchor style = {{paddingLeft:"10px", }} offsetTop = {100}>
+                            <div style = {{ width :"100%", overflowX:"hidden",} } >
                                 <Link href="#cong-tac-sinh-vien" title="Phòng công tác sinh viên" />
                                 <Link href="#dao-tao" title="Phòng đào tạo" />
                                 <Link href="#khao-thi-va-dam-bao-chat-luong" title="Phòng Khảo thí và Đảm bảo chất lượng" />
