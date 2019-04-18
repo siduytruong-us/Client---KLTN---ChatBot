@@ -1,2 +1,2 @@
-export const domain_local = "http://localhost:3001"
-export const domain_heroku = ""
+export const domain = "http://localhost:3001"
+// export const domain_heroku = ""

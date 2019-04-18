@@ -7,6 +7,7 @@ import Department from "./Components/Department/Department"
 import DetailDepartment from "./Components/Department/DetailDepartment"
 import Contact from "./Components/Contact"
 import FunctionRoom from "./Components/FunctionRoom"
+import Library from "./Components/Library"
 import ErrorPage from "./Components/ErrorPage"
 
 import Header from "./Components/Navigation/Header"
@@ -35,7 +36,8 @@ class App extends Component {
         visible: false ,
         isLoading: true,
         unSeenMessage: 0,
-        
+        student: null,
+        isChatEnable: false,
     }
 
     
@@ -55,7 +57,7 @@ class App extends Component {
 
   //#endregion
 
-  //#region method
+  //#region method handle
   handleInputStudentInWidget(e){
     const text = e.target.value
     if(e.key === 'Enter') {
@@ -66,6 +68,7 @@ class App extends Component {
       else if (text !== "") {
           e.preventDefault()
           dropMessages()
+          
           this.renderOptionsBotOrAdminToWidget(text)
       }
     }  
@@ -73,7 +76,88 @@ class App extends Component {
 
   handeListenInComingConversationFirestore(student,resolve,reject) { 
     // z_prGZLT8BOykCpXAAAD
-    conversationFirestore.doc("z_prGZLT8BOykCpXAAAD").onSnapshot({
+
+    student = student.toString()
+    conversationFirestore.doc(student)
+    .get()
+    .then(doc => {
+
+        if (!doc.exists) {
+          dropMessages()
+          this.setState({student:null})
+          reject("invalid")
+        }
+        else {
+          this.setState({student:student})
+          this.setListenInComingConversation(student,resolve,reject)
+        }
+        
+
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+
+    
+  }
+
+  handleHistoryConversationFirestoreToWidget = (conversation) => { 
+      conversation.history.map(each => { 
+        if ( each.user ) { 
+          addUserMessage(each.text)
+        }
+        else {
+          addResponseMessage(each.text)
+        }
+      })
+  }
+
+  handleNewUserMessage = (message) => {
+      // this.socket.emit("chat message", newMessage)
+      var {unSeenMessage} = this.state
+      if ( unSeenMessage > 0) {
+        this.setState({unSeenMessage:0})
+      }
+      var temp = { 
+        sendAt : new Date(),
+        text: message,
+        user: "user"
+      }
+
+      const student = this.state.student
+      if (student){
+        conversationFirestore.doc(student.toString()).update({
+          history: firebase.firestore.FieldValue.arrayUnion(temp),
+          lastMessage: new Date(),
+        }).catch(err => {
+          addResponseMessage(err.toString())
+        })
+      }
+        
+  }
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
+
+  handleOk = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  }
+  handleCancel = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  }
+  //#endregion 
+
+  //#region method 
+  setListenInComingConversation(student,resolve,reject) {
+    conversationFirestore.doc(student).onSnapshot({
       includeMetadataChanges: true
     }, doc => {
       try {
@@ -108,55 +192,7 @@ class App extends Component {
       reject(err)
     })
   }
-
-  handleHistoryConversationFirestoreToWidget = (conversation) => { 
-      conversation.history.map(each => { 
-        if ( each.user ) { 
-          addUserMessage(each.text)
-        }
-        else {
-          addResponseMessage(each.text)
-        }
-      })
-  }
-
-  handleNewUserMessage = (message) => {
-      // this.socket.emit("chat message", newMessage)
-      var {unSeenMessage} = this.state
-      if ( unSeenMessage > 0) {
-        this.setState({unSeenMessage:0})
-      }
-      var temp = { 
-        sendAt : new Date(),
-        text: message,
-        user: "user"
-    }
-
-      conversationFirestore.doc("z_prGZLT8BOykCpXAAAD").update({
-        history: firebase.firestore.FieldValue.arrayUnion(temp),
-        lastMessage: new Date(),
-      })
-  }
-
-  showModal = () => {
-    this.setState({
-      visible: true,
-    });
-  }
-
-  handleOk = (e) => {
-    console.log(e);
-    this.setState({
-      visible: false,
-    });
-  }
-  handleCancel = (e) => {
-    console.log(e);
-    this.setState({
-      visible: false,
-    });
-  }
-  //#endregion 
+  //#endregion
 
 
   //#region renderCustomComponent Widget
@@ -185,7 +221,7 @@ class App extends Component {
               renderCustomComponent(this.FormD, {data: this.state.test, action: this.handleInputStudentInWidget});
             }
             else {
-              addResponseMessage(err)
+              addResponseMessage(err.toString())
               addResponseMessage("Tải lại trang để khắc phục sự cố!")
             }
             
@@ -242,6 +278,7 @@ class App extends Component {
               <Route exact path = "/khoa-nganh/:alias" component = {DetailDepartment}/>
               <Route exact path = "/lien-he" component = {Contact}/>
               <Route exact path = "/phong-chuc-nang" component = {FunctionRoom}/>
+              <Route exact path = "/thu-vien" component = {Library}/>
               <Route exact path = "*" component = {ErrorPage}/>
           </Switch>
 
@@ -249,8 +286,8 @@ class App extends Component {
             badge = {unSeenMessage}
             onFocus = {() => console.log("123")}
             handleNewUserMessage={this.handleNewUserMessage}
-            profileAvatar= "https://cdn.shopifycloud.com/hatchful-web/assets/2adcef6c1f7ab8a256ebdeba7fceb19f.png"
-            titleAvatar = "https://cdn.shopifycloud.com/hatchful-web/assets/2adcef6c1f7ab8a256ebdeba7fceb19f.png"
+            profileAvatar= "/assets/img/favicon.ico"
+            titleAvatar = "/assets/img/favicon.ico"
           />
         </div>
         <Footer/>

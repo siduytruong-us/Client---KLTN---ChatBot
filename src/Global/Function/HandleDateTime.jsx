@@ -3,13 +3,15 @@ const greeting = () => {
     var hr = date.getHours()
     var greet = ""
 
-    if (hr < 12)
+    if ( 0 <= hr && hr <= 6)
+        greet = 'buổi tối';
+    else if ( 6 <= hr && hr <= 12)
         greet = 'buổi sáng';
-    else if (hr >= 12 && hr <= 15)
+    else if (12 <= hr && hr <= 15)
         greet = 'buổi trưa';
-    else if (hr >= 15 && hr <= 18)
+    else if (15 <= hr && hr <= 18)
         greet = 'buổi chiều';
-    else if (hr >= 18 && hr <= 24)
+    else if (18 <= hr && hr <= 24)
         greet = 'buổi tối';
 
     return greet

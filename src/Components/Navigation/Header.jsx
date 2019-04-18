@@ -47,13 +47,13 @@ class Header extends Component {
                       <ul className="dropdown-menu" role="menu">
                         <li><NavLink to="/about-us">Về trường</NavLink></li> 
                         <li><NavLink to="/khoa-nganh">Các Khoa</NavLink></li>                
-                        <li><NavLink to="course-detail.html">Đoàn thanh niên</NavLink></li>                
-                        <li><NavLink to="course-detail.html">Hội sinh viên</NavLink></li>
+                        <li><NavLink to="course-detail.html">Đoàn thanh niên - Hội sinh viên</NavLink></li>                
+                        <li><NavLink to="/thu-vien">Thư Viện</NavLink></li>
                         <li><NavLink to="/phong-chuc-nang">Các phòng chức năng</NavLink></li>
                       </ul>
                     </li>
 
-                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><NavLink to="/gallery">Gallery</NavLink></li>
 
                     <li className="dropdown">
                       <a href="#" className="dropdown-toggle" data-toggle="dropdown">Blog <span className="fa fa-angle-down"></span></a>

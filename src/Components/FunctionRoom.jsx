@@ -85,7 +85,7 @@ class FunctionRoom extends Component {
                                 <br/>
                                 Điện thoại: (028) 62884499 (ext: 1500)
                                 <br/>
-                                Fanpage: <a href = "https://www.facebook.com/osa.hcmus/" >https://www.facebook.com/osa.hcmus/</a>
+                                Fanpage: <a href = "https://www.facebook.com/osa.hcmus/" target="_blank" rel="noopener noreferrer">https://www.facebook.com/osa.hcmus/</a>
                                 </b>
 
                                 <br/>
@@ -450,7 +450,7 @@ class FunctionRoom extends Component {
                             <b>
                             Phòng F.101, F.105, 227 Nguyễn Văn Cừ, Q.5
                             <br/>
-                            Email: <a href="internationalrelaftions@ðhcmus.edu.vn">internationalrelaftions@ðhcmus.edu.vn</a>
+                            Email: <a href="mailto: internationalrelaftions@ðhcmus.edu.vn">internationalrelaftions@hcmus.edu.vn</a>
                             <br/>
                             Điện thoại: (028) 38 308 557
                             </b>
@@ -527,7 +527,7 @@ class FunctionRoom extends Component {
                             <b>
                             Phòng B.01, 227 Nguyễn Văn ừ, Q.5, TP.HCM
                             <br/>
-                            Email: <a href="taivu.khtn€@gmail.com">taivu.khtn€@gmail.com</a>
+                            Email: <a href="mailto: taivu.khtn€@gmail.com">taivu.khtn€@gmail.com</a>
                             <br/>
                             Điện thoại: (028) 38355275
                             </b>
@@ -570,6 +570,7 @@ class FunctionRoom extends Component {
                 
             </section>
         </div>
+        
         );
     }
 }
