@@ -6,6 +6,7 @@
     "@material-ui/core": "^3.9.0",
     "antd": "^3.12.3",
     "aos": "^2.3.4",
+    "axios": "^0.18.0",
     "firebase": "^5.9.3",
     "http-proxy-middleware": "^0.19.1",
     "react": "^16.7.0",

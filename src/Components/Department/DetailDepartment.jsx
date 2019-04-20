@@ -37,7 +37,7 @@ class DetailDepartment extends Component {
                             <div class="mu-page-breadcrumb-area">
                             <h2>{name}</h2>
                             <ol class="breadcrumb">
-                                <li><NavLink to="/khoa-nganh" ><a>Home</a></NavLink></li>            
+                                <li><NavLink to="/khoa-nganh" ><a>Các khoa</a></NavLink></li>            
                                 <li class="active">{name}</li>
                             </ol>
                             </div>

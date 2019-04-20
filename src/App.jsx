@@ -22,7 +22,6 @@ const conversationFirestore = firebase.firestore().collection("Conversation")
 
 
           
-
 class App extends Component {
   
   constructor(props) {
