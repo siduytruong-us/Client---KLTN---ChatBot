@@ -34,7 +34,7 @@ class Library extends Component {
                     <div class="row">
                     <div class="col-md-12">
                         <div class="mu-page-breadcrumb-area">
-                        <h2>Các phòng chức năng</h2>
+                        <h2>Thư viện HCMUS</h2>
                         </div>
                     </div>
                     </div>
@@ -58,7 +58,13 @@ class Library extends Component {
                             <div style = {{ width :"100%", overflowX:"hidden",} } >
                                 <Link href="#the-thu-vien" title="Thẻ thư viện" />
                                 <Link href="#lien-lac" title="Thông tin liên lạc" />
-                               
+                                <Link title = "Quy trình sử dụng phòng" href = "#phong-thu-vien">
+                                    <Link href="#tham-khao" title="Phòng tham khảo" />
+                                    <Link href="#tap-chi" title="Phòng tạp chí" />
+                                    <Link href="#luu-hanh" title="Phòng lưu hành" />
+                                    <Link href="#learning-common" title="Phòng Learning Common" />
+                                    <Link href="#co-so-2" title="Phòng đọc cơ sở 2" />
+                               </Link>
                             </div>
                         </Anchor>
                     </Col>
@@ -67,17 +73,13 @@ class Library extends Component {
                     <Col span={21}>
                         {/* The thu vien */}
                         <Row >
-                            <div data-aos = "fade-left" >
+                            <div data-aos = "fade-right" >
                             <Col span={12}>
                             <div className="mu-latest-course-single-content" style = {{fontSize:"20px"}} id = "the-thu-vien">
                             
                             <blockquote >
-                                <b>
-                                Thẻ thư viện
-                                </b>
+                                 <h4><b>Thẻ thư viện</b></h4>
 
-                                <br/>
-                                <br/>
                                 
                                 <b>- Học viên Sau đại học và sinh viên của
                                 Trường ĐH KHTN:</b>
@@ -123,7 +125,7 @@ class Library extends Component {
 
                         {/* The thu vien */}
                         <Row >
-                            <div data-aos = "fade-left" >
+                            <div data-aos = "fade-right" >
                             <Col span={12}>
                             <div className="mu-latest-course-single-content" style = {{fontSize:"20px"}} id = "lien-lac">
                             
@@ -159,10 +161,179 @@ class Library extends Component {
                             </div>
                         </Row>
                         <br/> 
-
-
-                       
   
+                        {/* Cac phong thu vien title */}
+                        <Row>
+                            <h2 id = "phong-thu-vien">Các loại phòng thư viện</h2>
+                        </Row>
+                        <br/>
+
+                        <Row >
+                            <div data-aos = "fade-right" >
+                            <Col span={12}>
+                            <div className="mu-latest-course-single-content" style = {{fontSize:"20px"}} id = "tham-khao">
+                            
+                            <blockquote >
+                                
+                                <h4><b>Phòng Tham khảo</b></h4>
+                                -Xuất trình thẻ thư viện tài quầy tham khảo
+                                <br/>
+                                -Chọn tài liệu trên giá để đọc tại chỗ
+                                <br/>
+                                -Để tài liệu tại bàn sau khi đọc xong
+                                <br/>
+                                -Sử dụng máy tính để tra cứu thông tin trực tuyến và internet
+                                <br/>
+                                <br/>
+                            </blockquote>
+
+                            <blockquote >
+                                <h4 id ="tap-chi"><b>Phòng Tạp chí</b></h4>
+                                - Chọ tạp trí trên giá theo từng folder để đọc tại chỗ
+                                <br/>
+                                - Để tạp chí tại bàn sau khi đọc xong 
+                                <br/>
+                                <br/>
+                            </blockquote>
+
+                            <blockquote >
+                                <h4 id = "luu-hanh"><b>Phòng Lưu hành</b></h4>
+                                - Xuất trình thẻ thư viện tại quầy lưu hành;
+                                <br/>
+                                - Chọn sách trên giá để đọc tại chỗ hoặc mượn về
+                                nhà;
+                                <br/>
+                                - Để sách đúng nơi quy định sau khi đọc xong;
+                                <br/>
+                                - Sách mượn về nhà làm thủ tục tại quầy lưu hành,
+                                mỗi lần mượn 03 cuốn với thời hạn 03 tuần (có thể
+                                gia hạn thêm 01 tuân);
+                                <br/>
+                                - Mượn sách quá hạn sẽ bị phạt 1.000 đ/cuốn/ngày
+                                trong thời hạn 30 ngày. Quá hạn sau 30 ngày, Thư
+                                viện sẽ chuyển danh sách độc giả vi phạm cho
+                                Phòng Gông tác Sinh viên;
+                                <br/>
+                                - Mọi trường hợp sách bị mất, hư hỏng (rách, mất
+                                trang, dính bẩn, ẩm ướt,...) đều phải đền bù theo quy
+                                định: giá bìa sách cộng thêm tiền xử lý mã vạch, tem
+                                từ, phân loại, nhãn (50.000 đ/cuốn);
+                                <br/>
+                                - Đem sách ra ngoài không qua thủ tục tại quầy lưu
+                                hành và bị hệ thống an ninh phát hiện sẽ bị xử phạt
+                                100.000đ/cuốn, truất quyên độc giả và thông báo về
+                                Phòng Gông tác Sinh viên.
+                            </blockquote>
+                            </div>
+                            </Col>
+                            <Col span={12}>
+                                <center  data-aos = "flip-left" data-aos-duration="1500" >
+                                    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1C9kONB-3iAPX6kBgbmd_RFW0AoN8pnbQb-Ur6g_lBSflK-RT" alt = "" style = {{width:"50%"}}/>
+                                </center>
+                                <br/>
+                                <br/>
+                                
+                                <center data-aos = "fade-up-left" data-aos-duration="1500" >
+                                    <img src = "http://2.bp.blogspot.com/-GXLG6fmcyIQ/VjCDa3LVwDI/AAAAAAAAIeI/S1iFC77bZYM/s1600/DSC05494.JPG" alt = "" style = {{width:"50%"}}/>
+                                </center>
+                                
+                            </Col>
+                            </div>
+                        </Row>
+                        <br/> 
+
+                        <Row >
+                            <div data-aos="fade-left"   >
+                            
+                            <Col span={12}>
+                                <center  data-aos="zoom-in-right" data-aos-duration = "1500">
+                                    <img src = "http://thuvienquocgia.vn/wp-content/uploads/2018/12/top-5-thu-vien-thanh-pho-ho-chi-minh-nhat-dinh-phai-ghe-qua.jpg" alt = "" style = {{width:"80%"}}/>
+                                </center>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <center  data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration = "1500">
+                                    <img src = "http://media.kinhtedothi.vn/524/2018/8/3/thu%20vien%20anh%20minh%20hoa.jpg" alt = "" style = {{width:"80%"}}/>
+                                </center>
+                                
+                            </Col>
+                            
+                            <Col span={12}>
+                            <div className="mu-latest-course-single-content" style = {{fontSize:"20px"}}  id = "learning-common">
+                            
+                            <blockquote >
+                                
+                                <h4><b>Phòng Learing Common</b></h4>
+                                - Đọc tại chỗ tất cả các tài liệu như: sách in, sách điện
+                                tử, CD-ROM, phần mềm học tiếng Anh....;
+                                <br/>
+                                - Mươn thiết bị đọc sách điện tử (Kindle Fire) tại quầy
+                                thủ thư để được hướng dẫn sử dụng;
+                                <br/>
+                                - Mượn đĩa CD-ROM và tai nghe để học ngoại ngữ
+                                hoặc xem các chương trình truyền hình;
+                                <br/>
+                                - Trả các thiết bị sau khi đã sử dụng tại quầy thủ thư.
+                                Mọi trường hợp hư hỏng, mất mát đều phải đền bù
+                                theo giá trị hiện hành của thiết bị;
+                                <br/>
+                                - Truy cập Internet đế phục vụ học tập, nghiên cứu,
+                                giải trí. Nghiêm cấm các trường hợp truy cập các
+                                website có nội dung xấu. Nếu vi phạm sẽ bị tước
+                                quyền độc giả;
+                                <br/>
+                                - Sử dụng các dịch vụ in ấn, scan tài liệu, vui lòng liên
+                                hệ quầy thủ thư.
+                                
+                                <br/>
+                                <br/>
+                                
+                            </blockquote>
+
+                            <blockquote>
+                            <h4 id = "co-so-2"><b>Phòng đọc cơ sở 2</b></h4>
+                            
+
+                            - Bạn đọc xuất trình Thẻ thư viện, để cặp, túi xách
+                            đúng nơi quy định;
+                            <br/>
+                            - Sử dụng máy tính để tra cứu tài liệu;
+                            <br/>
+                            - Phọn sách trên giá để đọc tại chỗ hoặc mượn về
+                            nhà;
+                            <br/>
+                            - Bạn đọc có thể đọc tại Thư viện hoặc đem sang
+                            Phòng Tự học. Sách phải trả trước 15g45 cùng
+                            ngày;
+                            <br/>
+                            - Báo và tạp chí chỉ đọc tại chỗ;
+                            <br/>
+                            - Sách mượn về nhà làm thủ tục tại quầy lưu hành,
+                            mỗi lân mượn 03 cuốn với thời hạn 03 tuân (có thể
+                            gia hạn thêm 01 tuần);
+                            <br/>
+                            - Mượn sách quá hạn sẽ bị phạt 1.000 đ/cuốn/ngày
+                            trong thời hạn 30 ngày. Quá hạn sau 30 ngày, Thư
+                            viện sẽ chuyển danh sách độc giả vi phạm cho
+                            Phòng Công tác Sinh viên;
+                            <br/>
+                            - Mọi trường hợp sách bị mất, hư hỏng (rách, mất
+                            trang, dính bẩn, ẩm ướt,...) đều phải đền bù theo quy
+                            định giá bìa sách cộng thêm tiền xử lý mã vạch, tem
+                            từ, phân loại, nhãn (50.000 đ/cuốn);
+                            <br/>
+                            - Đem sách ra ngoài không qua thủ tục tại quầy lưu
+                            hành và bị hệ thống an ninh phát hiện sẽ bị xử phạt
+                            100.000đ/cuốn, truất quyền độc giả và thông báo về
+                            Phòng Công tác Sinh viên.
+                            </blockquote>
+                            </div>
+                            </Col>
+                            
+                            </div>
+                        </Row>
+                        <br/>   
+
                     </Col>
                 </Row>
                 

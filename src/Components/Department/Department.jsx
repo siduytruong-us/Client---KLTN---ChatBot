@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {NavLink} from "react-router-dom"
 import {department} from "../../Global/GlobalVariable/departments"
-import { Tooltip } from 'antd';
+import { Tooltip, Icon } from 'antd';
 
 class Department extends Component {
 
@@ -52,6 +52,7 @@ class Department extends Component {
                                   <NavLink to={detailDepartmentBaseUrl+each.alias}><img src={"/assets/img/department/"+each.alias+".png"} alt="img"/></NavLink>
                                 </figure>
                                 <div className="mu-latest-course-single-content" >
+                                  
                                   <h4><NavLink to={detailDepartmentBaseUrl+each.alias}>{each.name}</NavLink></h4>
                                   <p  style = {{ display: "-webkit-box",WebkitLineClamp:4, WebkitBoxOrient:'vertical',overflow: "hidden"}}>
                                     <Tooltip placement="left" title={each.text} mouseEnterDelay = {0.5}>

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import {Collapse, Divider} from "antd"
+import {Collapse, Divider, message, Modal, Button, Icon, Spin, Skeleton} from "antd"
 import AOS from "aos"
+import axios from "axios"
+import moment from 'moment';
+
 const Panel = Collapse.Panel;
 
 const titleImageSliderStyle = { 
@@ -14,6 +17,21 @@ class index extends Component {
         AOS.init({
             once:true
         })
+        this.state = { 
+            newsAlias: "thong-bao",
+            news:[],
+            visibleModal: false,
+            selectedNews: {
+                title:"",
+                content:"",
+                author:"",
+                hits :null,
+                department :"",
+                create_time :"",
+            },
+        }
+
+        this.handleViewNews = this.handleViewNews.bind(this)
     }
     
     // componentDidMount(){
@@ -24,6 +42,20 @@ class index extends Component {
         console.log("will mount");
         window.scrollTo(0,0)
         AOS.refresh()
+
+        const {newsAlias} = this.state
+        axios.post("/client/news/get/department",{
+            alias: newsAlias,
+        })
+        .then( res => { 
+            const data = res.data.data
+            this.setState({news:data})
+            
+        })
+        .catch( err => {
+            err = err.response? err.response.data:err.toString() 
+            message.error(err.message,2)
+        })
     }
 
     componentWillReceiveProps() { 
@@ -33,7 +65,25 @@ class index extends Component {
     componentDidMount() { 
         window.scrollTo(0,0)
     }
+
+    handleViewNews(news) { 
+        this.setState({
+            visibleModal: true,
+            selectedNews: news,
+        });
+    }
+
+    handleOk = (e) => {
+        this.setState({visibleModal: false,});
+      }
+    
+      handleCancel = (e) => {
+        this.setState({visibleModal: false,});
+      }
+    
+    
     render() {
+        const {news} = this.state
         return (
             <div>
                 
@@ -81,79 +131,101 @@ class index extends Component {
                     </div>
                     </div>
                 </section>          
-
-                <div className = "container">
-                    <div data-aos = "fade-in" >
-                        <section id="mu-about-us">
-                            <div className="container">
-                    <div className=" row">
-                        <div className="col-md-12">
-                        <div className="mu-about-us-area">           
-                            <div className="row">
-                            <div className="col-lg-6 col-md-6">
-                                {/* <div className="mu-about-us-left">
-                                <div className="mu-title">
-                                    <h2>Về chúng tôi</h2>   
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.</p>
-                                <ul>
-                                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                                    <li>Saepe a minima quod iste libero rerum dicta!</li>
-                                    <li>Voluptas obcaecati, iste porro fugit soluta consequuntur. Veritatis?</li>
-                                    <li>Ipsam deserunt numquam ad error rem unde, omnis.</li>
-                                    <li>Repellat assumenda adipisci pariatur ipsam eos similique, explicabo.</li>
-                                </ul>   
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quaerat harum facilis excepturi et? Mollitia!</p>
-                                </div> */}
-                                <Collapse accordion defaultActiveKey={['1']}>
-                                <Panel header={<div style={{fontSize:"20px", fontFamily: "sans-serif"}}>Giới thiệu</div>} key="1">
-                                        <p style ={{fontSize:"18px"}}>
-                                            Năm 1996, Trường Đại học Khoa học Tự nhiên được chính thức thành lập theo quyết định 1236/GDĐT của Bộ GD&ĐT ngày 30/3/1996 trên cơ sở tách ra từ Trường Đại học Tổng hợp TP. HCM để tham gia vào Đại học Quốc gia TP.HCM.
-                                            Kế hoạch chiến lược giai đoạn 2106 -2020 <a href = "https://www.hcmus.edu.vn/attachments/article/123/quyet%20dinh%20phe%20duyet%20KHCL%2016-20.pdf" target="_blank" rel="noopener noreferrer">tại đây  </a>
-                                        </p>
-                                    </Panel>
-                                    <Panel header={<div style={{fontSize:"20px", fontFamily: "sans-serif"}}>Sứ mạng</div>} key="2">
-                                        <p style ={{fontSize:"18px"}}>
-                                        Trường ĐH KHTN là trung tâm đào tạo đại học, sau đại học, cung cấp nguồn nhân lực, đội ngũ chuyên gia trình độ cao trong các lĩnh vực khoa học cơ bản, khoa học liên ngành, khoa học công nghệ mũi nhọn, có năng lực sáng tạo, làm việc trong môi trường cạnh tranh quốc tế; là nơi thực hiện những nghiên cứu khoa học đỉnh cao tạo ra các sản phẩm tinh hoa đáp ứng nhu cầu phát triển KHCN và yêu cầu phát triển kinh tế - xã hội ngày càng cao của đất nước, phù hợp với xu thế phát triển thế giới.
-                                        </p>
-                                    </Panel>
-                                    <Panel header={<div style={{fontSize:"20px", fontFamily: "sans-serif"}}>Mục tiêu giáo dục</div>} key="3">
-                                        <p style ={{fontSize:"18px"}}>
-                                        Trường ĐH KHTN góp phần đào tạo nguồn nhân lực ở trình độ đại học, đội ngũ chuyên gia ở các trình độ thạc sĩ, tiến sĩ trong các lĩnh vực khoa học cơ bản, khoa học liên ngành, khoa học công nghệ mũi nhọn; thông qua đào tạo, thực hiện những nghiên cứu khoa học đỉnh cao trong các lĩnh vực liên quan để tạo ra tri thức, sản phẩm mới đáp ứng nhu cầu phát triển khoa học công nghệ và yêu cầu phát triển kinh tế - xã hội ngày càng cao của đất nước, phù hợp với xu thế phát triển thế giới; đào tạo người học có phẩm chất chính trị, đạo đức; có kiến thức, kỹ năng thực hành, năng lực nghiên cứu và phát triển ứng dụng khoa học và công nghệ tương xứng với trình độ đào tạo; có sức khỏe; có khả năng sáng tạo và trách nhiệm nghề nghiệp, thích nghi với môi trường làm việc; có ý thức phục vụ cộng đồng
-                                        </p>
-                                    </Panel>
-                                </Collapse>,
+                <section id="mu-latest-courses">
+                    <div class="container">
+                        <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                        <div class="mu-latest-courses-area">
+                            <div class="mu-title">
+                            <Divider><h2><b>Tin hoạt động</b></h2></Divider>
                             </div>
-                            <div className="col-lg-6 col-md-6">
-                                <div className="mu-about-us-right">                            
-                                <a id="mu-abtus-video" href="https://www.youtube.com/embed/9Z49DscgnJY" target="mutube-video">
-                                <img src="https://edu2review.com/upload/article-images/2018/07/7933/1920x1080_dai-hoc-khoa-hoc-tu-nhien.jpg" alt="img"/>
-                                </a>                
-                                </div>
-                                <div style = {{marginTop:"20px", fontSize:"18px"}}>
-                                    <b>
-                                    <center>
-                                        Trường đại học Khoa học Tự nhiên 
-                                    <center>
-                                    </center>
-                                        Đại học quốc gia thành phố Hồ Chí Minh
-                                    </center>
-                                    </b>
-                                    
-                                </div>
-                            </div>
+                            <div id="mu-latest-course-slide" class="mu-latest-courses-content">
+                                
+                                {news.map(each => { 
+                                    return (
+                                        <div class="col-lg-4 col-md-4 col-xs-12 animated fadeIn">
+                                            <div class="mu-latest-course-single">
+                                                <figure class="mu-latest-course-img">
+                                                    <a onClick = {() => this.handleViewNews(each)}><img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="img"/></a>
+                                                </figure>
+                                                <div class="mu-latest-course-single-content">
+                                                    <Icon type="clock-circle" /> {moment(parseInt(each.create_time)).format("DD/MM/YYYY HH:MM")}
+                                                    <h4><a onClick = {() => this.handleViewNews(each)}>
+                                                    <p  style = {{ display: "-webkit-box",WebkitLineClamp:4, WebkitBoxOrient:'vertical',overflow: "hidden"}}>{each.title}</p>
+                                                    </a></h4>
+                                                    <div class="mu-latest-course-single-contbottom">
+                                                    <a class="mu-course-details" onClick = {() => this.handleViewNews(each)}>Xem chi tiết</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })} 
+                                
                             </div>
                         </div>
                         </div>
                     </div>
                     </div>
-                        </section>
-                    </div>
+                </section>
+                            
+               <Divider><h2>Sơ lược về trường</h2></Divider>
+                <div >
+                    <section id="mu-about-us">
+                        <div className="container">
+                            <div className=" row">
+                            <div className="col-md-12">
+                            <div className="mu-about-us-area">           
+                                <div className="row">
+                                <div className="col-lg-6 col-md-6">
+                                    <Collapse accordion defaultActiveKey={['1']}>
+                                    <Panel header={<div style={{fontSize:"20px", fontFamily: "sans-serif"}}>Giới thiệu</div>} key="1">
+                                            <p style ={{fontSize:"18px"}}>
+                                                Năm 1996, Trường Đại học Khoa học Tự nhiên được chính thức thành lập theo quyết định 1236/GDĐT của Bộ GD&ĐT ngày 30/3/1996 trên cơ sở tách ra từ Trường Đại học Tổng hợp TP. HCM để tham gia vào Đại học Quốc gia TP.HCM.
+                                                Kế hoạch chiến lược giai đoạn 2106 -2020 <a href = "https://www.hcmus.edu.vn/attachments/article/123/quyet%20dinh%20phe%20duyet%20KHCL%2016-20.pdf" target="_blank" rel="noopener noreferrer">tại đây  </a>
+                                            </p>
+                                        </Panel>
+                                        <Panel header={<div style={{fontSize:"20px", fontFamily: "sans-serif"}}>Sứ mạng</div>} key="2">
+                                            <p style ={{fontSize:"18px"}}>
+                                            Trường ĐH KHTN là trung tâm đào tạo đại học, sau đại học, cung cấp nguồn nhân lực, đội ngũ chuyên gia trình độ cao trong các lĩnh vực khoa học cơ bản, khoa học liên ngành, khoa học công nghệ mũi nhọn, có năng lực sáng tạo, làm việc trong môi trường cạnh tranh quốc tế; là nơi thực hiện những nghiên cứu khoa học đỉnh cao tạo ra các sản phẩm tinh hoa đáp ứng nhu cầu phát triển KHCN và yêu cầu phát triển kinh tế - xã hội ngày càng cao của đất nước, phù hợp với xu thế phát triển thế giới.
+                                            </p>
+                                        </Panel>
+                                        <Panel header={<div style={{fontSize:"20px", fontFamily: "sans-serif"}}>Mục tiêu giáo dục</div>} key="3">
+                                            <p style ={{fontSize:"18px"}}>
+                                            Trường ĐH KHTN góp phần đào tạo nguồn nhân lực ở trình độ đại học, đội ngũ chuyên gia ở các trình độ thạc sĩ, tiến sĩ trong các lĩnh vực khoa học cơ bản, khoa học liên ngành, khoa học công nghệ mũi nhọn; thông qua đào tạo, thực hiện những nghiên cứu khoa học đỉnh cao trong các lĩnh vực liên quan để tạo ra tri thức, sản phẩm mới đáp ứng nhu cầu phát triển khoa học công nghệ và yêu cầu phát triển kinh tế - xã hội ngày càng cao của đất nước, phù hợp với xu thế phát triển thế giới; đào tạo người học có phẩm chất chính trị, đạo đức; có kiến thức, kỹ năng thực hành, năng lực nghiên cứu và phát triển ứng dụng khoa học và công nghệ tương xứng với trình độ đào tạo; có sức khỏe; có khả năng sáng tạo và trách nhiệm nghề nghiệp, thích nghi với môi trường làm việc; có ý thức phục vụ cộng đồng
+                                            </p>
+                                        </Panel>
+                                    </Collapse>,
+                                </div>
+                                <div className="col-lg-6 col-md-6">
+                                    <div className="mu-about-us-right">                            
+                                    <a id="mu-abtus-video" href="https://www.youtube.com/embed/9Z49DscgnJY" target="mutube-video">
+                                    <img src="https://edu2review.com/upload/article-images/2018/07/7933/1920x1080_dai-hoc-khoa-hoc-tu-nhien.jpg" alt="img"/>
+                                    </a>                
+                                    </div>
+                                    <div style = {{marginTop:"20px", fontSize:"18px"}}>
+                                        <b>
+                                        <center>
+                                            Trường đại học Khoa học Tự nhiên 
+                                        <center>
+                                        </center>
+                                            Đại học quốc gia thành phố Hồ Chí Minh
+                                        </center>
+                                        </b>
+                                        
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </section>
                 </div>
 
                 <section id="mu-abtus-counter">
                     <div className="container">
-                    <div className="row">
+                        <div className="row">
                         <div className="col-md-12">
                         <div className="mu-abtus-counter-area">
                             <div className="row">
@@ -193,73 +265,74 @@ class index extends Component {
                 </section>
             
                 <div className = "container">
-                <section id="mu-features">
-                    <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12 col-md-12">
-                        <div className="mu-features-area">
-                            <div className="mu-title">
-                            <h2>Our Features</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsa ea maxime mollitia, vitae voluptates, quod at, saepe reprehenderit totam aliquam architecto fugiat sunt animi!</p>
-                            </div>
-                            <div className="mu-features-content">
+                    <section id="mu-features">
+                        <div className="container">
                             <div className="row">
-                                <div className="col-lg-4 col-md-4  col-sm-6">
-                                <div className="mu-single-feature">
-                                    <span className="fa fa-book"></span>
-                                    <h4>Professional Courses</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                    <a href="#">Read More</a>
-                                </div>
-                                </div>
-                                <div className="col-lg-4 col-md-4 col-sm-6">
-                                <div className="mu-single-feature">
-                                    <span className="fa fa-users"></span>
-                                    <h4>Expert Teachers</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                    <a href="#">Read More</a>
-                                </div>
-                                </div>
-                                <div className="col-lg-4 col-md-4 col-sm-6">
-                                <div className="mu-single-feature">
-                                    <span className="fa fa-laptop"></span>
-                                    <h4>Online Learning</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                    <a href="#">Read More</a>
-                                </div>
-                                </div>
-                                <div className="col-lg-4 col-md-4 col-sm-6">
-                                <div className="mu-single-feature">
-                                    <span className="fa fa-microphone"></span>
-                                    <h4>Audio Lessons</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                    <a href="#">Read More</a>
-                                </div>
-                                </div>
-                                <div className="col-lg-4 col-md-4 col-sm-6">
-                                <div className="mu-single-feature">
-                                    <span className="fa fa-film"></span>
-                                    <h4>Video Lessons</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                    <a href="#">Read More</a>
-                                </div>
-                                </div>
-                                <div className="col-lg-4 col-md-4 col-sm-6">
-                                <div className="mu-single-feature">
-                                    <span className="fa fa-certificate"></span>
-                                    <h4>Professional Certificate</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                    <a href="#">Read More</a>
-                                </div>
+                                <div className="col-lg-12 col-md-12">
+                                    <div className="mu-features-area">
+                                        <div className="mu-title">
+                                        <h2>Our Features</h2>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsa ea maxime mollitia, vitae voluptates, quod at, saepe reprehenderit totam aliquam architecto fugiat sunt animi!</p>
+                                        </div>
+                                        <div className="mu-features-content">
+                                            <div className="row">
+                                                <div className="col-lg-4 col-md-4  col-sm-6">
+                                                <div className="mu-single-feature">
+                                                    <span className="fa fa-book"></span>
+                                                    <h4>Professional Courses</h4>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                                    <a href="#">Read More</a>
+                                                </div>
+                                                </div>
+                                                <div className="col-lg-4 col-md-4 col-sm-6">
+                                                <div className="mu-single-feature">
+                                                    <span className="fa fa-users"></span>
+                                                    <h4>Expert Teachers</h4>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                                    <a href="#">Read More</a>
+                                                </div>
+                                                </div>
+                                                <div className="col-lg-4 col-md-4 col-sm-6">
+                                                <div className="mu-single-feature">
+                                                    <span className="fa fa-laptop"></span>
+                                                    <h4>Online Learning</h4>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                                    <a href="#">Read More</a>
+                                                </div>
+                                                </div>
+                                                <div className="col-lg-4 col-md-4 col-sm-6">
+                                                <div className="mu-single-feature">
+                                                    <span className="fa fa-microphone"></span>
+                                                    <h4>Audio Lessons</h4>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                                    <a href="#">Read More</a>
+                                                </div>
+                                                </div>
+                                                <div className="col-lg-4 col-md-4 col-sm-6">
+                                                <div className="mu-single-feature">
+                                                    <span className="fa fa-film"></span>
+                                                    <h4>Video Lessons</h4>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                                    <a href="#">Read More</a>
+                                                </div>
+                                                </div>
+                                                <div className="col-lg-4 col-md-4 col-sm-6">
+                                            <div className="mu-single-feature">
+                                                <span className="fa fa-certificate"></span>
+                                                <h4>Professional Certificate</h4>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                                <a href="#">Read More</a>
+                                            </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            </div>
                         </div>
-                        </div>
-                    </div>
-                    </div>
-                </section>
+                    </section>
                 </div>
+                
                 <section id="mu-testimonial">
                     <div className="container">
                     <div className="row">
@@ -301,9 +374,19 @@ class index extends Component {
                     </div>
                 </section>
             
-            
-            
-            
+                <Modal
+                width = "90%"
+                title={this.state.selectedNews.title}
+                visible={this.state.visibleModal}
+                onOk={this.handleOk}
+                onCancel={this.handleCancel}
+                footer = {[
+                    <Button key="back" onClick={() => this.handleCancel()}>Đóng</Button>
+                ]}
+                >
+                
+                    <div dangerouslySetInnerHTML={{__html: this.state.selectedNews.content}} ></div>
+                </Modal>
             </div>
         );
     }

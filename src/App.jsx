@@ -9,6 +9,7 @@ import Contact from "./Components/Contact"
 import FunctionRoom from "./Components/FunctionRoom"
 import Library from "./Components/Library"
 import ErrorPage from "./Components/ErrorPage"
+import QnA from "./Components/QnA/QnA"
 
 import Header from "./Components/Navigation/Header"
 import Footer from "./Components/Navigation/Footer"
@@ -278,6 +279,7 @@ class App extends Component {
               <Route exact path = "/lien-he" component = {Contact}/>
               <Route exact path = "/phong-chuc-nang" component = {FunctionRoom}/>
               <Route exact path = "/thu-vien" component = {Library}/>
+              <Route exact path = "/hoi-dap" component = {QnA}/>
               <Route exact path = "*" component = {ErrorPage}/>
           </Switch>
 

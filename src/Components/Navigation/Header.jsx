@@ -23,6 +23,7 @@ class Header extends Component {
   }
 
     render() {
+      const gioithieu = ["khoa-nganh", "thu-vien", "phong-chuc-nang"]
         return (
           <div>
             <section id="mu-menu" style ={{position:"fixed", zIndex:3, fontSize:"18px"}}>
@@ -42,18 +43,15 @@ class Header extends Component {
 
                     <li className = {this.state.page === "" ? "active" : null}><a href="/">Trang chủ</a></li>    
 
-                    <li className = {this.state.page === "khoa-nganh" ? "active dropdown" : null}>
+                    <li className = {gioithieu.some(each => each === this.state.page) ? "active dropdown" : "dropdown"}>
                       <a href="#" className="dropdown-toggle" data-toggle="dropdown">Giới thiệu <span className="fa fa-angle-down"></span></a>
                       <ul className="dropdown-menu" role="menu">
-                        <li><NavLink to="/about-us">Về trường</NavLink></li> 
                         <li><NavLink to="/khoa-nganh">Các Khoa</NavLink></li>                
                         <li><NavLink to="course-detail.html">Đoàn thanh niên - Hội sinh viên</NavLink></li>                
                         <li><NavLink to="/thu-vien">Thư Viện</NavLink></li>
                         <li><NavLink to="/phong-chuc-nang">Các phòng chức năng</NavLink></li>
                       </ul>
                     </li>
-
-                    <li><NavLink to="/gallery">Gallery</NavLink></li>
 
                     <li className="dropdown">
                       <a href="#" className="dropdown-toggle" data-toggle="dropdown">Blog <span className="fa fa-angle-down"></span></a>
@@ -63,6 +61,9 @@ class Header extends Component {
                       </ul>
                     </li>  
 
+                    <li><NavLink to="/hoi-dap">Hỏi đáp</NavLink></li>
+
+                   
                     <li className = {this.state.page === "lien-he" ? "active" : null}><NavLink to = "/lien-he">Liên hệ</NavLink></li>
 
                     <li><a href="#" id="mu-search-icon"><i className="fa fa-search"></i></a></li>

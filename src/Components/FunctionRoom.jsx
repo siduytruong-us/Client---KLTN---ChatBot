@@ -569,6 +569,7 @@ class FunctionRoom extends Component {
                 </Row>
                 
             </section>
+        
         </div>
         
         );

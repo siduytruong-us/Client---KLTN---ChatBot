@@ -81,16 +81,15 @@ class Contact extends Component {
                 </div>
                 </div>
                 </section>
-                <section id="mu-contact">
-       
-           
-            <div className="container ">
+            <section id="mu-contact">
+                <div className="container ">
                 <div className="row">
                 <div className="col-md-12">
                     <div className="mu-contact-area">
                     <div className="mu-title animated fadeIn fast">
                         <h2><b>Hãy giữ liên lạc với chúng tôi</b></h2>
-                        <p>Mọi thắc mắc của bạn hãy gửi qua form email bên dưới thông qua email cá nhân của admin website <b>duytruong7297@gmail.com</b></p>
+                        <h4>Mọi thắc mắc của bạn hãy gửi qua form email bên dưới sẽ gửi đến email cá nhân của admin website</h4>
+                        <h4><a href= "mailto: duytruong7297@gmail.com">duytruong7297@gmail.com</a></h4> 
                     </div>
                     <div className="mu-contact-content">           
                         <div className="row">
@@ -138,6 +137,7 @@ class Contact extends Component {
                 </div>
                 </div>
             </div>
+
             </section>
         </div>
         );

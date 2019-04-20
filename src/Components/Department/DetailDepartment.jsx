@@ -2,7 +2,9 @@
 import React, { Component } from 'react';
 import {NavLink} from "react-router-dom"
 import {department} from "../../Global/GlobalVariable/departments"
-import { Anchor } from 'antd';
+import { Anchor, message } from 'antd';
+import axios from "../../Config/axiosConfig"
+
 const { Link } = Anchor;
 
 class DetailDepartment extends Component {
@@ -20,6 +22,19 @@ class DetailDepartment extends Component {
         const alias = this.props.match.params.alias
         const temp = department.find(each => each.alias === alias)
         this.setState({ department: temp})
+
+        axios.post("/client/news/get/department",{
+            alias: alias
+        })
+        .then( res => {
+            const data = res.data
+            console.log(data);
+            
+        })
+        .catch(err => {
+            err = err.response ? err.response.data : err.toString()
+            message.error(err.message,1)
+        })
     }
 
     componentDidMount() {

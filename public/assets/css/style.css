@@ -454,7 +454,7 @@ img {
   display: inline;
   float: left;
   width: 100%;
-  padding: 100px 0;
+  padding: 20px 0;
 }
 #mu-about-us .mu-about-us-area {
   display: inline;
@@ -563,6 +563,7 @@ img {
   background-size: 100%;
   display: inline;
   float: left;
+  margin-top:100px;
   padding: 100px 0;
   width: 100%;
 }
@@ -670,7 +671,7 @@ img {
  LATEST COURSES SECTION
 ====================*/
 #mu-latest-courses {
-  background-color: #333;
+  background-color: rgba(255, 255, 255, 0);
   display: inline;
   float: left;
   padding: 100px 0;
@@ -682,10 +683,10 @@ img {
   width: 100%;
 }
 #mu-latest-courses .mu-latest-courses-area .mu-title h2 {
-  color: #fff;
+  color: rgb(0, 0, 0);
 }
 #mu-latest-courses .mu-latest-courses-area .mu-title p {
-  color: #fff;
+  color: rgb(0, 0, 0);
 }
 #mu-latest-courses .mu-latest-courses-area .mu-latest-courses-content {
   display: inline;
@@ -697,7 +698,7 @@ img {
   outline: none;
 }
 #mu-latest-courses .mu-latest-courses-area .mu-latest-courses-content .slick-dots li {
-  background-color: #fff;
+  background-color: rgb(58, 54, 54);
   border-radius: 4px;
   height: 8px;
   width: 20px;
@@ -711,6 +712,8 @@ img {
   display: inline;
   float: left;
   width: 100%;
+  border: 0.5px solid rgba(66, 63, 63, 0.281);
+  border-radius: 5px;
 }
 .mu-latest-course-single .mu-latest-course-img {
   display: inline;
@@ -1141,7 +1144,7 @@ img {
   background-color: #ffffff;
   display: inline;
   float: left;
-  padding: 100px 0;
+  padding: 60px 0;
   width: 100%;
 }
 #mu-course-content .mu-course-content-area {
