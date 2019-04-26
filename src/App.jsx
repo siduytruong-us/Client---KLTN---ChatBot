@@ -10,13 +10,14 @@ import FunctionRoom from "./Components/FunctionRoom"
 import Library from "./Components/Library"
 import ErrorPage from "./Components/ErrorPage"
 import QnA from "./Components/QnA/QnA"
+import SignIn from "./Components/Authentication/SignIn"
 
 import Header from "./Components/Navigation/Header"
 import Footer from "./Components/Navigation/Footer"
 
 import HandleDateTime from "./Global/Function/HandleDateTime"
 import firebase from "./Config/firebaseConfig"
-import { Input, Icon, Button } from 'antd';
+import { Input, Icon, Button, message } from 'antd';
 
 
 const conversationFirestore = firebase.firestore().collection("Conversation")
@@ -52,24 +53,35 @@ class App extends Component {
   //#region component method
   componentDidMount() {
     this.renderGreetingToWidget()
+    window.addEventListener("beforeunload", this.onUnload)
     
   }
-
+  
+  componentWillUnmount() {
+    window.removeEventListener("beforeunload", this.onUnload)
+  }
   //#endregion
+
+  //#region window event listener 
+  onUnload(event) { // the method that will be used for both add and remove event
+    sessionStorage.removeItem("student")
+    
+}
+
+  //#endregion 
 
   //#region method handle
   handleInputStudentInWidget(e){
-    const text = e.target.value
+    const student = e.target.value
     if(e.key === 'Enter') {
       //Send message e.target.value
       
       if (e.shiftKey)
-          console.log(text);
-      else if (text !== "") {
+          console.log(student);
+      else if (student !== "") {
           e.preventDefault()
           dropMessages()
-          
-          this.renderOptionsBotOrAdminToWidget(text)
+          this.renderOptionsBotOrAdminToWidget(student)
       }
     }  
   }
@@ -155,6 +167,8 @@ class App extends Component {
   }
   //#endregion 
 
+  
+
   //#region method 
   setListenInComingConversation(student,resolve,reject) {
     conversationFirestore.doc(student).onSnapshot({
@@ -210,9 +224,17 @@ class App extends Component {
         })
         
         promise.then( res => {
-          addResponseMessage("Chào " + HandleDateTime.greeting() +", bạn "+ student)
-          addResponseMessage("Bạn muốn trò chuyện với bot hay admin?")
-          renderCustomComponent(this.OptionButton, {data: this.state.test, action: this.handleModalDataChange });
+          if ( typeof(Storage) !== "undefined") {
+            sessionStorage.setItem("student",student)
+            // localStorage.setItem("student", student);
+            this.setState({student: student})
+            addResponseMessage("Chào " + HandleDateTime.greeting() +", bạn "+ student)
+            addResponseMessage("Bạn muốn trò chuyện với bot hay admin?")
+            renderCustomComponent(this.OptionButton, {data: this.state.test, action: this.handleModalDataChange }); 
+          } else {
+            message.error('Trình duyệt của bạn đã quá cũ. Hãy nâng cấp trình duyệt ngay!',2)
+          }
+          
         })
         .catch( err => {
             addResponseMessage("Đã xảy ra lỗi ")
@@ -280,6 +302,7 @@ class App extends Component {
               <Route exact path = "/phong-chuc-nang" component = {FunctionRoom}/>
               <Route exact path = "/thu-vien" component = {Library}/>
               <Route exact path = "/hoi-dap" component = {QnA}/>
+              <Route exact path = "/dang-nhap" component = {SignIn}/>
               <Route exact path = "*" component = {ErrorPage}/>
           </Switch>
 

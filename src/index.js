@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import 'antd/dist/antd.css';
 import 'aos/dist/aos.css'
 import 'react-chat-widget/lib/styles.css';
+import "./css/custom.css"
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

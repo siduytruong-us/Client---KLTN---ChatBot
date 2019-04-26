@@ -24,6 +24,7 @@ class Header extends Component {
 
     render() {
       const gioithieu = ["khoa-nganh", "thu-vien", "phong-chuc-nang"]
+
         return (
           <div>
             <section id="mu-menu" style ={{position:"fixed", zIndex:3, fontSize:"18px"}}>
@@ -53,18 +54,11 @@ class Header extends Component {
                       </ul>
                     </li>
 
-                    <li className="dropdown">
-                      <a href="#" className="dropdown-toggle" data-toggle="dropdown">Blog <span className="fa fa-angle-down"></span></a>
-                      <ul className="dropdown-menu" role="menu">
-                        <li><a href="blog-archive.html">Blog Archive</a></li>                
-                        <li><a href="blog-single.html">Blog Single</a></li>                
-                      </ul>
-                    </li>  
+                    <li className = {this.state.page === "hoi-dap" ? "active" : null}><NavLink to="/hoi-dap">Hỏi đáp</NavLink></li>
 
-                    <li><NavLink to="/hoi-dap">Hỏi đáp</NavLink></li>
-
-                   
                     <li className = {this.state.page === "lien-he" ? "active" : null}><NavLink to = "/lien-he">Liên hệ</NavLink></li>
+
+                    <li className = {this.state.page === "dang-nhap" ? "active" : null}><NavLink to="/dang-nhap">Đăng nhập</NavLink></li>
 
                     <li><a href="#" id="mu-search-icon"><i className="fa fa-search"></i></a></li>
                     

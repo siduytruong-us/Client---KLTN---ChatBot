@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 
 class Footer extends Component {
     render() {
-        return (
+      if (window.location.pathname === '/dang-nhap' || window.location.pathname === '/dang-ky') 
+      return null;
+
+      return (
             <footer id="mu-footer">
      <div class="mu-footer-top"   style = {{position:"relative", zIndex:0.5}}>
       <div class="container">

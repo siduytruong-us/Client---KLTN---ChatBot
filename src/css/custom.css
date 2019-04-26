@@ -4,11 +4,21 @@
 
 
 .ant-card-head-title {
-    padding: 16px 0;
+    padding: 8px 0;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: normal;
     -webkit-flex: 1;
     flex: 1 1;
     display: inline-block;
+}
+
+.ant-collapse-borderless > .ant-collapse-item {
+    border-bottom: 0px;
+}
+
+.ant-comment-inner {
+    padding: 5px 0;
+    display: -webkit-flex;
+    display: flex;
 }

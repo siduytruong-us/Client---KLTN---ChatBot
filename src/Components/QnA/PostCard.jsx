@@ -1,43 +1,63 @@
 import React from 'react';
-import { Card, Comment, Avatar, Form, Button, Icon, Row, Col, Input, Collapse, } from 'antd';
-import TextArea from 'antd/lib/input/TextArea';
+import { Card, Comment, Avatar, Form, Button, Divider, Row, Col, Input, Collapse, Tooltip, Icon, } from 'antd';
+import moment from 'moment';
 const Panel = Collapse.Panel;
-const PostCard = ({title, comment}) => {
+
+
+const PostCard = ({post, student , handleCommentPost, isCommenting}) => {
+    const headerCommentTitle = student? post.comment.length + " Bình luận" : "Đăng nhập để hiển thị bình luận"
+    const isLoggin = student? false: true
 
     const InputMessageFrame = (
         <Row>
             <Col span = {19}>
-            <Input id ="message" style = {{width:"100%"}}/>
+            <Input id = {"comment_post" + post.id} style = {{width:"100%"}}/>
             </Col>
 
             <Col span = {3} push = {2}>
-            <Button  type="primary">Trả lời</Button>
+            <Button  type="primary" onClick = {() => handleCommentPost(post, student)} loading = {isCommenting}>Trả lời</Button>
             </Col>
         </Row>
     )
+    var {question,create_time} = post
 
     return (
         <div>
             <Card 
-                title={title} bordered={false} style={{ width: "auto" }}
+                headStyle = {{whiteSpace:"normal"}}
+                title={
+                    <Row style = {{paddingBottom:"5px"}}>
+                        <Col span = {1}>
+                            <Avatar size={40} src = "assets/img/favicon.ico" />
+                        </Col>
+                        <Col span = {23}>
+                        <div style ={{paddingLeft:"20px"}}>
+                        <p  style = {{ display: "-webkit-box",WebkitLineClamp:2, WebkitBoxOrient:'vertical',overflow: "hidden",  marginBottom: "0px"}}>
+                            {question}
+                        </p>
+                        <span><p style = {{fontSize:"10px", marginBottom: "0px"}}>{post.student} - <Icon type="clock-circle" /> {moment(parseInt(create_time)).format('DD-MM-YYYY HH:mm')}</p></span>
+                        </div>
+                        </Col>
+                    </Row>
+                } bordered={false} style={{ width: "auto" }}
                 >
 
                 <Collapse bordered={false} >
-                    <Panel header="Comment" key="1">
-                        <Comment
-                            author={<a>Han Solo</a>}
-                            avatar={(<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" alt="Han Solo"/>)}
-                            content={(
-                            <p>We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.</p>
-                            )}
-                        />
-                        <Comment
-                            author={<a>Han Solo</a>}
-                            avatar={(<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" alt="Han Solo"/>)}
-                            content={(
-                            <p>We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.</p>
-                            )}
-                        />
+                    <Panel header={headerCommentTitle} key="1" disabled = {isLoggin}>
+                        {post.comment ? post.comment.map ( each => { 
+                            if (each ) { 
+                                return (
+                                    <Comment
+                                    author={<a><b>{each.user} - {moment(parseInt(each.create_time)).fromNow()}</b></a>}
+                                    avatar={(<Avatar src="assets/img/favicon.ico" alt="comment avatar"/>)}
+                                    content={(
+                                    <p>{each.text}</p>
+                                    )}
+                                    />
+                                )
+                            }
+                            return (<div></div>)
+                        }):null}
 
                         {InputMessageFrame}
                     </Panel>

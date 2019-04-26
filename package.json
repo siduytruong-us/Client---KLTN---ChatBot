@@ -9,6 +9,7 @@
     "axios": "^0.18.0",
     "firebase": "^5.9.3",
     "http-proxy-middleware": "^0.19.1",
+    "moment": "^2.24.0",
     "react": "^16.7.0",
     "react-bootstrap": "^0.32.4",
     "react-chat-widget": "^2.1.4-1",

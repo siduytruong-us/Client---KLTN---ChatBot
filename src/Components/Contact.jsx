@@ -45,13 +45,13 @@ class Contact extends Component {
                 err = err.response.data
                 message.error(err.message, 2)
             })
+            .finally( () => {
+                document.getElementById("subject").value  = ""
+                document.getElementById("email").value  = ""
+                // document.getElementById("content").value  = ""
+                document.getElementById("author").value  = ""
+            })
         })
-        
-        document.getElementById("subject").value  = ""
-        document.getElementById("email").value  = ""
-        // document.getElementById("content").value  = ""
-        document.getElementById("author").value  = ""
-        
     }
     
     render() {
