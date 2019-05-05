@@ -32,20 +32,32 @@ class index extends Component {
         }
 
         this.handleViewNews = this.handleViewNews.bind(this)
+        this.updateHitsArticle = this.updateHitsArticle.bind(this)
+        this.fetchNewsFromServer = this.fetchNewsFromServer.bind(this)
     }
     
     // componentDidMount(){
     //     AOS.init()
     // }
 
-    componentWillMount () { 
-        console.log("will mount");
-        window.scrollTo(0,0)
-        AOS.refresh()
+    //#region method
+    updateHitsArticle(article) { 
+        axios.post("/client/news/article/hits/increase", article)
+        .then( res => { 
 
-        const {newsAlias} = this.state
+        })
+        .catch( err => { 
+            if (err.response) { 
+                err = err.response.data
+                return message.error(err.message.toString(),1.5)
+
+            }
+            return message.error(err.toString(),1.5)
+        })
+    }
+    fetchNewsFromServer( alias ){
         axios.post("/client/news/get/department",{
-            alias: newsAlias,
+            alias: alias,
         })
         .then( res => { 
             const data = res.data.data
@@ -57,6 +69,18 @@ class index extends Component {
             message.error(err.message,2)
         })
     }
+    //#endregion 
+
+    //#region method component
+    componentWillMount () { 
+        console.log("will mount");
+        window.scrollTo(0,0)
+        AOS.refresh()
+
+        const {newsAlias} = this.state
+        this.fetchNewsFromServer(newsAlias)
+       
+    }
 
     componentWillReceiveProps() { 
         AOS.refresh()
@@ -65,8 +89,11 @@ class index extends Component {
     componentDidMount() { 
         window.scrollTo(0,0)
     }
+    //#endregion
 
+    //#region handle method
     handleViewNews(news) { 
+        this.updateHitsArticle(news)
         this.setState({
             visibleModal: true,
             selectedNews: news,
@@ -77,13 +104,14 @@ class index extends Component {
         this.setState({visibleModal: false,});
       }
     
-      handleCancel = (e) => {
+    handleCancel = (e) => {
         this.setState({visibleModal: false,});
-      }
+    }
+    //#endregion
     
     
     render() {
-        const {news} = this.state
+        const {news,selectedNews,visibleModal} = this.state
         return (
             <div>
                 
@@ -376,16 +404,17 @@ class index extends Component {
             
                 <Modal
                 width = "90%"
-                title={this.state.selectedNews.title}
-                visible={this.state.visibleModal}
+                title={selectedNews.title}
+                visible={visibleModal}
                 onOk={this.handleOk}
                 onCancel={this.handleCancel}
                 footer = {[
                     <Button key="back" onClick={() => this.handleCancel()}>Đóng</Button>
                 ]}
                 >
-                
-                    <div dangerouslySetInnerHTML={{__html: this.state.selectedNews.content}} ></div>
+                <b>Số lượt xem: {selectedNews.hits}</b> - <Icon type="clock-circle" /> { moment(parseInt(selectedNews.create_time)).format("DD/MM/YYYY HH:MM")}
+                <Divider></Divider>
+                    <div dangerouslySetInnerHTML={{__html: selectedNews.content}} ></div>
                 </Modal>
             </div>
         );

@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const ErrorPage = () => {
-    return (
-        <section id="mu-error">
+class ErrorPage extends Component {
+
+    componentDidMount () { 
+        window.scrollTo(0,0)
+    }
+    render() {
+        return (
+            <section id="mu-error">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="mu-error-area">
@@ -14,7 +19,8 @@ const ErrorPage = () => {
                     </div>
                 </div>
         </section>
-    );
-};
+        );
+    }
+}
 
 export default ErrorPage;

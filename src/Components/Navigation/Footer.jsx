@@ -7,12 +7,12 @@ class Footer extends Component {
 
       return (
             <footer id="mu-footer">
-     <div class="mu-footer-top"   style = {{position:"relative", zIndex:0.5}}>
-      <div class="container">
-        <div class="mu-footer-top-area">
-          <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-3">
-              <div class="mu-footer-widget">
+     <div className="mu-footer-top"   style = {{position:"relative", zIndex:0.5}}>
+      <div className="container">
+        <div className="mu-footer-top-area">
+          <div className="row">
+            <div className="col-lg-3 col-md-3 col-sm-3">
+              <div className="mu-footer-widget">
                 <h4>Information</h4>
                 <ul>
                   <li><a href="#">About Us</a></li>
@@ -24,8 +24,8 @@ class Footer extends Component {
                 </ul>
               </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-              <div class="mu-footer-widget">
+            <div className="col-lg-3 col-md-3 col-sm-3">
+              <div className="mu-footer-widget">
                 <h4>Student Help</h4>
                 <ul>
                   <li><a href="">Get Started</a></li>
@@ -36,18 +36,18 @@ class Footer extends Component {
                 </ul>
               </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-              <div class="mu-footer-widget">
+            <div className="col-lg-3 col-md-3 col-sm-3">
+              <div className="mu-footer-widget">
                 <h4>News letter</h4>
                 <p>Get latest update, news & academic offers</p>
-                <form class="mu-subscribe-form">
+                <form className="mu-subscribe-form">
                   <input type="email" placeholder="Type your Email"/>
-                  <button class="mu-subscribe-btn" type="submit">Subscribe!</button>
+                  <button className="mu-subscribe-btn" type="submit">Subscribe!</button>
                 </form>
               </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-              <div class="mu-footer-widget">
+            <div className="col-lg-3 col-md-3 col-sm-3">
+              <div className="mu-footer-widget">
                 <h4>Liên lạc</h4>
                 <address>
                   <p>Cở sở 1: 227 Đường Nguyễn Văn Cừ, Phường 4, Quận 5, Hồ Chí Minh</p>
@@ -63,9 +63,9 @@ class Footer extends Component {
         </div>
       </div>
     </div>
-    <div class="mu-footer-bottom">
-      <div class="container">
-        <div class="mu-footer-bottom-area">
+    <div className="mu-footer-bottom">
+      <div className="container">
+        <div className="mu-footer-bottom-area">
           <p>&copy; All Right Reserved. Designed by <a href="http://www.markups.io/" rel="nofollow">MarkUps.io</a></p>
         </div>
       </div>

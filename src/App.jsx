@@ -17,13 +17,13 @@ import Footer from "./Components/Navigation/Footer"
 
 import HandleDateTime from "./Global/Function/HandleDateTime"
 import firebase from "./Config/firebaseConfig"
-import { Input, Icon, Button, message } from 'antd';
+import { Input, Icon, Button, message, Popconfirm } from 'antd';
 
 
 const conversationFirestore = firebase.firestore().collection("Conversation")
 
 
-          
+
 class App extends Component {
   
   constructor(props) {
@@ -47,6 +47,8 @@ class App extends Component {
   
     this.handleInputStudentInWidget = this.handleInputStudentInWidget.bind(this)
     this.renderOptionsBotOrAdminToWidget = this.renderOptionsBotOrAdminToWidget.bind(this)
+
+    this.handleReportBotReponse = this.handleReportBotReponse.bind(this)
     
   }
 
@@ -118,7 +120,39 @@ class App extends Component {
           addUserMessage(each.text)
         }
         else {
-          addResponseMessage(each.text)
+          switch (each.respondent) {
+            case "bot": 
+              const formReportBotReponse = () => {
+                return <div>
+                        Báo cáo câu trả lời?
+                        <Input placeholder = "Nội dung"/>
+                        </div>
+              }
+              const botReponse = ({data, action}) => {
+                return <div  className = "rcw-message" style = {{margin:"0px"}}>
+                            <img src="/assets/img/favicon.ico" class="rcw-avatar" alt="profile"/>
+                            <div className = "rcw-response">
+                                <div class="rcw-message-text">
+                                  {each.text} - <Popconfirm title={<div>Báo cáo câu trả lời?<Input id = "form-bot-report" placeholder = "Nội dung"/></div>} 
+                                                            okText="Có" cancelText="Không"
+                                                            icon={<Icon type="info-circle" style={{ color: 'red' }} />}
+                                                            onConfirm = {this.handleReportBotReponse}>
+                                                      <Button type="danger" shape="circle" icon="info-circle" size="small" />
+                                                </Popconfirm>
+                                </div>
+                            </div>
+                        </div>
+              }
+              renderCustomComponent(botReponse, {data: this.state.test, action: this.handleReportBotReponse });
+              break;
+            case "admin":
+              addResponseMessage(each.text)
+            // eslint-disable-next-line no-fallthrough
+            default:
+              
+              break;
+          }
+          
         }
       })
   }
@@ -147,6 +181,16 @@ class App extends Component {
         
   }
 
+  handleReportBotReponse() { 
+      
+      const reportForm = document.getElementById("form-bot-report").value
+
+      if ( reportForm ) {
+        return message.info("handleReportBotReponse" + reportForm,2)
+      }
+        
+      return message.error("Report không được để trống!", 2)
+  }
   showModal = () => {
     this.setState({
       visible: true,

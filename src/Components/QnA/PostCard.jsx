@@ -19,7 +19,7 @@ const PostCard = ({post, student , handleCommentPost, isCommenting}) => {
             </Col>
         </Row>
     )
-    var {question,create_time} = post
+    var {question,create_time, title, isSolved} = post
 
     return (
         <div>
@@ -28,11 +28,13 @@ const PostCard = ({post, student , handleCommentPost, isCommenting}) => {
                 title={
                     <Row style = {{paddingBottom:"5px"}}>
                         <Col span = {1}>
-                            <Avatar size={40} src = "assets/img/favicon.ico" />
+                            <Avatar size={42} style = {{marginTop:"18px"}} src = "assets/img/favicon.ico" />
                         </Col>
                         <Col span = {23}>
                         <div style ={{paddingLeft:"20px"}}>
-                        <p  style = {{ display: "-webkit-box",WebkitLineClamp:2, WebkitBoxOrient:'vertical',overflow: "hidden",  marginBottom: "0px"}}>
+                        <p  style = {{ display: "-webkit-box",WebkitLineClamp:2, WebkitBoxOrient:'vertical',overflow: "hidden",  marginBottom: "10px"}}>
+                            <b>{title}</b> {isSolved? <Icon type="check-circle" style={{ fontSize: '16px', color: '#26e236', marginLeft:"10px" }} theme="filled" />: null}
+                            <br/>
                             {question}
                         </p>
                         <span><p style = {{fontSize:"10px", marginBottom: "0px"}}>{post.student} - <Icon type="clock-circle" /> {moment(parseInt(create_time)).format('DD-MM-YYYY HH:mm')}</p></span>
@@ -44,10 +46,11 @@ const PostCard = ({post, student , handleCommentPost, isCommenting}) => {
 
                 <Collapse bordered={false} >
                     <Panel header={headerCommentTitle} key="1" disabled = {isLoggin}>
-                        {post.comment ? post.comment.map ( each => { 
+                        {post.comment ? post.comment.map ( (each,index) => { 
                             if (each ) { 
                                 return (
                                     <Comment
+                                    key = {index}
                                     author={<a><b>{each.user} - {moment(parseInt(each.create_time)).fromNow()}</b></a>}
                                     avatar={(<Avatar src="assets/img/favicon.ico" alt="comment avatar"/>)}
                                     content={(

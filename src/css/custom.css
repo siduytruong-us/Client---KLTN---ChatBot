@@ -22,3 +22,29 @@
     display: -webkit-flex;
     display: flex;
 }
+
+.ant-card-head {
+    background: transparent;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 0 24px;
+    border-radius: 2px 2px 0 0;
+    zoom: 1;
+    margin-bottom: -1px;
+    min-height: 48px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 400;
+}
+
+.rcw-client, .rcw-response {
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 215px;
+    text-align: left;
+}
+
+.ant-btn-danger {
+    color: #f5222d;
+    background-color: #f5f5f5;
+    border-color: #ffffff00;
+}

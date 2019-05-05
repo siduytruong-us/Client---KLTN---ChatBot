@@ -37,7 +37,7 @@ class Header extends Component {
                     <span className="icon-bar"></span>
                     <span className="icon-bar"></span>
                   </button>
-                  <a className="navbar-brand" href="/"><img src="/assets/img/logo81.png" alt="logo"  style = {{marginTop: "-15px"}} /></a>
+                  <a className="navbar-brand" href="/"><img src="/assets/img/logo81.png" alt="logo"  style = {{marginTop: "-8px", width: "90%",height: "auto"}} /></a>
                 </div>
                 <div id="navbar" className="navbar-collapse collapse">
                   <ul id="top-menu" className="nav navbar-nav navbar-right main-nav">
@@ -69,12 +69,12 @@ class Header extends Component {
           </section>
 
           <div id="mu-search">
-          <div class="mu-search-area">      
-            <button class="mu-search-close"><span class="fa fa-close"></span></button>
-            <div class="container">
-              <div class="row">
-                <div class="col-md-12">            
-                  <form class="mu-search-form">
+          <div className="mu-search-area">      
+            <button className="mu-search-close"><span className="fa fa-close"></span></button>
+            <div className="container">
+              <div className="row">
+                <div className="col-md-12">            
+                  <form className="mu-search-form">
                     <input type="search" placeholder="Type Your Keyword(s) & Hit Enter"/>              
                   </form>
                 </div>

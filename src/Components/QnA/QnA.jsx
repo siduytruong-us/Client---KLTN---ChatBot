@@ -22,12 +22,14 @@ class QnA extends Component {
         }
         this.handlePageChange = this.handlePageChange.bind(this)
         this.fetchPostFromServer = this.fetchPostFromServer.bind(this)
+        this.getPostCountFromServer = this.getPostCountFromServer.bind(this)
     }
 
 
     //#region component method
     componentWillMount()  {
         this.fetchPostFromServer(this.state.page)
+        this.getPostCountFromServer()
         window.scrollTo(0,0)
 
         const student = sessionStorage.getItem("student")
@@ -35,6 +37,7 @@ class QnA extends Component {
 
     }
     //#endregion
+    
 
     //#region method
     fetchPostFromServer(page) { 
@@ -71,6 +74,23 @@ class QnA extends Component {
             this.setState({isLoading:false})
         })
     }
+
+    getPostCountFromServer() { 
+        axios.get("/client/post/get/count")
+        .then( res => { 
+            const total = res.data.data
+            this.setState({total: total})
+        })
+        .catch ( err => {
+            if ( err.response) { 
+                err = err.response.data
+                message(err.message,2)
+            }
+            else { 
+                message.error(err.toString(),2)
+            }
+        })
+    }
     //#endregion
     
     //#region method handle
@@ -90,12 +110,14 @@ class QnA extends Component {
 
     handlePostQuestion() { 
         var question = document.getElementById("question").value ? document.getElementById("question").value : ""
+        var title = document.getElementById("title").value ? document.getElementById("title").value : ""
 
         this.setState({isPosting:true})
         message.loading("loading...",1).then (() => {
             axios.post("/client/post/create", { 
                 create_time: moment(new Date()).valueOf(),
                 question: question,
+                title: title,
                 student:"Duy",
             })
             .then( res => {
@@ -116,6 +138,7 @@ class QnA extends Component {
             .finally(() => { 
                 this.setState({isPosting:false})
                 document.getElementById("question").value = ""
+                document.getElementById("title").value = ""
             })
         })
     }
@@ -163,10 +186,10 @@ class QnA extends Component {
         return (
             <div>
                 <section id="mu-page-breadcrumb">
-                    <div class="container">
-                        <div class="row">
-                        <div class="col-md-12">
-                            <div class="mu-page-breadcrumb-area">
+                    <div className="container">
+                        <div className="row">
+                        <div className="col-md-12">
+                            <div className="mu-page-breadcrumb-area">
                             <h2>Hỏi đáp</h2>
                             </div>
                         </div>
@@ -187,16 +210,20 @@ class QnA extends Component {
 
                         <br/>
                         <Row>
-                        <TextArea placeholder="Hãy đặt câu hỏi của bạn ở đây? " autosize={{ minRows: 2, maxRows: 6 }} id = "question"/>
-                        {/* <textarea required="required" aria-required="true" rows="8" cols="45" id = "question" placeholder = "Hãy đặt câu hỏi của bạn ở đây? "></textarea> */}
+                            <Input placeholder="Tiêu đề câu hỏi" style = {{width:"40%"}} id = "title"/>
                         </Row>
+                        <br/>
+                        <Row>
+                            <TextArea placeholder="Hãy đặt câu hỏi của bạn ở đây? " autosize={{ minRows: 2, maxRows: 6 }} id = "question"/>
+                        </Row>
+
                         <Row>
                         <Button style = {{float:"right", marginTop:"20px"}} loading = {isPosting} onClick = {this.handlePostQuestion.bind(this)}>Đăng câu hỏi</Button>
                         </Row>
                         <br/>
                         <Divider><h3 id = "QA_DIV">Q&A</h3></Divider>
-                         <Spin spinning = {isLoading} >{post.map(each=> { 
-                            return (<PostCard post = {each} student = {student} handleCommentPost= {this.handleCommentPost.bind(this)} isCommenting = { isCommenting } />)
+                         <Spin spinning = {isLoading} >{post.map((each,index)=> { 
+                            return (<div key  = {index} ><PostCard post = {each} student = {student} handleCommentPost= {this.handleCommentPost.bind(this)} isCommenting = { isCommenting } /> </div>)
                         })}</Spin>
 
                         <Pagination defaultCurrent={page + 1} pageSize = {limit} total = {total}  style = {{float:"right"}} 
