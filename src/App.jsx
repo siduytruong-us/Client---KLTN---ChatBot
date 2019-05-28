@@ -12,13 +12,24 @@ import ErrorPage from "./Components/ErrorPage"
 import QnA from "./Components/QnA/QnA"
 import SignIn from "./Components/Authentication/SignIn"
 
+// Cẩm nang
+import Credits from './Components/CamNang/Credits';
+import Contest from './Components/CamNang/Contest'
+
 import Header from "./Components/Navigation/Header"
 import Footer from "./Components/Navigation/Footer"
 
 import HandleDateTime from "./Global/Function/HandleDateTime"
 import firebase from "./Config/firebaseConfig"
-import { Input, Icon, Button, message, Popconfirm } from 'antd';
+import { Input, Icon, Button, message, Popconfirm, BackTop } from 'antd';
+import axios from './Config/axiosConfig';
+import moment from 'moment'
 
+
+
+import HandleChatFirestore from "./Global/Function/HandleChatFirestore"
+import Scholarship from './Components/CamNang/Scholarship';
+import Admissions from './Components/CamNang/Admissions';
 
 const conversationFirestore = firebase.firestore().collection("Conversation")
 
@@ -39,6 +50,7 @@ class App extends Component {
         unSeenMessage: 0,
         student: null,
         isChatEnable: false,
+        mode: "admin"
     }
 
     
@@ -49,6 +61,7 @@ class App extends Component {
     this.renderOptionsBotOrAdminToWidget = this.renderOptionsBotOrAdminToWidget.bind(this)
 
     this.handleReportBotReponse = this.handleReportBotReponse.bind(this)
+    this.handleChatWithBot = this.handleChatWithBot.bind(this)
     
   }
 
@@ -114,83 +127,130 @@ class App extends Component {
     
   }
 
-  handleHistoryConversationFirestoreToWidget = (conversation) => { 
-      conversation.history.map(each => { 
-        if ( each.user ) { 
-          addUserMessage(each.text)
+  handleHistoryConversationFirestoreToWidget = (message) => { 
+      if ( message.user ) { 
+        addUserMessage(message.text)
+      }
+      else {
+        switch (message.respondent) {
+          case "bot": 
+            const botReponse = ({data, action}) => {
+              return <div  className = "rcw-message" style = {{margin:"0px"}}>
+                          <img src="/assets/img/favicon.ico" className="rcw-avatar" alt="profile"/>
+                          <div className = "rcw-response">
+                              <div className="rcw-message-text">
+                                {message.text} - <Popconfirm title={<div>Báo cáo câu trả lời?<Input id = "form-bot-report" placeholder = "Nội dung"/></div>} 
+                                                          okText="Có" cancelText="Không"
+                                                          icon={<Icon type="info-circle" style={{ color: 'red' }} />}
+                                                          onConfirm = {() => this.handleReportBotReponse(message.text)}>
+                                                    <Button type="danger" shape="circle" icon="info-circle" size="small" />
+                                              </Popconfirm>
+                              </div>
+                          </div>
+                      </div>
+            }
+            renderCustomComponent(botReponse, {data: this.state.test, action: this.handleReportBotReponse });
+            break;
+          case "admin":
+            addResponseMessage(message.text)
+          // eslint-disable-next-line no-fallthrough
+          default:
+            
+            break;
         }
-        else {
-          switch (each.respondent) {
-            case "bot": 
-              const formReportBotReponse = () => {
-                return <div>
-                        Báo cáo câu trả lời?
-                        <Input placeholder = "Nội dung"/>
-                        </div>
-              }
-              const botReponse = ({data, action}) => {
-                return <div  className = "rcw-message" style = {{margin:"0px"}}>
-                            <img src="/assets/img/favicon.ico" class="rcw-avatar" alt="profile"/>
-                            <div className = "rcw-response">
-                                <div class="rcw-message-text">
-                                  {each.text} - <Popconfirm title={<div>Báo cáo câu trả lời?<Input id = "form-bot-report" placeholder = "Nội dung"/></div>} 
-                                                            okText="Có" cancelText="Không"
-                                                            icon={<Icon type="info-circle" style={{ color: 'red' }} />}
-                                                            onConfirm = {this.handleReportBotReponse}>
-                                                      <Button type="danger" shape="circle" icon="info-circle" size="small" />
-                                                </Popconfirm>
-                                </div>
-                            </div>
-                        </div>
-              }
-              renderCustomComponent(botReponse, {data: this.state.test, action: this.handleReportBotReponse });
-              break;
-            case "admin":
-              addResponseMessage(each.text)
-            // eslint-disable-next-line no-fallthrough
-            default:
-              
-              break;
-          }
-          
-        }
-      })
+        
+      }
   }
 
-  handleNewUserMessage = (message) => {
-      // this.socket.emit("chat message", newMessage)
+  handleNewUserMessage = (msg) => {
+      const {student,mode} = this.state
+
       var {unSeenMessage} = this.state
       if ( unSeenMessage > 0) {
         this.setState({unSeenMessage:0})
       }
-      var temp = { 
-        sendAt : new Date(),
-        text: message,
-        user: "user"
+      
+
+      
+      if (student){
+        var userMsg = { 
+          sendAt : new Date(),
+          text: msg,
+          user: "user"
+        }
+        HandleChatFirestore.addChatToConversation(student,userMsg)
+        .catch( err => {addResponseMessage(err)})
       }
 
-      const student = this.state.student
-      if (student){
-        conversationFirestore.doc(student.toString()).update({
-          history: firebase.firestore.FieldValue.arrayUnion(temp),
-          lastMessage: new Date(),
-        }).catch(err => {
-          addResponseMessage(err.toString())
+      if( mode === "bot") { 
+          
+          axios.post("/bot/"+ student, {message:msg})
+          .then(res => { 
+            const data =res.data.data
+
+            var botMsg = { 
+              sendAt : new Date(),
+              text: data.message,
+              respondent:"bot"
+            }
+
+            HandleChatFirestore.addChatToConversation(student,botMsg)
+            .catch( err => {addResponseMessage(err)})
+
+          })
+          .catch(err => {
+            message.error(err.toString(),1.5)
+          })
+      }
+  }
+
+  handleChatWithBot() { 
+    addResponseMessage("Chào bạn, mình là bot Chris, mình có thể giúp gì cho bạn?")
+    this.setState({
+      mode:"bot"
+    })
+  }
+
+  handleReportBotReponse(botResponse) { 
+      const {student} = this.state
+      const comment = document.getElementById("form-bot-report").value.toString() 
+      //  type - create_time - issue - comment - id_issue
+      const report = { 
+        create_time:  moment(new Date()).valueOf(),
+        comment: comment,
+        type: "conversation",
+        issue: [botResponse],
+        id_issue: 152,
+      }
+
+      if ( comment ) {
+        axios.post("/client/report/create", report)
+        .then ( () => { 
+          return message.success("Đã gửi báo cáo!",2)
+        })
+        .catch( err => { 
+          if (err.response) { 
+            console.log(err.response);
+            
+            err = err.response.data
+            return message.error(err.message.toString(),2)
+          }
+          return message.error(err.toString(),2)
+        })
+        .finally( () => { 
+          document.getElementById("form-bot-report").value = ""
         })
       }
-        
-  }
-
-  handleReportBotReponse() { 
-      
-      const reportForm = document.getElementById("form-bot-report").value
-
-      if ( reportForm ) {
-        return message.info("handleReportBotReponse" + reportForm,2)
+      else {
+        document.getElementById("form-bot-report").value = null
+        return message.error("Report không được để trống!" + comment, 2)
       }
+
         
-      return message.error("Report không được để trống!", 2)
+      
   }
+
+  
   showModal = () => {
     this.setState({
       visible: true,
@@ -219,6 +279,7 @@ class App extends Component {
       includeMetadataChanges: true
     }, doc => {
       try {
+        // eslint-disable-next-line no-unused-vars
         var source = doc.metadata.hasPendingWrites ? "Local" : "Server";
         const conversation = doc.data()  
         if (!conversation) {
@@ -231,14 +292,25 @@ class App extends Component {
 
         if (this.state.isLoading) { 
           this.setState({ conversation, isLoading:false})
-          this.handleHistoryConversationFirestoreToWidget(this.state.conversation)
+          // this.handleHistoryConversationFirestoreToWidget(this.state.conversation)
+          // conversation.for(each=>{ 
+            
+          // })
+          
+          conversation.history.forEach(each => {
+            this.handleHistoryConversationFirestoreToWidget(each)
+          });
           resolve("done")
         }
         else {
-          if ( history[length - 1].respondent ) {
+          if ( history[length - 1].respondent && source === "Local") {
             var count = this.state.unSeenMessage + 1
             this.setState({unSeenMessage: count})
-            addResponseMessage(history[length - 1].text);
+            const resMessage = history[length - 1]
+            console.log("setListenInComingConversation");
+            console.log(source);
+            
+            this.handleHistoryConversationFirestoreToWidget(resMessage)
           }
         }
       }
@@ -292,7 +364,6 @@ class App extends Component {
             }
             
         })
-        
       }
         
       else  {
@@ -300,13 +371,13 @@ class App extends Component {
         addResponseMessage("Bạn hãy đăng ký thành viên để được hỗ trợ tốt nhất và nhận nhiều thông báo về trường hơn nhé!")
         addResponseMessage("Chức năng chat có hỗ trợ chatbot trả lời tự động. Bạn có thể tìm kiếm thông tin nhanh hơn nhờ bot.")
         addResponseMessage("Bạn muốn trò chuyện với bot hay admin?")
-        const OptionButton = ({data, action}) => {
-          return <div style = {{width: "100%"}}>
-                      <Button style = {{width:"40%", float:"left"}}>Admin</Button> 
-                      <Button style = {{width:"40%", float:"right"}}> Bot </Button>
-                  </div>
-        }
-        renderCustomComponent(OptionButton, {data: this.state.test, action: this.handleModalDataChange });
+        // const OptionButton = ({data, action}) => {
+        //   return <div style = {{width: "100%"}}>
+        //               <Button style = {{width:"40%", float:"left"}}>Admin</Button> 
+        //               <Button style = {{width:"40%", float:"right"}} onClick = {() => this.handleChatWithBot()}> Bot </Button>
+        //           </div>
+        // }
+        renderCustomComponent(this.OptionButton, {data: this.state.test, action: null});
       }
       
   }
@@ -319,17 +390,17 @@ class App extends Component {
       prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}/>
   
     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-    <a onClick = { () => {dropMessages(); this.renderOptionsBotOrAdminToWidget()}}>Không phải là sinh viên của trường!</a>
+    <a  style = {{marginLeft:"10px"}} onClick = { () => {dropMessages(); this.renderOptionsBotOrAdminToWidget()}}>Không phải là sinh viên của trường!</a>
   </div>
   }
   
   OptionButton = ({data, action}) => {
     return <div style = {{width: "100%"}}>
-                <Button style = {{width:"40%", float:"left"}}>Admin</Button> 
-                <Button style = {{width:"40%", float:"right"}}> Bot </Button>
+                <Button style = {{width:"40%", float:"left", marginLeft:"20px"}}>Admin</Button> 
+                <Button style = {{width:"40%", float:"right", marginRight:"20px"}} onClick = {() => this.handleChatWithBot()}> Bot </Button>
             </div>
   }
-
+  //#endregion
 
   render() {
     var {unSeenMessage} = this.state
@@ -347,6 +418,13 @@ class App extends Component {
               <Route exact path = "/thu-vien" component = {Library}/>
               <Route exact path = "/hoi-dap" component = {QnA}/>
               <Route exact path = "/dang-nhap" component = {SignIn}/>
+
+              {/* Cẩm nang */}
+              <Route exact path = "/tin-chi-hoc-phan" component = {Credits}/>
+              <Route exact path = "/lich-thi" component = {Contest}/>
+              <Route exact path = "/hoc-bong-du-hoc" component = {Scholarship}/>
+              <Route exact path = "/tuyen-sinh" component = {Admissions}/>
+
               <Route exact path = "*" component = {ErrorPage}/>
           </Switch>
 
@@ -357,7 +435,12 @@ class App extends Component {
             profileAvatar= "/assets/img/favicon.ico"
             titleAvatar = "/assets/img/favicon.ico"
           />
-        </div>
+          
+          
+          <BackTop />
+
+
+          </div>  
         <Footer/>
       </div>
       </BrowserRouter>

@@ -24,6 +24,7 @@ class Header extends Component {
 
     render() {
       const gioithieu = ["khoa-nganh", "thu-vien", "phong-chuc-nang"]
+      const camnang = ["tin-chi-hoc-phan", "lich-thi", "thong-bao","hoc-bong-du-hoc"]
 
         return (
           <div>
@@ -54,11 +55,21 @@ class Header extends Component {
                       </ul>
                     </li>
 
+                    <li className = {camnang.some(each => each === this.state.page) ? "active dropdown" : "dropdown"}>
+                      <a href="#" className="dropdown-toggle" data-toggle="dropdown">Cẩm nang<span className="fa fa-angle-down"></span></a>
+                      <ul className="dropdown-menu" role="menu">
+                        <li><NavLink to="/tin-chi-hoc-phan">Tín chỉ - học phần</NavLink></li>                
+                        <li><NavLink to="/lich-thi">Lịch thi, Học phí</NavLink></li>                
+                        <li><NavLink to="/hoc-bong-du-hoc">Học bổng, du học</NavLink></li>
+                        <li><NavLink to="/tuyen-sinh">Tuyển sinh</NavLink></li>
+                      </ul>
+                    </li>
+
                     <li className = {this.state.page === "hoi-dap" ? "active" : null}><NavLink to="/hoi-dap">Hỏi đáp</NavLink></li>
 
                     <li className = {this.state.page === "lien-he" ? "active" : null}><NavLink to = "/lien-he">Liên hệ</NavLink></li>
 
-                    <li className = {this.state.page === "dang-nhap" ? "active" : null}><NavLink to="/dang-nhap">Đăng nhập</NavLink></li>
+                    {/* <li className = {this.state.page === "dang-nhap" ? "active" : null}><NavLink to="/dang-nhap">Đăng nhập</NavLink></li> */}
 
                     <li><a href="#" id="mu-search-icon"><i className="fa fa-search"></i></a></li>
                     

@@ -1,7 +1,7 @@
+/* ant design */
 .antd-spinner { 
     margin-top: 20px;
 }
-
 
 .ant-card-head-title {
     padding: 8px 0;
@@ -36,6 +36,60 @@
     font-weight: 400;
 }
 
+.ant-input-affix-wrapper {
+    font-size: 14px;
+    -webkit-font-feature-settings: "tnum";
+    font-feature-settings: "tnum";
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.65);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 5px;
+    list-style: none;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.ant-btn-danger {
+    color: #f5222d;
+    background-color: #f5f5f5;
+    border-color: #ffffff00;
+}
+
+.ant-back-top {
+    font-size: 14px;
+    -webkit-font-feature-settings: "tnum";
+    font-feature-settings: "tnum";
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.65);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 10;
+    position: fixed;
+    left: 100px;
+    bottom: 50px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.ant-popover-buttons {
+    text-align: right;
+    margin-bottom: 4px;
+    visibility: hidden;
+}
+
+.ant-popover-inner-content {
+    padding: 0px 16px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+/* react-chat-widget */
 .rcw-client, .rcw-response {
     border-radius: 10px;
     padding: 10px;
@@ -43,8 +97,19 @@
     text-align: left;
 }
 
-.ant-btn-danger {
-    color: #f5222d;
-    background-color: #f5f5f5;
-    border-color: #ffffff00;
+
+.rcw-message {
+    margin: 5px;
+    padding-bottom: 4px;
+    display: -webkit-flex;
+    display: flex;
+}
+
+/* index  */
+#mu-latest-courses {
+    background-color: rgba(255, 255, 255, 0);
+    display: inline;
+    float: left;
+    padding: 40px 0;
+    width: 100%;
 }

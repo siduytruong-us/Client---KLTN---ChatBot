@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {NavLink} from 'react-router-dom'
 import {Collapse, Divider, message, Modal, Button, Icon, Spin, Skeleton} from "antd"
 import AOS from "aos"
 import axios from "axios"
@@ -60,11 +61,17 @@ class index extends Component {
             alias: alias,
         })
         .then( res => { 
-            const data = res.data.data
+            var data = res.data.data
+            
+            data.sort(function(a, b) {
+                return b.create_time - a.create_time;
+            });
+            data.length = 3
             this.setState({news:data})
             
         })
         .catch( err => {
+            console.log(err);
             err = err.response? err.response.data:err.toString() 
             message.error(err.message,2)
         })
@@ -112,6 +119,7 @@ class index extends Component {
     
     render() {
         const {news,selectedNews,visibleModal} = this.state
+
         return (
             <div>
                 
@@ -123,28 +131,29 @@ class index extends Component {
                         </figure>
                     </div>
                     <div className="mu-slider-content" color = "white">
-                        <p style={titleImageSliderStyle}>Chào mừng bạn tới Trường đại học Khoa học tự nhiên</p>
+                        <p style={titleImageSliderStyle}>CHÀO MỪNG BẠN TỚI SỔ TAY SINH VIÊN ONLINE</p>
                         <span></span>
-                        <p>We Will Help You To Learn</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor amet error eius reiciendis eum sint unde eveniet deserunt est debitis corporis temporibus recusandae accusamus.</p>
-                        <a href="#" className="mu-read-more-btn">Read More</a>
+                        <p>Website được xây dựng dựa trên Sổ Tay Sinh Viên của đại học Khoa học Tự nhiên năm 2018</p>
+                        <p>Cung cấp cho bạn những thông tin cần thiết về qui chế tín chỉ, quy định nhà trường, học bổng - học phí, v.v...</p>
                     </div>
                     </div>
                     <div className="mu-slider-single">
                     <div className="mu-slider-img">
                         <figure>
-                        <img src="/assets/img/slider/2.jpg" alt="img"/>
+                        <img src="/assets/img/slider/chatbot.png" alt="img"/>
                         </figure>
                     </div>
                     <div className="mu-slider-content" color = "white">
-                        <p style={titleImageSliderStyle}>Chào mừng bạn tới Trường Khoa học tự nhiên</p>
+                        <p style={titleImageSliderStyle}>HỆ THỐNG CHATBOT HỖ TRỢ SINH VIÊN</p>
                         <span></span>
-                        <p>We Will Help You To Learn</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor amet error eius reiciendis eum sint unde eveniet deserunt est debitis corporis temporibus recusandae accusamus.</p>
-                        <a href="#" className="mu-read-more-btn">Read More</a>
+                        <p>Website được trang bị hệ thống chatbot với tên là CHRIS, sẽ hỗ trợ bạn 24/7</p>
+                        <p>Nhiệm vụ của Chris là luôn sẵn sàng giải đáp các câu hỏi, thắc mắc của các bạn sinh viên hoặc chuẩn bị là sinh viên của trường. </p>
+                        <p>Để đặt câu hỏi cho Chris, bạn chỉ cần nhấn vào bong bóng hội thoại gốc dưới màn hình.</p>
                     </div>
                     </div>
-                    <div className="mu-slider-single">
+                    
+                    
+                    {/* <div className="mu-slider-single">
                     <div className="mu-slider-img">
                         <figure>
                         <img src="/assets/img/slider/3.jpg" alt="img"/>
@@ -158,46 +167,54 @@ class index extends Component {
                         <a href="#" className="mu-read-more-btn">Read More</a>
                     </div>
                     </div>
+                 */}
                 </section>          
+              
                 <section id="mu-latest-courses">
-                    <div class="container">
-                        <div class="row">
-                        <div class="col-lg-12 col-md-12">
-                        <div class="mu-latest-courses-area">
-                            <div class="mu-title">
-                            <Divider><h2><b>Tin hoạt động</b></h2></Divider>
-                            </div>
-                            <div id="mu-latest-course-slide" class="mu-latest-courses-content">
-                                
-                                {news.map(each => { 
-                                    return (
-                                        <div class="col-lg-4 col-md-4 col-xs-12 animated fadeIn">
-                                            <div class="mu-latest-course-single">
-                                                <figure class="mu-latest-course-img">
-                                                    <a onClick = {() => this.handleViewNews(each)}><img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="img"/></a>
-                                                </figure>
-                                                <div class="mu-latest-course-single-content">
-                                                    <Icon type="clock-circle" /> {moment(parseInt(each.create_time)).format("DD/MM/YYYY HH:MM")}
-                                                    <h4><a onClick = {() => this.handleViewNews(each)}>
-                                                    <p  style = {{ display: "-webkit-box",WebkitLineClamp:4, WebkitBoxOrient:'vertical',overflow: "hidden"}}>{each.title}</p>
-                                                    </a></h4>
-                                                    <div class="mu-latest-course-single-contbottom">
-                                                    <a class="mu-course-details" onClick = {() => this.handleViewNews(each)}>Xem chi tiết</a>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-12 col-md-12">
+                                <div className="mu-latest-courses-area">
+                                    <div className="mu-title">
+                                    <Divider><h3><b>Tin hoạt động</b></h3></Divider>
+                                    </div>
+                                    <div id="mu-latest-course-slide" className="mu-latest-courses-content">
+                                        
+                                        {news.map((each, index) => { 
+                                            console.log(each.create_time);
+                                            
+                                            
+                                            return (
+                                                <div className="col-lg-4 col-md-4 col-xs-12 "  key = {index}>
+                                                    <div className="mu-latest-course-single">
+                                                        <figure className="mu-latest-course-img">
+                                                            <a onClick = {() => this.handleViewNews(each)}><img src="http://sis.vnu.edu.vn/wp-content/uploads/2018/07/Th%C3%B4ng-b%C3%A1o-624x330-1.png" alt="img"/></a>
+                                                        </figure>
+                                                        <div className="mu-latest-course-single-content">
+                                                            <Icon type="clock-circle" /> {moment(parseInt(each.create_time)).format("DD/MM/YYYY ")}
+                                                            <h4><a onClick = {() => this.handleViewNews(each)}>
+                                                            <p  style = {{ display: "-webkit-box",WebkitLineClamp:4, WebkitBoxOrient:'vertical',overflow: "hidden"}}>{each.title}</p>
+                                                            </a></h4>
+                                                            <div className="mu-latest-course-single-contbottom">
+                                                            <a className="mu-course-details" onClick = {() => this.handleViewNews(each)}>Xem chi tiết</a>
+                                                            </div>  
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    )
-                                })} 
+                                            )
+                                        })} 
+                                    </div>
                                 
+                                </div>
                             </div>
                         </div>
-                        </div>
+                        {news.length>0?
+                        <NavLink to = "tin-tuc" style = {{float:"left", paddingTop:"20px", paddingLeft:"15px"}}>Xem thêm tin hoạt động</NavLink>:null}
                     </div>
-                    </div>
+                    
                 </section>
                             
-               <Divider><h2>Sơ lược về trường</h2></Divider>
+               <Divider><h3>Sơ lược về trường</h3></Divider>
                 <div >
                     <section id="mu-about-us">
                         <div className="container">
@@ -370,7 +387,7 @@ class index extends Component {
                             <div className="mu-testimonial-item">
                                 <div className="mu-testimonial-quote">
                                 <blockquote>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem rerum soluta aperiam blanditiis obcaecati eveniet aliquam consequatur nobis eaque id.</p>
+                                    <p>Làm việc gì cũng làm đến cùn g. Không làm dang dở, luôn làm hết mình.</p>
                                 </blockquote>
                                 </div>
                                 <div className="mu-testimonial-img">
@@ -403,7 +420,7 @@ class index extends Component {
                 </section>
             
                 <Modal
-                width = "90%"
+                width = "80%"
                 title={selectedNews.title}
                 visible={visibleModal}
                 onOk={this.handleOk}
@@ -414,7 +431,7 @@ class index extends Component {
                 >
                 <b>Số lượt xem: {selectedNews.hits}</b> - <Icon type="clock-circle" /> { moment(parseInt(selectedNews.create_time)).format("DD/MM/YYYY HH:MM")}
                 <Divider></Divider>
-                    <div dangerouslySetInnerHTML={{__html: selectedNews.content}} ></div>
+                        <div dangerouslySetInnerHTML={{__html: selectedNews.content}} ></div>
                 </Modal>
             </div>
         );

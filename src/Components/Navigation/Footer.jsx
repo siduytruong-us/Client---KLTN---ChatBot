@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {NavLink} from 'react-router-dom';
 class Footer extends Component {
     render() {
       if (window.location.pathname === '/dang-nhap' || window.location.pathname === '/dang-ky') 
@@ -11,42 +11,27 @@ class Footer extends Component {
       <div className="container">
         <div className="mu-footer-top-area">
           <div className="row">
-            <div className="col-lg-3 col-md-3 col-sm-3">
+            <div className="col-lg-4 col-md-4 col-sm-4">
               <div className="mu-footer-widget">
-                <h4>Information</h4>
+                <h4>Giới thiệu</h4>
                 <ul>
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="">Features</a></li>
-                  <li><a href="">Course</a></li>
-                  <li><a href="">Event</a></li>
-                  <li><a href="">Sitemap</a></li>
-                  <li><a href="">Term Of Use</a></li>
+                  <li><NavLink to = "/khoa-nganh">Các khoa</NavLink></li>
+                  <li><NavLink to = "/phong-chuc-nang">Các phòng chức năng</NavLink></li>
+                  <li><NavLink to = "/thu-vien">Thư viện</NavLink></li>
                 </ul>
               </div>
             </div>
-            <div className="col-lg-3 col-md-3 col-sm-3">
+            <div className="col-lg-4 col-md-4 col-sm-4">
               <div className="mu-footer-widget">
-                <h4>Student Help</h4>
+                <h4>Cẩm nang trường học</h4>
                 <ul>
-                  <li><a href="">Get Started</a></li>
-                  <li><a href="#">My Questions</a></li>
-                  <li><a href="">Download Files</a></li>
-                  <li><a href="">Latest Course</a></li>
-                  <li><a href="">Academic News</a></li>                  
+                  <li><NavLink to = "/tin-chi-hoc-phan">Tín chỉ - học phần</NavLink></li>
+                  <li><NavLink to = "/lich-thi">Lịch thi, học phí</NavLink></li>
+                  <li><NavLink to = "/thong-bao">Thông báo phòng ban</NavLink></li>
                 </ul>
               </div>
             </div>
-            <div className="col-lg-3 col-md-3 col-sm-3">
-              <div className="mu-footer-widget">
-                <h4>News letter</h4>
-                <p>Get latest update, news & academic offers</p>
-                <form className="mu-subscribe-form">
-                  <input type="email" placeholder="Type your Email"/>
-                  <button className="mu-subscribe-btn" type="submit">Subscribe!</button>
-                </form>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-3 col-sm-3">
+            <div className="col-lg-4 col-md-4 col-sm-4">
               <div className="mu-footer-widget">
                 <h4>Liên lạc</h4>
                 <address>
