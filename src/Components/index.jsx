@@ -245,7 +245,7 @@ class index extends Component {
                                 <div className="col-lg-6 col-md-6">
                                     <div className="mu-about-us-right">                            
                                     <a id="mu-abtus-video" href="https://www.youtube.com/embed/9Z49DscgnJY" target="mutube-video">
-                                    <img src="https://edu2review.com/upload/article-images/2018/07/7933/1920x1080_dai-hoc-khoa-hoc-tu-nhien.jpg" alt="img"/>
+                                    <img src="/assets/img/video.jpg" alt="img"/>
                                     </a>                
                                     </div>
                                     <div style = {{marginTop:"20px", fontSize:"18px"}}>
@@ -276,30 +276,26 @@ class index extends Component {
                             <div className="row">
                             <div className="col-lg-3 col-md-3 col-sm-3">
                                 <div className="mu-abtus-counter-single">
-                                <span className="fa fa-book"></span>
-                                <h4 className="counter">568</h4>
-                                <p>Subjects</p>
+                                <h4 className="counter">580</h4>
+                                <p>Thạc sĩ, Tiến Sĩ</p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-3 col-sm-3">
                                 <div className="mu-abtus-counter-single">
-                                <span className="fa fa-users"></span>
-                                <h4 className="counter">3500</h4>
-                                <p>Students</p>
+                                <h4 className="counter">30</h4>
+                                <p>Ngành đạo tạo tiến sĩ</p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-3 col-sm-3">
                                 <div className="mu-abtus-counter-single">
-                                <span className="fa fa-flask"></span>
-                                <h4 className="counter">65</h4>
-                                <p>Modern Lab</p>
+                                <h4 className="counter">33</h4>
+                                <p>Ngành đào tạo thạc sĩ</p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-3 col-sm-3">
                                 <div className="mu-abtus-counter-single no-border">
-                                <span className="fa fa-user-secret"></span>
-                                <h4 className="counter">250</h4>
-                                <p>Teachers</p>
+                                <h4 className="counter">18</h4>
+                                <p>Ngành đào tạo cử nhân</p>
                                 </div>
                             </div>
                             </div>
