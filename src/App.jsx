@@ -30,6 +30,7 @@ import moment from 'moment'
 import HandleChatFirestore from "./Global/Function/HandleChatFirestore"
 import Scholarship from './Components/CamNang/Scholarship';
 import Admissions from './Components/CamNang/Admissions';
+import Search from './Components/Search';
 
 const conversationFirestore = firebase.firestore().collection("Conversation")
 
@@ -271,8 +272,6 @@ class App extends Component {
   }
   //#endregion 
 
-  
-
   //#region method 
   setListenInComingConversation(student,resolve,reject) {
     conversationFirestore.doc(student).onSnapshot({
@@ -425,6 +424,9 @@ class App extends Component {
               <Route exact path = "/hoc-bong-du-hoc" component = {Scholarship}/>
               <Route exact path = "/tuyen-sinh" component = {Admissions}/>
 
+
+              {/* Search Engine */}
+              <Route exact path = "/tim-kiem" component = {Search}/>
               <Route exact path = "*" component = {ErrorPage}/>
           </Switch>
 

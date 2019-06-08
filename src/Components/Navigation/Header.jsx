@@ -11,6 +11,8 @@ class Header extends Component {
     }
   }
   
+
+  //#region component method
   componentDidMount(){ 
       this.setState({ page: this.props.location.pathname.split("/")[1]})
   }
@@ -21,6 +23,12 @@ class Header extends Component {
       this.setState({ page: currentPage})
     
   }
+  // #endregion
+
+
+  //#region method 
+  
+  //#endregion
 
     render() {
       const gioithieu = ["khoa-nganh", "thu-vien", "phong-chuc-nang"]
@@ -59,7 +67,7 @@ class Header extends Component {
                       <a href="#" className="dropdown-toggle" data-toggle="dropdown">Cẩm nang<span className="fa fa-angle-down"></span></a>
                       <ul className="dropdown-menu" role="menu">
                         <li><NavLink to="/tin-chi-hoc-phan">Tín chỉ - học phần</NavLink></li>                
-                        <li><NavLink to="/lich-thi">Lịch thi, Học phí</NavLink></li>                
+                        <li><NavLink to="/lich-thi">Lịch thi, Học phí, Thời khóa biểu</NavLink></li>                
                         <li><NavLink to="/hoc-bong-du-hoc">Học bổng, du học</NavLink></li>
                         <li><NavLink to="/tuyen-sinh">Tuyển sinh</NavLink></li>
                       </ul>
@@ -85,8 +93,8 @@ class Header extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-12">            
-                  <form className="mu-search-form">
-                    <input type="search" placeholder="Type Your Keyword(s) & Hit Enter"/>              
+                  <form className="mu-search-form" action = "/tim-kiem">
+                    <input type="search" placeholder="Tìm theo từ khóa" name = "keyword" />              
                   </form>
                 </div>
               </div>

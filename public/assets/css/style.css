@@ -630,7 +630,8 @@ img {
 }
 #mu-features .mu-features-area .mu-features-content .mu-single-feature span {
   font-size: 25px;
-  padding: 10px 15px;
+  padding: 15px 15px;
+  border-radius: 50%;
 }
 #mu-features .mu-features-area .mu-features-content .mu-single-feature h4 {
   margin-bottom: 15px;
@@ -653,6 +654,7 @@ img {
   letter-spacing: 0.3px;
   line-height: 1.7;
 }
+
 #mu-features .mu-features-area .mu-features-content .mu-single-feature a {
   border: 1px solid #888;
   display: inline-block;
@@ -660,11 +662,12 @@ img {
   margin-top: 10px;
   padding: 5px 10px;
   text-transform: uppercase;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -ms-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+ 
 }
 
 /*==================

@@ -164,7 +164,7 @@ class index extends Component {
                         <span></span>
                         <p>We Will Help You To Learn</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor amet error eius reiciendis eum sint unde eveniet deserunt est debitis corporis temporibus recusandae accusamus.</p>
-                        <a href="#" className="mu-read-more-btn">Read More</a>
+                        <a href="#" className="mu-read-more-btn">Tìm hiểu thêm</a>
                     </div>
                     </div>
                  */}
@@ -245,7 +245,7 @@ class index extends Component {
                                 <div className="col-lg-6 col-md-6">
                                     <div className="mu-about-us-right">                            
                                     <a id="mu-abtus-video" href="https://www.youtube.com/embed/9Z49DscgnJY" target="mutube-video">
-                                    <img src="https://edu2review.com/upload/article-images/2018/07/7933/1920x1080_dai-hoc-khoa-hoc-tu-nhien.jpg" alt="img"/>
+                                    <img src="/assets/img/khtn-clip.jpg" alt="img"/>
                                     </a>                
                                     </div>
                                     <div style = {{marginTop:"20px", fontSize:"18px"}}>
@@ -276,30 +276,26 @@ class index extends Component {
                             <div className="row">
                             <div className="col-lg-3 col-md-3 col-sm-3">
                                 <div className="mu-abtus-counter-single">
-                                <span className="fa fa-book"></span>
-                                <h4 className="counter">568</h4>
-                                <p>Subjects</p>
+                                <h4 className="counter">580</h4>
+                                <p>Thạc sĩ, Tiến Sĩ</p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-3 col-sm-3">
                                 <div className="mu-abtus-counter-single">
-                                <span className="fa fa-users"></span>
-                                <h4 className="counter">3500</h4>
-                                <p>Students</p>
+                                <h4 className="counter">18</h4>
+                                <p>Ngành đào tạo cử nhân</p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-3 col-sm-3">
                                 <div className="mu-abtus-counter-single">
-                                <span className="fa fa-flask"></span>
-                                <h4 className="counter">65</h4>
-                                <p>Modern Lab</p>
+                                <h4 className="counter">33</h4>
+                                <p>Ngành đào tạo Thạc sĩ</p>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-3 col-sm-3">
                                 <div className="mu-abtus-counter-single no-border">
-                                <span className="fa fa-user-secret"></span>
-                                <h4 className="counter">250</h4>
-                                <p>Teachers</p>
+                                <h4 className="counter">30</h4>
+                                <p>Ngành đào tạo Tiến sĩ</p>
                                 </div>
                             </div>
                             </div>
@@ -316,59 +312,81 @@ class index extends Component {
                                 <div className="col-lg-12 col-md-12">
                                     <div className="mu-features-area">
                                         <div className="mu-title">
-                                        <h2>Our Features</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsa ea maxime mollitia, vitae voluptates, quod at, saepe reprehenderit totam aliquam architecto fugiat sunt animi!</p>
+                                        
+                                        <Divider><h2>Sổ Tay Sinh Viên Online</h2></Divider>
                                         </div>
                                         <div className="mu-features-content">
                                             <div className="row">
-                                                <div className="col-lg-4 col-md-4  col-sm-6">
-                                                <div className="mu-single-feature">
-                                                    <span className="fa fa-book"></span>
-                                                    <h4>Professional Courses</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                                    <a href="#">Read More</a>
+
+                                                <div data-aos="fade-right"  data-aos-duration="300" >
+                                                    <div className="col-lg-4 col-md-4  col-sm-6">
+                                                            <div className="mu-single-feature">
+                                                                <span className="fa fa-book"></span>
+                                                                <h4>Tổng hợp thông tin</h4>
+                                                                <p> Website tổng hợp tất cả thông tin hữu ích cho sinh viên từ các trang web của trường. Giúp bạn cảm thấy thoải mái hơn khi tìm hiểu về nhà trường.</p>
+                                                                <a href="#">Tìm hiểu thêm</a>
+                                                            </div>
+                                                    </div>
                                                 </div>
+
+                                                <div data-aos="fade-right"  data-aos-duration="300" data-aos-delay="300">
+                                                    <div className="col-lg-4 col-md-4 col-sm-6">
+                                                        <div className="mu-single-feature">
+                                                            <span className="fa fa-comments-o"></span> 
+                                                            <h4>Chat</h4>
+                                                            <p>Ứng dụng có hỗ trợ <b>chatbot</b> có thể giải đáp lập tức các thắc mắc của bạn </p>
+                                                            <a href="#">Tìm hiểu thêm</a>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div className="col-lg-4 col-md-4 col-sm-6">
-                                                <div className="mu-single-feature">
-                                                    <span className="fa fa-users"></span>
-                                                    <h4>Expert Teachers</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                                    <a href="#">Read More</a>
+
+                                                <div data-aos="fade-right"  data-aos-duration="300" data-aos-delay="600">
+                                                    <div className="col-lg-4 col-md-4 col-sm-6">
+                                                        <div className="mu-single-feature">
+                                                            <span className="fa fa-users"></span>
+                                                            <h4>Forum hỏi đáp</h4>
+                                                            <p>Đây là nơi các bạn thỏa sức đặt những câu hỏi cho các anh chị sinh viên, </p>
+                                                            <a href="#">Tìm hiểu thêm</a>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                </div>
-                                                <div className="col-lg-4 col-md-4 col-sm-6">
-                                                <div className="mu-single-feature">
-                                                    <span className="fa fa-laptop"></span>
-                                                    <h4>Online Learning</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                                    <a href="#">Read More</a>
-                                                </div>
-                                                </div>
-                                                <div className="col-lg-4 col-md-4 col-sm-6">
-                                                <div className="mu-single-feature">
-                                                    <span className="fa fa-microphone"></span>
-                                                    <h4>Audio Lessons</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                                    <a href="#">Read More</a>
-                                                </div>
-                                                </div>
-                                                <div className="col-lg-4 col-md-4 col-sm-6">
-                                                <div className="mu-single-feature">
-                                                    <span className="fa fa-film"></span>
-                                                    <h4>Video Lessons</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                                    <a href="#">Read More</a>
-                                                </div>
-                                                </div>
-                                                <div className="col-lg-4 col-md-4 col-sm-6">
-                                            <div className="mu-single-feature">
-                                                <span className="fa fa-certificate"></span>
-                                                <h4>Professional Certificate</h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                                <a href="#">Read More</a>
+                                            
                                             </div>
-                                            </div>
+
+                                            <div className="row">
+                                                <div data-aos="fade-right"  data-aos-duration="300">
+                                                    <div className="col-lg-4 col-md-4 col-sm-6">
+                                                        <div className="mu-single-feature">
+                                                            <span className="fa fa-map-marker"></span>
+                                                            <h4>Liên hệ</h4>
+                                                            <p>Các bạn có thể tìm kiếm thông tin liên hệ của trường tại đây. </p>
+                                                            <NavLink to="#">Tìm hiểu thêm</NavLink>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    
+                                                <div data-aos="fade-right"  data-aos-duration="300" data-aos-delay="300">
+                                                    <div className="col-lg-4 col-md-4 col-sm-6">
+                                                        <div className="mu-single-feature">
+                                                            <span className="fa fa-film"></span>
+                                                            <h4>Video Lessons</h4>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                                            <a href="#">Tìm hiểu thêm</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    
+                                                <div data-aos="fade-right"  data-aos-duration="300" data-aos-delay="600">
+                                                    <div className="col-lg-4 col-md-4 col-sm-6">
+                                                        <div className="mu-single-feature">
+                                                            <span className="fa fa-certificate"></span>
+                                                            <h4>Professional Certificate</h4>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                                            <a href="#">Tìm hiểu thêm</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    
                                             </div>
                                         </div>
                                     </div>

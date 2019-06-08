@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from '../../Config/axiosConfig';
-import { Divider, Popconfirm, Icon, List, Anchor, Collapse } from 'antd';
+import { Divider, Popconfirm, Icon, List, Anchor, Collapse, message } from 'antd';
 import AOS from "aos"
 
 
@@ -24,9 +24,11 @@ export default class Contest extends Component {
         this.state = { 
             midSem:  [],
             lastSem: [],
+            subSchedule:[],
         }
     }
 
+    //#region component
     componentWillReceiveProps() { 
         AOS.refresh()
     }
@@ -35,10 +37,13 @@ export default class Contest extends Component {
         window.scrollTo(0,0)
         AOS.refresh()
 
+        this.fetchDateFromServer()
+    }
+    //#endregion
 
+    fetchDateFromServer() { 
         axios.get("/client/hcmus/schedule/contest")
         .then( res => { 
-            console.log(res.data.data);
             const data = res.data.data
 
             var midSem = []
@@ -52,14 +57,34 @@ export default class Contest extends Component {
                     midSem.push(each)
             })
             this.setState({lastSem, midSem })
-            
         })
         .catch (err => { 
+            if (err.resposne) {
+                err = err.response.message
+                message.error(err.toString(),1.5)
+            }
+        })
 
+        axios.get("/client/hcmus/schedule/subject")
+        .then( res => { 
+            const data = res.data.data
+            data.map( each => {
+                console.log(each);
+                
+            })
+            this.setState({subSchedule: data})
+        })
+        .catch (err => { 
+            if (err.resposne) {
+                err = err.response.message
+                message.error(err.toString(),1.5)
+            }
         })
     }
+
+
     render() {
-        const {lastSem, midSem} = this.state
+        const {lastSem, midSem, subSchedule} = this.state
         return (
         <section id="mu-course-content">
             <div class="container">
@@ -68,6 +93,7 @@ export default class Contest extends Component {
                             <div style = {{ width :"100%", overflowX:"hidden",} } >
                                 <Link href="#hp" title="Học Phí" />
                                 <Link href="#lt" title="Lịch Thi" />
+                                <Link href="#tkb" title="Thời khóa biểu" />
                             </div>
                         </Anchor>
                 </div>
@@ -157,8 +183,44 @@ export default class Contest extends Component {
                         />
                         </Panel>
                     </Collapse>
+
+
                     </div>
                 </div>
+            
+                <div class="row">
+                    <div class="col-sm-12 text-center" id = "tkb">
+                        <Divider><h2 style = {{fontFamily:"sans-arial"}}>THỜI KHÓA BIỂU</h2></Divider>
+                    </div>
+                    
+                    <div class="col-sm-12" style = {{paddingRight:"100px", marginLeft:"50px"}}>
+                        
+
+                        <List
+                            itemLayout="horizontal"
+                            dataSource={subSchedule}
+                            renderItem={each => (
+                            <List.Item>
+                                <List.Item.Meta
+                                title={
+                                <Popconfirm
+                                cancelText = ""
+                                title={ each.excel? <div><a href = {each.excel.linkExcellinkExcel}>{each.excel.linkExcel}</a></div>:null }
+                                icon={ each.excel? <Icon type="file-excel" style = {{color:"green", fontSize:"20px"}} />: null}>
+
+                                    <a href={each.excel?"#": each.linkHtml} className = "animated fadeIn slow"> {each.title} </a>
+
+                                </Popconfirm>
+                                }
+                                />
+                            </List.Item>
+                            )}
+                        />
+
+
+                    </div>
+                </div>
+            
             </div>
         </section>
         )

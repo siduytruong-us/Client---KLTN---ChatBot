@@ -27,8 +27,8 @@ class Credits extends Component {
         <div class="row header-text">
           <div class="col-sm-5 col-sm-push-6 text-right">
            <div class="mr-3">
-            <h1>Học phần và tính chỉ</h1>
-            <h3>và những điều bạn nên biết</h3>
+            <h1>Học phần và <br/>tín chỉ</h1>
+            <h3>cùng với những điều bạn nên biết</h3>
            </div>
           </div>
         </div>

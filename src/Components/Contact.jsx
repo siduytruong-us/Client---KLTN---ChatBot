@@ -33,8 +33,10 @@ class Contact extends Component {
         mail.subject = document.getElementById("subject").value 
         mail.from = document.getElementById("email").value 
         mail.content = document.getElementById("content").value
+        mail.name = document.getElementById("name").value
 
         console.log(mail);
+        this.setState({isSending:true})
         message.loading("Đang gửi. Vui lòng đợi giây lát",1).then(() => { 
             axios.post("/sendmail",mail)
             .then (res => { 
@@ -46,10 +48,11 @@ class Contact extends Component {
                 message.error(err.message, 2)
             })
             .finally( () => {
+                this.setState({isSending:false})
                 document.getElementById("subject").value  = ""
                 document.getElementById("email").value  = ""
-                // document.getElementById("content").value  = ""
-                document.getElementById("author").value  = ""
+                document.getElementById("content").value  = ""
+                document.getElementById("name").value  = ""
             })
         })
     }
@@ -98,8 +101,8 @@ class Contact extends Component {
                             <div className="mu-contact-left ">
                             <form className="contactform" >                  
                                 <p className="comment-form-author ">
-                                <label htmlFor="author">Họ Tên <span className="required">*</span></label>
-                                <input type="text" required="required" size="30" name="author" id = "author"/>
+                                <label htmlFor="name">Họ Tên <span className="required">*</span></label>
+                                <input type="text" required="required" size="30" name="name" id = "name"/>
                                 </p>
                                 <p className="comment-form-email">
                                 <label htmlFor="email">Email <span className="required">*</span></label>
@@ -113,7 +116,7 @@ class Contact extends Component {
                                 <label htmlFor="comment">Nội dung</label>
                                 <textarea required="required" aria-required="true" rows="8" cols="45" name="comment" id = "content"></textarea>
                                 </p>                
-                                <Button onClick = {this.handleSendEmail} type = "primary" shape ="round" size="large" loading = {this.state.isSending}>Gửi</Button>   
+                                <Button onClick = {this.handleSendEmail.bind(this)} type = "primary" shape ="round" size="large" disabled = {this.state.isSending}>Gửi</Button>   
                             </form>
                             </div>
                         </div>
