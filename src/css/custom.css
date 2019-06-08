@@ -113,3 +113,20 @@
     padding: 40px 0;
     width: 100%;
 }
+
+#mu-abtus-counter {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline;
+    float: left;
+    margin-top: 40px;
+    padding: 100px 0;
+    width: 100%;
+}
+
+#mu-features {
+    display: inline;
+    float: left;
+    padding: 80px 0px;
+    width: 100%;
+}
