@@ -23,49 +23,49 @@ class Credits extends Component {
         return (
             <div className = "container">
                    <section id="header">
-      <div class="container">
-        <div class="row header-text">
-          <div class="col-sm-5 col-sm-push-6 text-right">
-           <div class="mr-3">
-            <h1>Học phần và <br/>tín chỉ</h1>
-            <h3>cùng với những điều bạn nên biết</h3>
-           </div>
-          </div>
-        </div>
-        
-        <div class="row">
-          <div class="col-sm-4 text-center ">
-            <div data-aos="fade-right"  data-aos-duration="1000">
-                <img class="header-img" src="./img/header1.png" alt="Header Image"/>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </section>
+                      <div class="container">
+                        <div class="row header-text">
+                          <div class="col-sm-5 col-sm-push-6 text-right">
+                          <div class="mr-3">
+                            <h1>Học phần và <br/>tín chỉ</h1>
+                            <h3>cùng với những điều bạn nên biết</h3>
+                          </div>
+                          </div>
+                        </div>
+                        
+                        <div class="row">
+                          <div class="col-sm-4 text-center ">
+                            <div data-aos="fade-right"  data-aos-duration="1000">
+                                <img class="header-img" src="/img/header1.png" alt="Header Image"/>
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </section>
     
     
-    <section id="main2">
-      <div class="container">
-        <div class="row">
+                <section id="main2">
+                  <div class="container">
+                    <div class="row">
 
-          <div class="col-sm-6 margin-30">
-            <div data-aos="fade-right"  data-aos-duration="1000">
-              <h2>Tín chỉ là gì?</h2><br />
-              <p> Tín chỉ được sử dụng để tính khối lượng học tập của sinh viên. Một tín chỉ được quy định bằng 15 tiết học lý thuyết; 30 - 45 tiết thực hành, thí nghiệm hoặc thảo luận; 15 - 30 tiết bài tập; 45 - 90 giờ thực tập tại cơ sở; 30 - 60 giờ làm tiểu luận, bài tập lớn hoặc đồ án, khoá luận tốt nghiệp. </p>
-              <p> Trung bình một ngành học sẽ tích lũy khoảng 148 hoặc hơn tín chỉ để tốt nghiệp.</p>
-              <br />
-            </div>
-          </div>
+                      <div class="col-sm-6 margin-30">
+                        <div data-aos="fade-right"  data-aos-duration="1000">
+                          <h2>Tín chỉ là gì?</h2><br />
+                          <p> Tín chỉ được sử dụng để tính khối lượng học tập của sinh viên. Một tín chỉ được quy định bằng 15 tiết học lý thuyết; 30 - 45 tiết thực hành, thí nghiệm hoặc thảo luận; 15 - 30 tiết bài tập; 45 - 90 giờ thực tập tại cơ sở; 30 - 60 giờ làm tiểu luận, bài tập lớn hoặc đồ án, khoá luận tốt nghiệp. </p>
+                          <p> Trung bình một ngành học sẽ tích lũy khoảng 148 hoặc hơn tín chỉ để tốt nghiệp.</p>
+                          <br />
+                        </div>
+                      </div>
 
-          <div class="col-sm-6" style = {{marginTop: "0px"}}>
-            <div data-aos="fade-up"  data-aos-duration="1000">
-                <img class="main1-img img-responsive pull-right" src="./img/main1.png" alt="Main1 Image"/>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+                      <div class="col-sm-6" style = {{marginTop: "0px"}}>
+                        <div data-aos="fade-left"  data-aos-duration="1000">
+                            <img class="main1-img img-responsive pull-right" src="/img/main1.png" alt="Main1 Image"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
     
     <section id="main1">
       <div class="container">
@@ -91,8 +91,6 @@ class Credits extends Component {
                 <br />
               </div>
           </div>
-         
-       
         </div>
       </div>
     </section>
@@ -110,7 +108,7 @@ class Credits extends Component {
               <p> - Điểm trung bình chung học kỳ là điểm trung bình có trọng số của các học phần đã đăng ký học trong học kỳ đó, với trọng số là số tín chỉ tương ứng của từng học phần. </p>
               <p> - Khối lượng kiến thức tích lũy là khối lượng tính bằng tổng số tín chỉ của những học phần đã được tích lũy tính từ đầu khóa học cho tới thời điểm kết thúc mỗi học kỳ. </p>
               <p> - Điểm trung bình chung tích lũy là điểm trung bình có trọng số của các học phần đã được tích luỹ tính từ đầu khóa học cho tới thời điểm kết thúc mỗi học kỳ, với trọng số là số tín chỉ tương ứng của từng học phần. </p>
-              <center><img src="./img/gpa-table.png"  style = {{width:"500px"}}alt="Main2 Image"/></center>
+              <center><img src="/img/gpa-table.png"  style = {{width:"500px"}}alt="Main2 Image"/></center>
               </div>
 
               

@@ -1,0 +1,160 @@
+/* *{
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI light';
+} */
+/* .so1 {
+    background-image: url("../assets/img/template-cntt/slide-1.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh; 
+    width: 100%;
+}
+.ndso1 {
+    width: 900px;
+    margin: auto;
+    text-align: left;
+    font-size: 30px;
+    color: black;
+}
+.chunho {
+    padding-top: 200px;
+    font-size: 20px;
+}
+.chuto {
+    font-size: 70px;
+    font-weight: bold;
+}
+*/
+a.shop {
+    text-decoration: none;
+    background: black;
+    color: white;
+    display: inline-block;
+    font-size: 14px;
+    padding: 8px 20px;
+}
+a.shop:hover{
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+} 
+
+.so2 {
+    background-image: url("../assets/img/template-cntt/slide-2.jpg");
+    background-position: center ;
+    background-repeat: no-repeat;
+    background-size: 100%  81vh;
+    background-attachment: fixed;
+    height: 80vh; 
+    width: 100%;
+} 
+
+
+.ndso2 {
+    width: 900px;
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+    color: rgb(243, 239, 239);
+}
+.so2 .chunho {
+    font-size: 80%;
+    color: white;
+}
+
+.so2 .chuto {
+    font-size: 200%;
+    color: white;
+    
+}
+.so2 a.shop {
+    font-size: 20px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    font-weight: 1000;
+    transition:1s;
+    background: #00154d70;
+}
+.so2 a.shop:hover{
+    color: white;
+    background: #00144d;
+    transition:1s;
+}
+/* 
+.so3 {
+    background-image: url("../assets/img/template-cntt/slide-3.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh; 
+    width: 100%;
+} 
+.ndso3 {
+    width: 900px;
+    margin: auto;
+    text-align: left ;
+    font-size: 30px;
+    color: rgb(243, 239, 239);
+}
+.so3 .chunho {
+    color: white;
+}
+.so3 .chuto {
+    color: white;
+}
+.so3 a.shop {
+    background: rgb(214, 194, 194);
+    color: black;
+}
+.so3 a.shop:hover{
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+} */
+
+/* Video */
+
+
+#videoContainer {
+    
+    margin-top: 10vh;
+    width: 80%;
+    background-color: white;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#myVideo {
+    width: 100%;
+    padding: 40px;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+#videoText {
+    text-align: center;
+    padding: 10px 20px;
+  }
+
+.boxShadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+#image-department { 
+    width:30vh;
+}
+
+
+#job-opportunity {
+    padding-top: 40px;
+    padding-bottom: 10px;
+    background: #f4f4f4;
+    background-image:"../assets/img/template-cntt/job.jpg";
+    background-position: center ;
+    background-repeat: no-repeat;
+    background-size: 100%  81vh;
+    background-attachment: fixed;
+  }

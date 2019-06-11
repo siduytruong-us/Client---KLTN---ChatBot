@@ -322,8 +322,8 @@ class index extends Component {
                                                     <div className="col-lg-4 col-md-4  col-sm-6">
                                                             <div className="mu-single-feature">
                                                                 <span className="fa fa-book"></span>
-                                                                <h4>Tổng hợp thông tin</h4>
-                                                                <p> Website tổng hợp tất cả thông tin hữu ích cho sinh viên từ các trang web của trường. Giúp bạn cảm thấy thoải mái hơn khi tìm hiểu về nhà trường.</p>
+                                                                <h4>Giới thiệu</h4>
+                                                                <p> Đây là trang tổng hợp tất cả thông tin hữu ích từ các trang web của trường. Dành cho các bạn học sinh chuẩn bị là HCMUS-er, giúp bạn cảm thấy thoải mái và đỡ bỡ ngỡ hơn khi lần đầu tiên bước chân vào giảng đường.</p>
                                                                 <a href="#">Tìm hiểu thêm</a>
                                                             </div>
                                                     </div>
@@ -333,7 +333,7 @@ class index extends Component {
                                                     <div className="col-lg-4 col-md-4 col-sm-6">
                                                         <div className="mu-single-feature">
                                                             <span className="fa fa-comments-o"></span> 
-                                                            <h4>Chat</h4>
+                                                            <h4>Chat Realtime</h4>
                                                             <p>Ứng dụng có hỗ trợ <b>chatbot</b> có thể giải đáp lập tức các thắc mắc của bạn </p>
                                                             <a href="#">Tìm hiểu thêm</a>
                                                         </div>
@@ -345,8 +345,8 @@ class index extends Component {
                                                         <div className="mu-single-feature">
                                                             <span className="fa fa-users"></span>
                                                             <h4>Forum hỏi đáp</h4>
-                                                            <p>Đây là nơi các bạn thỏa sức đặt những câu hỏi cho các anh chị sinh viên, </p>
-                                                            <a href="#">Tìm hiểu thêm</a>
+                                                            <p>Đây là nơi các bạn thỏa sức đặt những câu hỏi, những thắc mắc </p>
+                                                            <a href="/hoi-dap">Tới Forum</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -369,8 +369,8 @@ class index extends Component {
                                                     <div className="col-lg-4 col-md-4 col-sm-6">
                                                         <div className="mu-single-feature">
                                                             <span className="fa fa-film"></span>
-                                                            <h4>Video Lessons</h4>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                                            <h4>Cẩm nang học tập</h4>
+                                                            <p>Đây là trang thông tin về các quy định, quy chế cho các bạn sinh viên đang học tập tại trường. Bên cạnh đó còn có những bài viết về học bổng và cơ hội làm việc.</p>
                                                             <a href="#">Tìm hiểu thêm</a>
                                                         </div>
                                                     </div>

@@ -132,14 +132,14 @@ class Library extends Component {
                             <blockquote >
                                 <b> Thông tin liên lạc</b>
                                 <br/>
-                                <b>Cơ sở 1:</b>227 Nguyễn Văn Cừ, Quận 5, TP. HCM
+                                <b>Cơ sở 1: </b>Lầu 10, Tòa nhà I, 227 Nguyễn Văn Cừ, Quận 5, TP. HCM
                                 <br/>
                                 <b>Điện thoại</b>: (028) 6288 4499 Ext. 3200
                                 <br/>
                                 <b>Fax</b>: (028) 3835 0096
                                 <br/>
                                 <br/>
-                                <b>Cơ sở 2:</b>Linh Trung, Quận Thủ Đức, TP.HCM
+                                <b>Cơ sở 2:</b>Linh Trung (Dãy nhà C), Quận Thủ Đức, TP.HCM
                                 <br/>
                                 <b>Điện thoại</b>: (028) 3896 2822
                                 <br/>

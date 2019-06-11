@@ -8,7 +8,6 @@ import 'antd/dist/antd.css';
 import 'aos/dist/aos.css'
 import 'react-chat-widget/lib/styles.css';
 import "./css/custom.css"
-import "./css/template.css"
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
