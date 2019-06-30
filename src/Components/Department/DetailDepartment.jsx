@@ -127,7 +127,7 @@ class DetailDepartment extends Component {
                
                 
                 <section id="main2" className = " boxShadow" style = {{minHeight:"200px"}}>
-                <center><img  src="/assets/img/template-cntt/main-image.png" style = {{width:"75%"}} alt = "main image" /></center>
+                <center><img  src="/assets/img/template-cntt/main-image.png" style = {{padding:"20px",width:"auto"}} alt = "main image" /></center>
                 </section>
 
                 <section id="main2" style = {{paddingTop:"0px"}} >
@@ -142,7 +142,7 @@ class DetailDepartment extends Component {
                             <blockquote><b>Khoa học máy tính:</b></blockquote>
                             <blockquote><b>Mạng máy tính và viễn thông:</b></blockquote>
                             <blockquote><b>Hệ thống thông tin:</b></blockquote>
-                            <a href = "https://tuyensinh.hcmus.edu.vn/nh%C3%B3m-ng%C3%A0nh-m%C3%A1y-t%C3%ADnh-v%C3%A0-c%C3%B4ng-ngh%E1%BB%87-th%C3%B4ng-tin">Xem chi tiết</a>
+                            <a href = "https://tuyensinh.hcmus.edu.vn/nh%C3%B3m-ng%C3%A0nh-m%C3%A1y-t%C3%ADnh-v%C3%A0-c%C3%B4ng-ngh%E1%BB%87-th%C3%B4ng-tin" target="_blank" rel="noopener noreferrer">Xem chi tiết</a>
                           <br />
                         </div>
                       </div>

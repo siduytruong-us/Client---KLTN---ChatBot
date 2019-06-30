@@ -32,7 +32,7 @@ const PostCard = ({post, student , handleCommentPost, isCommenting}) => {
                         </Col>
                         <Col span = {23}>
                         <div style ={{paddingLeft:"20px"}}>
-                        <p  style = {{ display: "-webkit-box",WebkitLineClamp:2, WebkitBoxOrient:'vertical',overflow: "hidden",  marginBottom: "10px"}}>
+                        <p  style = {{ display: "-webkit-box", WebkitBoxOrient:'vertical',overflow: "hidden",  marginBottom: "10px"}}>
                             <b>{title}</b> {isSolved? <Icon type="check-circle" style={{ fontSize: '16px', color: '#26e236', marginLeft:"10px" }} theme="filled" />: null}
                             <br/>
                             {question}

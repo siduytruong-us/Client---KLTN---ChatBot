@@ -140,12 +140,13 @@ class App extends Component {
                           <img src="/assets/img/favicon.ico" className="rcw-avatar" alt="profile"/>
                           <div className = "rcw-response">
                               <div className="rcw-message-text">
-                                {message.text} - <Popconfirm title={<div>Báo cáo câu trả lời?<Input id = "form-bot-report" placeholder = "Nội dung"/></div>} 
-                                                          okText="Có" cancelText="Không"
-                                                          icon={<Icon type="info-circle" style={{ color: 'red' }} />}
-                                                          onConfirm = {() => this.handleReportBotReponse(message.text)}>
-                                                    <Button type="danger" shape="circle" icon="info-circle" size="small" />
-                                              </Popconfirm>
+                                {message.text} - 
+                                <Popconfirm title={<div>Báo cáo câu trả lời?<Input id = "form-bot-report" placeholder = "Nội dung"/></div>} 
+                                            okText="Có" cancelText="Không"
+                                            icon={<Icon type="info-circle" style={{ color: 'red' }} />}
+                                            onConfirm = {() => this.handleReportBotReponse(message.text)}>
+                                      <Button type="danger" shape="circle" icon="info-circle" size="small"/>
+                                </Popconfirm>
                               </div>
                           </div>
                       </div>
@@ -185,31 +186,51 @@ class App extends Component {
 
       if( mode === "bot") { 
           
-          axios.post("/bot/"+ student, {message:msg})
+          axios.post("/bot", {
+            message:msg,
+          })
           .then(res => { 
-            const data =res.data.data
-
+            const message =res.data.data
+            
             var botMsg = { 
               sendAt : new Date(),
-              text: data.message,
+              text: message,
               respondent:"bot"
             }
 
             HandleChatFirestore.addChatToConversation(student,botMsg)
-            .catch( err => {addResponseMessage(err)})
+            .catch( err => {
+              
+              addResponseMessage(err)
+            })
 
           })
           .catch(err => {
+            console.log(err);
+            
             message.error(err.toString(),1.5)
           })
       }
   }
 
   handleChatWithBot() { 
-    addResponseMessage("Chào bạn, mình là bot Chris, mình có thể giúp gì cho bạn?")
-    this.setState({
-      mode:"bot"
-    })
+    const {mode} = this.state
+    if ( mode !== "bot"){
+      addResponseMessage("Chào bạn, mình là bot Chris, mình có thể giúp gì cho bạn?")
+      this.setState({
+        mode:"bot"
+      })
+    }
+  }
+
+  handleChatWithAdmin() { 
+    const {mode} = this.state
+    if ( mode !== "admin"){
+      addResponseMessage("Chào bạn, Admin có thể giúp gì cho bạn?")
+      this.setState({
+        mode:"admin"
+      })
+    }
   }
 
   handleReportBotReponse(botResponse) { 
@@ -321,6 +342,7 @@ class App extends Component {
       reject(err)
     })
   }
+  
   //#endregion
 
 
@@ -352,10 +374,28 @@ class App extends Component {
           
         })
         .catch( err => {
-            addResponseMessage("Đã xảy ra lỗi ")
+            
             if (err === "invalid") {
-              addResponseMessage("MSSV của bạn sai vui lòng nhập lại")
-              renderCustomComponent(this.FormD, {data: this.state.test, action: this.handleInputStudentInWidget});
+              if (!student.includes("1512")) {
+                addResponseMessage("Đã xảy ra lỗi")
+                addResponseMessage("MSSV của bạn sai vui lòng nhập lại")
+                renderCustomComponent(this.FormD, {data: this.state.test, action: this.handleInputStudentInWidget});
+              }
+              else {
+                HandleChatFirestore.createNewFirebaseConversation(student)
+                .then( res => { 
+                  this.setState({student: student})
+                  addResponseMessage("Chào " + HandleDateTime.greeting() +", bạn "+ student)
+                  addResponseMessage("Bạn muốn trò chuyện với bot hay admin?")
+                  renderCustomComponent(this.OptionButton, {data: this.state.test, action: this.handleModalDataChange }); 
+                })
+                .catch (err => {
+                  addResponseMessage(err.toString())
+                  addResponseMessage("Tải lại trang để khắc phục sự cố!")
+                })
+              }
+              
+              
             }
             else {
               addResponseMessage(err.toString())
@@ -395,7 +435,7 @@ class App extends Component {
   
   OptionButton = ({data, action}) => {
     return <div style = {{width: "100%"}}>
-                <Button style = {{width:"40%", float:"left", marginLeft:"20px"}}>Admin</Button> 
+                <Button style = {{width:"40%", float:"left", marginLeft:"20px"}} onClick = {() => this.handleChatWithAdmin()}>Admin</Button> 
                 <Button style = {{width:"40%", float:"right", marginRight:"20px"}} onClick = {() => this.handleChatWithBot()}> Bot </Button>
             </div>
   }

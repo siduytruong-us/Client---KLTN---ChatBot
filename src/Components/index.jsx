@@ -376,7 +376,7 @@ class index extends Component {
                                                     </div>
                                                 </div>
                                                     
-                                                <div data-aos="fade-right"  data-aos-duration="300" data-aos-delay="600">
+                                                {/* <div data-aos="fade-right"  data-aos-duration="300" data-aos-delay="600">
                                                     <div className="col-lg-4 col-md-4 col-sm-6">
                                                         <div className="mu-single-feature">
                                                             <span className="fa fa-certificate"></span>
@@ -385,7 +385,7 @@ class index extends Component {
                                                             <a href="#">Tìm hiểu thêm</a>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                                     
                                             </div>
                                         </div>

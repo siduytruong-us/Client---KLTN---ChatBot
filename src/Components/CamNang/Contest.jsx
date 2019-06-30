@@ -144,8 +144,9 @@ export default class Contest extends Component {
                         
 
                     <Collapse  bordered={false}  expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
-                        <Panel header = {<h4>Giữa kỳ</h4>} key="1" style={customPanelStyle}>
+                        <Panel header = {<h4>Giữa kỳ</h4>} key="1" style={customPanelStyle} >
                         <List
+                            id = "contest-antd"
                             itemLayout="horizontal"
                             dataSource={midSem}
                             renderItem={each => (
