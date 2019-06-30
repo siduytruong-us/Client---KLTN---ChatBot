@@ -55,6 +55,7 @@ class DetailDepartment extends Component {
         window.scrollTo(0,0)
         AOS.refresh()
     }
+    
     componentWillReceiveProps() { 
         AOS.refresh()
     }
@@ -63,7 +64,8 @@ class DetailDepartment extends Component {
         window.scrollTo(0,0)
         document.getElementById('myVideo').addEventListener('loadedmetadata', function() {
             this.currentTime = 7.4;
-          }, false);
+        }, false);
+        document.title = "Khoa " + this.state.department.name
     }
 
     scrollToContent() {

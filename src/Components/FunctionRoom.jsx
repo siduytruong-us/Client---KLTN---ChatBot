@@ -23,6 +23,10 @@ class FunctionRoom extends Component {
         AOS.refresh()
     }
 
+    componentDidMount() {
+        document.title = "Phòng chức năng"
+    }
+
     componentWillReceiveProps() { 
         AOS.refresh()
     }

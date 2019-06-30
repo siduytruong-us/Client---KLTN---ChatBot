@@ -28,7 +28,7 @@ const PostCard = ({post, student , handleCommentPost, isCommenting}) => {
                 title={
                     <Row style = {{paddingBottom:"5px"}}>
                         <Col span = {1}>
-                            <Avatar size={42} style = {{marginTop:"18px"}} src = "assets/img/favicon.ico" />
+                            <Avatar size={42} style = {{marginTop:"18px"}} src = "/assets/img/user_icon.png" />
                         </Col>
                         <Col span = {23}>
                         <div style ={{paddingLeft:"20px"}}>
@@ -52,7 +52,7 @@ const PostCard = ({post, student , handleCommentPost, isCommenting}) => {
                                     <Comment
                                     key = {index}
                                     author={<a><b>{each.user} - {moment(parseInt(each.create_time)).fromNow()}</b></a>}
-                                    avatar={(<Avatar src="assets/img/favicon.ico" alt="comment avatar"/>)}
+                                    avatar={(<Avatar src="/assets/img/user_icon.png" alt="comment avatar"/>)}
                                     content={(
                                     <p>{each.text}</p>
                                     )}

@@ -48,13 +48,6 @@ class Footer extends Component {
         </div>
       </div>
     </div>
-    <div className="mu-footer-bottom">
-      <div className="container">
-        <div className="mu-footer-bottom-area">
-          <p>&copy; All Right Reserved. Designed by <a href="http://www.markups.io/" rel="nofollow">MarkUps.io</a></p>
-        </div>
-      </div>
-    </div>
   </footer>
   
         );

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from '../../Config/axiosConfig';
 import { Divider, Popconfirm, Icon, List, Anchor, Collapse, message } from 'antd';
 import AOS from "aos"
-
+// import "../../css/custom_popover_button.css"
 
 const Panel = Collapse.Panel;
 const {Link} = Anchor
@@ -38,6 +38,9 @@ export default class Contest extends Component {
         AOS.refresh()
 
         this.fetchDateFromServer()
+    }
+    componentDidMount() {
+        document.title = "Lịch thi - học phí"
     }
     //#endregion
 
@@ -128,7 +131,7 @@ export default class Contest extends Component {
                         <br/>
                         + Sinh viên bị buộc thôi học nếu không hoàn thành <b>nghĩa vụ học phí đúng thời gian quy định của trường</b>
                         <br/>
-                        + Sinh viên phải thường xuyên cập nhật thông tin đóng học phí trên trang web của trường <b>(theo <a href ="https://www.hcmus.edu.vn/%C4%91%C3%A0o-t%E1%BA%A1o/daotao#sppb-addon-1541494697408" target="_blank">LINK</a>)</b>
+                        + Sinh viên phải thường xuyên cập nhật thông tin đóng học phí trên trang web của trường <b>(theo <a href ="https://www.hcmus.edu.vn/%C4%91%C3%A0o-t%E1%BA%A1o/daotao#sppb-addon-1541494697408" target="_blank" rel="noopener noreferrer">LINK</a>)</b>
                         <br/>
                         + Các học phần đã đạt nhưng muốn cải thiện điểm thì sinh viên phải đăng ký học lại và <b>nộp học phí</b> theo quy định
                     </blockquote>
@@ -155,7 +158,8 @@ export default class Contest extends Component {
                                 title={<Popconfirm
                                     cancelText = ""
                                     title={ each.excel.map(each => <div><a href = {each.linkExcel}>{each.linkExcel}</a></div>) }
-                                    icon={<Icon type="file-excel" style = {{color:"green", fontSize:"20px"}} />}
+                                    icon={<Icon type="file-pdf" style = {{color:"green", fontSize:"20px"}} />}
+                                    key = {each.linkExcel}
                                 >
                                     <a href="#" className = "animated fadeIn slow"> {each.title} </a>
                                 </Popconfirm>}
@@ -174,7 +178,13 @@ export default class Contest extends Component {
                                 title={<Popconfirm
                                     cancelText = ""
                                     title={ each.excel.map(each => <div><a href = {each.linkExcel}>{each.linkExcel}</a></div>) }
-                                    icon={<Icon type="file-excel" style = {{color:"green", fontSize:"20px"}} />}
+                                    icon={() => {console.log(each.linkExcel);
+                                    
+                                                if (!each.linkExcel) return null
+                                                return each.linkExcel.includes(".pdf")?
+                                                <Icon type="file-pdf" style = {{color:"red", fontSize:"20px"}} />
+                                                :<Icon type="file-excel" style = {{color:"green", fontSize:"20px"}} />
+                                    }}
                                 >
                                     <a href="#" className = "animated fadeIn slow"> {each.title} </a>
                                 </Popconfirm>}
@@ -206,10 +216,10 @@ export default class Contest extends Component {
                                 title={
                                 <Popconfirm
                                 cancelText = ""
-                                title={ each.excel? <div><a href = {each.excel.linkExcellinkExcel}>{each.excel.linkExcel}</a></div>:null }
+                                title={ each.excel? <div><a href = {each.excel.linkExcel} >{each.excel.linkExcel} </a></div>:null }
                                 icon={ each.excel? <Icon type="file-excel" style = {{color:"green", fontSize:"20px"}} />: null}>
 
-                                    <a href={each.excel?"#": each.linkHtml} className = "animated fadeIn slow"> {each.title} </a>
+                                    <a href={each.excel?"#": each.linkHtml}  className = "animated fadeIn slow" > {each.title} </a>
 
                                 </Popconfirm>
                                 }

@@ -474,8 +474,8 @@ class App extends Component {
             badge = {unSeenMessage}
             onFocus = {() => console.log("123")}
             handleNewUserMessage={this.handleNewUserMessage}
-            profileAvatar= "/assets/img/favicon.ico"
-            titleAvatar = "/assets/img/favicon.ico"
+            profileAvatar= "https://firebasestorage.googleapis.com/v0/b/collegehandbook074.appspot.com/o/bee.png?alt=media&token=29f3afca-8d1c-40ba-bcf6-ea784f6c4ea8"
+            titleAvatar = "https://firebasestorage.googleapis.com/v0/b/collegehandbook074.appspot.com/o/bee.png?alt=media&token=29f3afca-8d1c-40ba-bcf6-ea784f6c4ea8"
           />
           
           

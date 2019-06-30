@@ -15,6 +15,10 @@ class Credits extends Component {
         AOS.refresh()
     }
 
+    componentDidMount() {
+      document.title = "Tín chỉ - học phần"
+    }  
+
     componentWillReceiveProps() { 
         AOS.refresh()
     }

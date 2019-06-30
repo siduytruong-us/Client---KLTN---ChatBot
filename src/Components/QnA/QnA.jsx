@@ -36,6 +36,9 @@ class QnA extends Component {
         this.setState({student: student?student:null})
 
     }
+    componentDidMount(){
+        document.title = "QnA - Forum"
+    }
     //#endregion
     
 

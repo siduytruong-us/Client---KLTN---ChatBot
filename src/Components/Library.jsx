@@ -22,6 +22,9 @@ class Library extends Component {
         AOS.refresh()
     }
 
+    componentDidMount() {
+        document.title = "Thư viện"
+    }
     componentWillReceiveProps() { 
         AOS.refresh()
     }

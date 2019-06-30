@@ -46,7 +46,7 @@ class Header extends Component {
                     <span className="icon-bar"></span>
                     <span className="icon-bar"></span>
                   </button>
-                  <a className="navbar-brand" href="/"><img src="/assets/img/logo81.png" alt="logo"  style = {{marginTop: "-8px", width: "90%",height: "auto"}} /></a>
+                  <a className="navbar-brand" href="/"><img src="/assets/img/logo.png" alt="logo"  style = {{marginTop: "-8px", width: "90%",height: "auto"}} /></a>
                 </div>
                 <div id="navbar" className="navbar-collapse collapse">
                   <ul id="top-menu" className="nav navbar-nav navbar-right main-nav">
@@ -68,8 +68,8 @@ class Header extends Component {
                       <ul className="dropdown-menu" role="menu">
                         <li><NavLink to="/tin-chi-hoc-phan">Tín chỉ - học phần</NavLink></li>                
                         <li><NavLink to="/lich-thi">Lịch thi, Học phí, Thời khóa biểu</NavLink></li>                
-                        <li><NavLink to="/hoc-bong-du-hoc">Học bổng, du học</NavLink></li>
-                        <li><NavLink to="/tuyen-sinh">Tuyển sinh</NavLink></li>
+                        {/* <li><NavLink to="/hoc-bong-du-hoc">Học bổng, du học</NavLink></li>
+                        <li><NavLink to="/tuyen-sinh">Tuyển sinh</NavLink></li> */}
                       </ul>
                     </li>
 

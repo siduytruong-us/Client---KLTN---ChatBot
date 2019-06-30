@@ -1,0 +1,11 @@
+
+.ant-popover-buttons {
+    text-align: right;
+    margin-bottom: 4px;
+    visibility: hidden;
+}
+
+.ant-popover-inner-content {
+    padding: 0px 16px;
+    color: rgba(0, 0, 0, 0.65);
+}

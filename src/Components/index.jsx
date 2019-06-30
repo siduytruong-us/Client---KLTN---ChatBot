@@ -324,7 +324,7 @@ class index extends Component {
                                                                 <span className="fa fa-book"></span>
                                                                 <h4>Giới thiệu</h4>
                                                                 <p> Đây là trang tổng hợp tất cả thông tin hữu ích từ các trang web của trường. Dành cho các bạn học sinh chuẩn bị là HCMUS-er, giúp bạn cảm thấy thoải mái và đỡ bỡ ngỡ hơn khi lần đầu tiên bước chân vào giảng đường.</p>
-                                                                <a href="#">Tìm hiểu thêm</a>
+                                                                <NavLink to="/#">Tìm hiểu thêm</NavLink>
                                                             </div>
                                                     </div>
                                                 </div>
@@ -335,7 +335,7 @@ class index extends Component {
                                                             <span className="fa fa-comments-o"></span> 
                                                             <h4>Chat Realtime</h4>
                                                             <p>Ứng dụng có hỗ trợ <b>chatbot</b> có thể giải đáp lập tức các thắc mắc của bạn </p>
-                                                            <a href="#">Tìm hiểu thêm</a>
+                                                            <NavLink to="/#">Tìm hiểu thêm</NavLink>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -346,7 +346,7 @@ class index extends Component {
                                                             <span className="fa fa-users"></span>
                                                             <h4>Forum hỏi đáp</h4>
                                                             <p>Đây là nơi các bạn thỏa sức đặt những câu hỏi, những thắc mắc </p>
-                                                            <a href="/hoi-dap">Tới Forum</a>
+                                                            <NavLink to="/hoi-dap">Tìm hiểu thêm</NavLink>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -360,7 +360,7 @@ class index extends Component {
                                                             <span className="fa fa-map-marker"></span>
                                                             <h4>Liên hệ</h4>
                                                             <p>Các bạn có thể tìm kiếm thông tin liên hệ của trường tại đây. </p>
-                                                            <NavLink to="#">Tìm hiểu thêm</NavLink>
+                                                            <NavLink to="/lien-he">Tìm hiểu thêm</NavLink>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -371,7 +371,7 @@ class index extends Component {
                                                             <span className="fa fa-film"></span>
                                                             <h4>Cẩm nang học tập</h4>
                                                             <p>Đây là trang thông tin về các quy định, quy chế cho các bạn sinh viên đang học tập tại trường. Bên cạnh đó còn có những bài viết về học bổng và cơ hội làm việc.</p>
-                                                            <a href="#">Tìm hiểu thêm</a>
+                                                            <NavLink to="#">Tìm hiểu thêm</NavLink>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -405,7 +405,7 @@ class index extends Component {
                             <div className="mu-testimonial-item">
                                 <div className="mu-testimonial-quote">
                                 <blockquote>
-                                    <p>Làm việc gì cũng làm đến cùn g. Không làm dang dở, luôn làm hết mình.</p>
+                                    <p>Làm việc gì cũng làm đến cùng. Không làm dang dở, luôn làm hết mình.</p>
                                 </blockquote>
                                 </div>
                                 <div className="mu-testimonial-img">
@@ -419,7 +419,7 @@ class index extends Component {
                             <div className="mu-testimonial-item">
                                 <div className="mu-testimonial-quote">
                                 <blockquote>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem rerum soluta aperiam blanditiis obcaecati eveniet aliquam consequatur nobis eaque id.</p>
+                                    <p>“The future depends on what you do today.” ― Mahatma Gandhi</p>
                                 </blockquote>
                                 </div>
                                 <div className="mu-testimonial-img">
@@ -448,8 +448,10 @@ class index extends Component {
                 ]}
                 >
                 <b>Số lượt xem: {selectedNews.hits}</b> - <Icon type="clock-circle" /> { moment(parseInt(selectedNews.create_time)).format("DD/MM/YYYY HH:MM")}
-                <Divider></Divider>
-                        <div dangerouslySetInnerHTML={{__html: selectedNews.content}} ></div>
+                <Divider/>
+                        <div id = "index-article">
+                            <div dangerouslySetInnerHTML={{__html: selectedNews.content}}></div>
+                        </div>
                 </Modal>
             </div>
         );
